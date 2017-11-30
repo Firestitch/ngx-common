@@ -1,35 +1,44 @@
+import { FsUtilGuidPipe, FsUtilStringifyPipe } from './fsutil.pipe';
+
+import { HttpClientModule } from '@angular/common/http';
+
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SampleComponent } from './sample.component';
-import { SampleDirective } from './sample.directive';
-import { SamplePipe } from './sample.pipe';
-import { SampleService } from './sample.service';
+import { FsArray } from 'fsarray.service';
+import { FsMath } from 'fsmath.service';
+import { FsUtil } from 'fsutil.service';
 
-export * from './sample.component';
-export * from './sample.directive';
-export * from './sample.pipe';
-export * from './sample.service';
-
+export * from './fsutil.service';
+export * from './fsarray.service';
+export * from './fsmath.service';
+export * from './fsutil.pipe';
 @NgModule({
   imports: [
     CommonModule
-  ],
-  declarations: [
-    SampleComponent,
-    SampleDirective,
-    SamplePipe
-  ],
-  exports: [
-    SampleComponent,
-    SampleDirective,
-    SamplePipe
-  ]
+],
+declarations: [
+  FsUtilStringifyPipe,
+  FsUtilGuidPipe    
+],
+providers: [
+  FsArray,
+  FsMath,
+  FsUtil
+],
+exports: [
+  FsUtilStringifyPipe,
+  FsUtilGuidPipe
+]
 })
-export class SampleModule {
+export class FsApiModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: SampleModule,
-      providers: [SampleService]
+      ngModule: FsApiModule,
+      providers: [
+        FsArray,
+        FsMath,
+        FsUtil
+      ]
     };
   }
 }
