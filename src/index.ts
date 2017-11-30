@@ -30,10 +30,10 @@ exports: [
   FsUtilGuidPipe
 ]
 })
-export class FsApiModule {
+export class FsCommonModule {
   static forRoot(): ModuleWithProviders {
     return {
-      ngModule: FsApiModule,
+      ngModule: FsCommonModule,
       providers: [
         FsArray,
         FsMath,
