@@ -1,8 +1,364 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('fs-array.module'), require('fs-math.module'), require('fs-util.module')) :
-	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/common', 'fs-array.module', 'fs-math.module', 'fs-util.module'], factory) :
-	(factory((global['fs-common'] = {}),global.core,global.common,global.fsArray_module,global.fsMath_module,global.fsUtil_module));
-}(this, (function (exports,core,common,fsArray_module,fsMath_module,fsUtil_module) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common')) :
+	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/common'], factory) :
+	(factory((global['fs-common'] = {}),global.core,global.common));
+}(this, (function (exports,core,common) { 'use strict';
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+var FsArray = (function () {
+    function FsArray() {
+    }
+    /**
+     * @param {?} array
+     * @param {?} name
+     * @param {?} value
+     * @return {?}
+     */
+    FsArray.prototype.nameValue = /**
+     * @param {?} array
+     * @param {?} name
+     * @param {?} value
+     * @return {?}
+     */
+    function (array, name, value) {
+        var /** @type {?} */ list = [];
+        if (name || value) {
+            var /** @type {?} */ nameFn_1 = typeof name === 'function' ? name : function (item) { return item[name]; };
+            var /** @type {?} */ valueFn_1 = typeof value === 'function' ? value : function (item) { return item[value]; };
+            array.forEach(function (item) {
+                list.push({ name: nameFn_1(item), value: valueFn_1(item) });
+            });
+        }
+        else {
+            array.forEach(function (name, value) {
+                list.push({ name: name, value: value });
+            });
+        }
+        return list;
+    };
+    /**
+     * @param {?} array
+     * @param {?} query
+     * @return {?}
+     */
+    FsArray.prototype.remove = /**
+     * @param {?} array
+     * @param {?} query
+     * @return {?}
+     */
+    function (array, query) {
+        var /** @type {?} */ idx = this.indexOf(array, query);
+        if (idx >= 0) {
+            return array.splice(idx, 1);
+        }
+        return idx;
+    };
+    /**
+     * @param {?} array
+     * @param {?} query
+     * @return {?}
+     */
+    FsArray.prototype.indexOf = /**
+     * @param {?} array
+     * @param {?} query
+     * @return {?}
+     */
+    function (array, query) {
+        var _this = this;
+        if (typeof query !== 'function') {
+            var /** @type {?} */ queryObj_1 = query;
+            query = function (item) {
+                return _this.compare(queryObj_1, item);
+            };
+        }
+        for (var /** @type {?} */ i = 0, /** @type {?} */ len = array.length; i < len; i++) {
+            if (query(array[i])) {
+                return i;
+            }
+        }
+        return -1;
+    };
+    /**
+     * @param {?} query
+     * @param {?} item
+     * @return {?}
+     */
+    FsArray.prototype.compare = /**
+     * @param {?} query
+     * @param {?} item
+     * @return {?}
+     */
+    function (query, item) {
+        var /** @type {?} */ value = true;
+        for (var /** @type {?} */ key in query) {
+            value = value && item[key] == query[key];
+        }
+        return value;
+    };
+    /**
+     * @param {?} array
+     * @param {?} query
+     * @return {?}
+     */
+    FsArray.prototype.filter = /**
+     * @param {?} array
+     * @param {?} query
+     * @return {?}
+     */
+    function (array, query) {
+        var _this = this;
+        if (typeof query !== 'function') {
+            var /** @type {?} */ queryObj_2 = query;
+            query = function (item) {
+                return _this.compare(queryObj_2, item);
+            };
+        }
+        var /** @type {?} */ isarray = Array.isArray(array);
+        var /** @type {?} */ list = isarray ? [] : {};
+        if (isarray)
+            array.forEach(function (item, idx) {
+                if (query(item)) {
+                    list.push(item);
+                }
+            });
+        else
+            Object.keys(array).forEach(function (key) {
+                if (query(array[key])) {
+                    list[key] = array[key];
+                }
+            });
+        return list;
+    };
+    /**
+     * @param {?} array
+     * @param {?} property
+     * @return {?}
+     */
+    FsArray.prototype.index = /**
+     * @param {?} array
+     * @param {?} property
+     * @return {?}
+     */
+    function (array, property) {
+        var /** @type {?} */ list = {};
+        array.forEach(function (item, idx) {
+            list[item[property]] = item;
+        });
+        return list;
+    };
+    /**
+     * @param {?} array
+     * @param {?} query
+     * @param {?=} reverse
+     * @return {?}
+     */
+    FsArray.prototype.sort = /**
+     * @param {?} array
+     * @param {?} query
+     * @param {?=} reverse
+     * @return {?}
+     */
+    function (array, query, reverse) {
+        if (reverse === void 0) { reverse = false; }
+        if (typeof query !== 'function') {
+            var /** @type {?} */ queryStr_1 = query;
+            query = function (a, b) {
+                if (reverse) {
+                    if (a[queryStr_1] < b[queryStr_1]) {
+                        return 1;
+                    }
+                    else if (a[queryStr_1] > b[queryStr_1]) {
+                        return -1;
+                    }
+                }
+                else {
+                    if (a[queryStr_1] > b[queryStr_1]) {
+                        return 1;
+                    }
+                    else if (a[queryStr_1] < b[queryStr_1]) {
+                        return -1;
+                    }
+                }
+                return 0;
+            };
+        }
+        array.sort(query);
+        return array;
+    };
+    /**
+     * @param {?} array
+     * @param {?} query
+     * @return {?}
+     */
+    FsArray.prototype.rsort = /**
+     * @param {?} array
+     * @param {?} query
+     * @return {?}
+     */
+    function (array, query) {
+        return this.sort(array, query, true);
+    };
+    /**
+     * @param {?} array
+     * @param {?} property
+     * @param {?=} index
+     * @return {?}
+     */
+    FsArray.prototype.list = /**
+     * @param {?} array
+     * @param {?} property
+     * @param {?=} index
+     * @return {?}
+     */
+    function (array, property, index) {
+        if (index === void 0) { index = null; }
+        var /** @type {?} */ list = index ? {} : [];
+        array.forEach(function (item, idx) {
+            if (index) {
+                list[item[index]] = item[property];
+            }
+            else {
+                list.push(item[property]);
+            }
+        });
+        return list;
+    };
+    /**
+     * @param {?} objects
+     * @param {?} parent_property
+     * @param {?=} id_property
+     * @param {?=} depth_property
+     * @return {?}
+     */
+    FsArray.prototype.applyDepth = /**
+     * @param {?} objects
+     * @param {?} parent_property
+     * @param {?=} id_property
+     * @param {?=} depth_property
+     * @return {?}
+     */
+    function (objects, parent_property, id_property, depth_property) {
+        if (id_property === void 0) { id_property = 'id'; }
+        if (depth_property === void 0) { depth_property = 'depth'; }
+        var /** @type {?} */ keyed = {};
+        objects.forEach(function (object) {
+            if (!object[parent_property])
+                object[depth_property] = 0;
+            keyed[object[id_property]] = object;
+        });
+        Object.keys(keyed).forEach(function (key) {
+            Object.keys(keyed).forEach(function (key) {
+                if (!keyed[key][depth_property]) {
+                    if (keyed[key][parent_property]) {
+                        keyed[key][depth_property] = keyed[keyed[key][parent_property]][depth_property] + 1;
+                    }
+                }
+            });
+        });
+        return keyed;
+    };
+    /**
+     * @param {?} values
+     * @param {?} array
+     * @return {?}
+     */
+    FsArray.prototype.inArray = /**
+     * @param {?} values
+     * @param {?} array
+     * @return {?}
+     */
+    function (values, array) {
+        if (!Array.isArray(values)) {
+            values = [values];
+        }
+        for (var /** @type {?} */ i = 0, /** @type {?} */ len = values.length; i < len; i++) {
+            if (array.indexOf(values[i]) >= 0) {
+                return true;
+            }
+        }
+        return false;
+    };
+    /**
+     * @param {?} array
+     * @param {?} key
+     * @return {?}
+     */
+    FsArray.prototype.keyExists = /**
+     * @param {?} array
+     * @param {?} key
+     * @return {?}
+     */
+    function (array, key) {
+        return array.hasOwnProperty(key);
+    };
+    /**
+     * @param {?} array
+     * @return {?}
+     */
+    FsArray.prototype.length = /**
+     * @param {?} array
+     * @return {?}
+     */
+    function (array) {
+        return array.length;
+    };
+    /**
+     * @param {?} unordered
+     * @return {?}
+     */
+    FsArray.prototype.ksort = /**
+     * @param {?} unordered
+     * @return {?}
+     */
+    function (unordered) {
+        Object.keys(unordered).sort().forEach(function (key) {
+            var /** @type {?} */ value = unordered[key];
+            delete unordered[key];
+            unordered[key] = value;
+        });
+    };
+    FsArray.decorators = [
+        { type: core.Injectable },
+    ];
+    /** @nocollapse */
+    FsArray.ctorParameters = function () { return []; };
+    return FsArray;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+var FsMath = (function () {
+    function FsMath() {
+    }
+    /**
+     * @param {?} number
+     * @param {?} precision
+     * @return {?}
+     */
+    FsMath.prototype.round = /**
+     * @param {?} number
+     * @param {?} precision
+     * @return {?}
+     */
+    function (number, precision) {
+        precision = precision || 0;
+        var /** @type {?} */ factor = Math.pow(10, precision);
+        var /** @type {?} */ tempNumber = number * factor;
+        var /** @type {?} */ roundedTempNumber = Math.round(tempNumber);
+        return roundedTempNumber / factor;
+    };
+    FsMath.decorators = [
+        { type: core.Injectable },
+    ];
+    /** @nocollapse */
+    FsMath.ctorParameters = function () { return []; };
+    return FsMath;
+}());
 
 /**
  * @fileoverview added by tsickle
@@ -495,427 +851,6 @@ var FsUtilGuidPipe = (function () {
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-var FsUtilModule$1 = (function () {
-    function FsUtilModule$$1() {
-    }
-    FsUtilModule$$1.decorators = [
-        { type: core.NgModule, args: [{
-                    declarations: [
-                        FsUtilStringifyPipe,
-                        FsUtilGuidPipe
-                    ],
-                    providers: [
-                        FsUtil
-                    ],
-                    exports: [
-                        FsUtilStringifyPipe,
-                        FsUtilGuidPipe
-                    ]
-                },] },
-    ];
-    /** @nocollapse */
-    FsUtilModule$$1.ctorParameters = function () { return []; };
-    return FsUtilModule$$1;
-}());
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-var FsArray = (function () {
-    function FsArray() {
-    }
-    /**
-     * @param {?} array
-     * @param {?} name
-     * @param {?} value
-     * @return {?}
-     */
-    FsArray.prototype.nameValue = /**
-     * @param {?} array
-     * @param {?} name
-     * @param {?} value
-     * @return {?}
-     */
-    function (array, name, value) {
-        var /** @type {?} */ list = [];
-        if (name || value) {
-            var /** @type {?} */ nameFn_1 = typeof name === 'function' ? name : function (item) { return item[name]; };
-            var /** @type {?} */ valueFn_1 = typeof value === 'function' ? value : function (item) { return item[value]; };
-            array.forEach(function (item) {
-                list.push({ name: nameFn_1(item), value: valueFn_1(item) });
-            });
-        }
-        else {
-            array.forEach(function (name, value) {
-                list.push({ name: name, value: value });
-            });
-        }
-        return list;
-    };
-    /**
-     * @param {?} array
-     * @param {?} query
-     * @return {?}
-     */
-    FsArray.prototype.remove = /**
-     * @param {?} array
-     * @param {?} query
-     * @return {?}
-     */
-    function (array, query) {
-        var /** @type {?} */ idx = this.indexOf(array, query);
-        if (idx >= 0) {
-            return array.splice(idx, 1);
-        }
-        return idx;
-    };
-    /**
-     * @param {?} array
-     * @param {?} query
-     * @return {?}
-     */
-    FsArray.prototype.indexOf = /**
-     * @param {?} array
-     * @param {?} query
-     * @return {?}
-     */
-    function (array, query) {
-        var _this = this;
-        if (typeof query !== 'function') {
-            var /** @type {?} */ queryObj_1 = query;
-            query = function (item) {
-                return _this.compare(queryObj_1, item);
-            };
-        }
-        for (var /** @type {?} */ i = 0, /** @type {?} */ len = array.length; i < len; i++) {
-            if (query(array[i])) {
-                return i;
-            }
-        }
-        return -1;
-    };
-    /**
-     * @param {?} query
-     * @param {?} item
-     * @return {?}
-     */
-    FsArray.prototype.compare = /**
-     * @param {?} query
-     * @param {?} item
-     * @return {?}
-     */
-    function (query, item) {
-        var /** @type {?} */ value = true;
-        for (var /** @type {?} */ key in query) {
-            value = value && item[key] == query[key];
-        }
-        return value;
-    };
-    /**
-     * @param {?} array
-     * @param {?} query
-     * @return {?}
-     */
-    FsArray.prototype.filter = /**
-     * @param {?} array
-     * @param {?} query
-     * @return {?}
-     */
-    function (array, query) {
-        var _this = this;
-        if (typeof query !== 'function') {
-            var /** @type {?} */ queryObj_2 = query;
-            query = function (item) {
-                return _this.compare(queryObj_2, item);
-            };
-        }
-        var /** @type {?} */ isarray = Array.isArray(array);
-        var /** @type {?} */ list = isarray ? [] : {};
-        if (isarray)
-            array.forEach(function (item, idx) {
-                if (query(item)) {
-                    list.push(item);
-                }
-            });
-        else
-            Object.keys(array).forEach(function (key) {
-                if (query(array[key])) {
-                    list[key] = array[key];
-                }
-            });
-        return list;
-    };
-    /**
-     * @param {?} array
-     * @param {?} property
-     * @return {?}
-     */
-    FsArray.prototype.index = /**
-     * @param {?} array
-     * @param {?} property
-     * @return {?}
-     */
-    function (array, property) {
-        var /** @type {?} */ list = {};
-        array.forEach(function (item, idx) {
-            list[item[property]] = item;
-        });
-        return list;
-    };
-    /**
-     * @param {?} array
-     * @param {?} query
-     * @param {?=} reverse
-     * @return {?}
-     */
-    FsArray.prototype.sort = /**
-     * @param {?} array
-     * @param {?} query
-     * @param {?=} reverse
-     * @return {?}
-     */
-    function (array, query, reverse) {
-        if (reverse === void 0) { reverse = false; }
-        if (typeof query !== 'function') {
-            var /** @type {?} */ queryStr_1 = query;
-            query = function (a, b) {
-                if (reverse) {
-                    if (a[queryStr_1] < b[queryStr_1]) {
-                        return 1;
-                    }
-                    else if (a[queryStr_1] > b[queryStr_1]) {
-                        return -1;
-                    }
-                }
-                else {
-                    if (a[queryStr_1] > b[queryStr_1]) {
-                        return 1;
-                    }
-                    else if (a[queryStr_1] < b[queryStr_1]) {
-                        return -1;
-                    }
-                }
-                return 0;
-            };
-        }
-        array.sort(query);
-        return array;
-    };
-    /**
-     * @param {?} array
-     * @param {?} query
-     * @return {?}
-     */
-    FsArray.prototype.rsort = /**
-     * @param {?} array
-     * @param {?} query
-     * @return {?}
-     */
-    function (array, query) {
-        return this.sort(array, query, true);
-    };
-    /**
-     * @param {?} array
-     * @param {?} property
-     * @param {?=} index
-     * @return {?}
-     */
-    FsArray.prototype.list = /**
-     * @param {?} array
-     * @param {?} property
-     * @param {?=} index
-     * @return {?}
-     */
-    function (array, property, index) {
-        if (index === void 0) { index = null; }
-        var /** @type {?} */ list = index ? {} : [];
-        array.forEach(function (item, idx) {
-            if (index) {
-                list[item[index]] = item[property];
-            }
-            else {
-                list.push(item[property]);
-            }
-        });
-        return list;
-    };
-    /**
-     * @param {?} objects
-     * @param {?} parent_property
-     * @param {?=} id_property
-     * @param {?=} depth_property
-     * @return {?}
-     */
-    FsArray.prototype.applyDepth = /**
-     * @param {?} objects
-     * @param {?} parent_property
-     * @param {?=} id_property
-     * @param {?=} depth_property
-     * @return {?}
-     */
-    function (objects, parent_property, id_property, depth_property) {
-        if (id_property === void 0) { id_property = 'id'; }
-        if (depth_property === void 0) { depth_property = 'depth'; }
-        var /** @type {?} */ keyed = {};
-        objects.forEach(function (object) {
-            if (!object[parent_property])
-                object[depth_property] = 0;
-            keyed[object[id_property]] = object;
-        });
-        Object.keys(keyed).forEach(function (key) {
-            Object.keys(keyed).forEach(function (key) {
-                if (!keyed[key][depth_property]) {
-                    if (keyed[key][parent_property]) {
-                        keyed[key][depth_property] = keyed[keyed[key][parent_property]][depth_property] + 1;
-                    }
-                }
-            });
-        });
-        return keyed;
-    };
-    /**
-     * @param {?} values
-     * @param {?} array
-     * @return {?}
-     */
-    FsArray.prototype.inArray = /**
-     * @param {?} values
-     * @param {?} array
-     * @return {?}
-     */
-    function (values, array) {
-        if (!Array.isArray(values)) {
-            values = [values];
-        }
-        for (var /** @type {?} */ i = 0, /** @type {?} */ len = values.length; i < len; i++) {
-            if (array.indexOf(values[i]) >= 0) {
-                return true;
-            }
-        }
-        return false;
-    };
-    /**
-     * @param {?} array
-     * @param {?} key
-     * @return {?}
-     */
-    FsArray.prototype.keyExists = /**
-     * @param {?} array
-     * @param {?} key
-     * @return {?}
-     */
-    function (array, key) {
-        return array.hasOwnProperty(key);
-    };
-    /**
-     * @param {?} array
-     * @return {?}
-     */
-    FsArray.prototype.length = /**
-     * @param {?} array
-     * @return {?}
-     */
-    function (array) {
-        return array.length;
-    };
-    /**
-     * @param {?} unordered
-     * @return {?}
-     */
-    FsArray.prototype.ksort = /**
-     * @param {?} unordered
-     * @return {?}
-     */
-    function (unordered) {
-        Object.keys(unordered).sort().forEach(function (key) {
-            var /** @type {?} */ value = unordered[key];
-            delete unordered[key];
-            unordered[key] = value;
-        });
-    };
-    FsArray.decorators = [
-        { type: core.Injectable },
-    ];
-    /** @nocollapse */
-    FsArray.ctorParameters = function () { return []; };
-    return FsArray;
-}());
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-var FsArrayModule$1 = (function () {
-    function FsArrayModule$$1() {
-    }
-    FsArrayModule$$1.decorators = [
-        { type: core.NgModule, args: [{
-                    providers: [
-                        FsArray
-                    ]
-                },] },
-    ];
-    /** @nocollapse */
-    FsArrayModule$$1.ctorParameters = function () { return []; };
-    return FsArrayModule$$1;
-}());
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-var FsMath = (function () {
-    function FsMath() {
-    }
-    /**
-     * @param {?} number
-     * @param {?} precision
-     * @return {?}
-     */
-    FsMath.prototype.round = /**
-     * @param {?} number
-     * @param {?} precision
-     * @return {?}
-     */
-    function (number, precision) {
-        precision = precision || 0;
-        var /** @type {?} */ factor = Math.pow(10, precision);
-        var /** @type {?} */ tempNumber = number * factor;
-        var /** @type {?} */ roundedTempNumber = Math.round(tempNumber);
-        return roundedTempNumber / factor;
-    };
-    FsMath.decorators = [
-        { type: core.Injectable },
-    ];
-    /** @nocollapse */
-    FsMath.ctorParameters = function () { return []; };
-    return FsMath;
-}());
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
-var FsMathModule$1 = (function () {
-    function FsMathModule$$1() {
-    }
-    FsMathModule$$1.decorators = [
-        { type: core.NgModule, args: [{
-                    providers: [
-                        FsMath
-                    ]
-                },] },
-    ];
-    /** @nocollapse */
-    FsMathModule$$1.ctorParameters = function () { return []; };
-    return FsMathModule$$1;
-}());
-
-/**
- * @fileoverview added by tsickle
- * @suppress {checkTypes} checked by tsc
- */
 var FsCommonModule = (function () {
     function FsCommonModule() {
     }
@@ -928,24 +863,33 @@ var FsCommonModule = (function () {
     function () {
         return {
             ngModule: FsCommonModule,
-            providers: []
+            providers: [
+                FsArray,
+                FsUtil,
+                FsMath
+            ]
         };
     };
     FsCommonModule.decorators = [
         { type: core.NgModule, args: [{
                     imports: [
-                        common.CommonModule,
-                        fsUtil_module.FsUtilModule,
-                        fsArray_module.FsArrayModule,
-                        fsMath_module.FsMathModule
+                        common.CommonModule
                     ],
-                    declarations: [],
-                    providers: [],
+                    declarations: [
+                        FsUtilStringifyPipe,
+                        FsUtilGuidPipe
+                    ],
+                    providers: [
+                        FsArray,
+                        FsUtil,
+                        FsMath
+                    ],
                     exports: [
-                        common.CommonModule,
-                        fsUtil_module.FsUtilModule,
-                        fsArray_module.FsArrayModule,
-                        fsMath_module.FsMathModule
+                        FsUtilStringifyPipe,
+                        FsUtilGuidPipe,
+                        FsUtil,
+                        FsArray,
+                        FsMath
                     ]
                 },] },
     ];
@@ -955,7 +899,6 @@ var FsCommonModule = (function () {
 }());
 
 exports.FsCommonModule = FsCommonModule;
-exports.FsUtilModule = FsUtilModule$1;
 exports.FsUtilStringifyPipe = FsUtilStringifyPipe;
 exports.FsUtilGuidPipe = FsUtilGuidPipe;
 exports.KEY_CANCEL = KEY_CANCEL;
@@ -997,9 +940,7 @@ exports.KEY_SEMICOLON = KEY_SEMICOLON;
 exports.KEY_EQUALS = KEY_EQUALS;
 exports.FsUtil = FsUtil;
 exports.FsObject = FsObject;
-exports.FsArrayModule = FsArrayModule$1;
 exports.FsArray = FsArray;
-exports.FsMathModule = FsMathModule$1;
 exports.FsMath = FsMath;
 
 Object.defineProperty(exports, '__esModule', { value: true });
