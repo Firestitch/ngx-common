@@ -1,8 +1,8 @@
 (function (global, factory) {
-	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('fsarray.service'), require('fsmath.service'), require('fsutil.service')) :
-	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/common', 'fsarray.service', 'fsmath.service', 'fsutil.service'], factory) :
-	(factory((global['fs-common'] = {}),global.core,global.common,global.fsarray_service,global.fsmath_service,global.fsutil_service));
-}(this, (function (exports,core,common,fsarray_service,fsmath_service,fsutil_service) { 'use strict';
+	typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('@angular/core'), require('@angular/common'), require('fs-array.module'), require('fs-math.module'), require('fs-util.module')) :
+	typeof define === 'function' && define.amd ? define(['exports', '@angular/core', '@angular/common', 'fs-array.module', 'fs-math.module', 'fs-util.module'], factory) :
+	(factory((global['fs-common'] = {}),global.core,global.common,global.fsArray_module,global.fsMath_module,global.fsUtil_module));
+}(this, (function (exports,core,common,fsArray_module,fsMath_module,fsUtil_module) { 'use strict';
 
 /**
  * @fileoverview added by tsickle
@@ -45,15 +45,15 @@ var KEY_8 = 56;
 var KEY_9 = 57;
 var KEY_SEMICOLON = 59;
 var KEY_EQUALS = 61;
-var FsUtil$1 = (function () {
-    function FsUtil$$1() {
+var FsUtil = (function () {
+    function FsUtil() {
         this.intervals = {};
     }
     /**
      * @param {?=} pattern
      * @return {?}
      */
-    FsUtil$$1.prototype.guid = /**
+    FsUtil.prototype.guid = /**
      * @param {?=} pattern
      * @return {?}
      */
@@ -67,7 +67,7 @@ var FsUtil$1 = (function () {
     /**
      * @return {?}
      */
-    FsUtil$$1.prototype.uuid = /**
+    FsUtil.prototype.uuid = /**
      * @return {?}
      */
     function () {
@@ -78,7 +78,7 @@ var FsUtil$1 = (function () {
      * @param {?=} defaults
      * @return {?}
      */
-    FsUtil$$1.prototype.resolve = /**
+    FsUtil.prototype.resolve = /**
      * @param {?} promise
      * @param {?=} defaults
      * @return {?}
@@ -97,7 +97,7 @@ var FsUtil$1 = (function () {
      * @param {?} value
      * @return {?}
      */
-    FsUtil$$1.prototype.int = /**
+    FsUtil.prototype.int = /**
      * @param {?} value
      * @return {?}
      */
@@ -112,7 +112,7 @@ var FsUtil$1 = (function () {
      * @param {?} value
      * @return {?}
      */
-    FsUtil$$1.prototype.float = /**
+    FsUtil.prototype.float = /**
      * @param {?} value
      * @return {?}
      */
@@ -127,7 +127,7 @@ var FsUtil$1 = (function () {
      * @param {?} string
      * @return {?}
      */
-    FsUtil$$1.prototype.string = /**
+    FsUtil.prototype.string = /**
      * @param {?} string
      * @return {?}
      */
@@ -142,7 +142,7 @@ var FsUtil$1 = (function () {
      * @param {?=} options
      * @return {?}
      */
-    FsUtil$$1.prototype.isEmpty = /**
+    FsUtil.prototype.isEmpty = /**
      * @param {?} value
      * @param {?=} options
      * @return {?}
@@ -161,7 +161,7 @@ var FsUtil$1 = (function () {
      * @param {?=} type
      * @return {?}
      */
-    FsUtil$$1.prototype.isInt = /**
+    FsUtil.prototype.isInt = /**
      * @param {?} value
      * @param {?=} type
      * @return {?}
@@ -181,7 +181,7 @@ var FsUtil$1 = (function () {
      * @param {?} func
      * @return {?}
      */
-    FsUtil$$1.prototype.each = /**
+    FsUtil.prototype.each = /**
      * @param {?} object
      * @param {?} func
      * @return {?}
@@ -198,7 +198,7 @@ var FsUtil$1 = (function () {
      * @param {?} value
      * @return {?}
      */
-    FsUtil$$1.prototype.isObject = /**
+    FsUtil.prototype.isObject = /**
      * @param {?} value
      * @return {?}
      */
@@ -209,7 +209,7 @@ var FsUtil$1 = (function () {
      * @param {?} value
      * @return {?}
      */
-    FsUtil$$1.prototype.isString = /**
+    FsUtil.prototype.isString = /**
      * @param {?} value
      * @return {?}
      */
@@ -220,7 +220,7 @@ var FsUtil$1 = (function () {
      * @param {?} value
      * @return {?}
      */
-    FsUtil$$1.prototype.isArray = /**
+    FsUtil.prototype.isArray = /**
      * @param {?} value
      * @return {?}
      */
@@ -231,7 +231,7 @@ var FsUtil$1 = (function () {
      * @param {?} value
      * @return {?}
      */
-    FsUtil$$1.prototype.isNumeric = /**
+    FsUtil.prototype.isNumeric = /**
      * @param {?} value
      * @return {?}
      */
@@ -243,7 +243,7 @@ var FsUtil$1 = (function () {
      * @param {?} cls
      * @return {?}
      */
-    FsUtil$$1.prototype.isClass = /**
+    FsUtil.prototype.isClass = /**
      * @param {?} value
      * @param {?} cls
      * @return {?}
@@ -269,7 +269,7 @@ var FsUtil$1 = (function () {
      * @param {?} value
      * @return {?}
      */
-    FsUtil$$1.prototype.isBoolean = /**
+    FsUtil.prototype.isBoolean = /**
      * @param {?} value
      * @return {?}
      */
@@ -282,7 +282,7 @@ var FsUtil$1 = (function () {
      * @param {?} def
      * @return {?}
      */
-    FsUtil$$1.prototype.value = /**
+    FsUtil.prototype.value = /**
      * @param {?} object
      * @param {?} key
      * @param {?} def
@@ -302,7 +302,7 @@ var FsUtil$1 = (function () {
      * @param {?} name
      * @return {?}
      */
-    FsUtil$$1.prototype.interval = /**
+    FsUtil.prototype.interval = /**
      * @param {?} fn
      * @param {?} delay
      * @param {?} name
@@ -321,7 +321,7 @@ var FsUtil$1 = (function () {
      * @param {?} name
      * @return {?}
      */
-    FsUtil$$1.prototype.clearInterval = /**
+    FsUtil.prototype.clearInterval = /**
      * @param {?} name
      * @return {?}
      */
@@ -336,7 +336,7 @@ var FsUtil$1 = (function () {
      * @param {?} wait
      * @return {?}
      */
-    FsUtil$$1.prototype.throttle = /**
+    FsUtil.prototype.throttle = /**
      * @param {?} func
      * @param {?} wait
      * @return {?}
@@ -362,7 +362,7 @@ var FsUtil$1 = (function () {
      * @param {?} immediate
      * @return {?}
      */
-    FsUtil$$1.prototype.debounce = /**
+    FsUtil.prototype.debounce = /**
      * @param {?} func
      * @param {?} wait
      * @param {?} immediate
@@ -388,7 +388,7 @@ var FsUtil$1 = (function () {
      * @param {?} object
      * @return {?}
      */
-    FsUtil$$1.prototype.length = /**
+    FsUtil.prototype.length = /**
      * @param {?} object
      * @return {?}
      */
@@ -405,7 +405,7 @@ var FsUtil$1 = (function () {
      * @param {?} value
      * @return {?}
      */
-    FsUtil$$1.prototype.boolean = /**
+    FsUtil.prototype.boolean = /**
      * @param {?} value
      * @return {?}
      */
@@ -416,19 +416,19 @@ var FsUtil$1 = (function () {
      * @param {?} value
      * @return {?}
      */
-    FsUtil$$1.prototype.stringify = /**
+    FsUtil.prototype.stringify = /**
      * @param {?} value
      * @return {?}
      */
     function (value) {
         return JSON.stringify(value);
     };
-    FsUtil$$1.decorators = [
+    FsUtil.decorators = [
         { type: core.Injectable },
     ];
     /** @nocollapse */
-    FsUtil$$1.ctorParameters = function () { return []; };
-    return FsUtil$$1;
+    FsUtil.ctorParameters = function () { return []; };
+    return FsUtil;
 }());
 var FsObject = (function () {
     function FsObject() {
@@ -462,7 +462,7 @@ var FsUtilStringifyPipe = (function () {
     ];
     /** @nocollapse */
     FsUtilStringifyPipe.ctorParameters = function () { return [
-        { type: FsUtil$1, },
+        { type: FsUtil, },
     ]; };
     return FsUtilStringifyPipe;
 }());
@@ -486,7 +486,7 @@ var FsUtilGuidPipe = (function () {
     ];
     /** @nocollapse */
     FsUtilGuidPipe.ctorParameters = function () { return [
-        { type: FsUtil$1, },
+        { type: FsUtil, },
     ]; };
     return FsUtilGuidPipe;
 }());
@@ -495,8 +495,35 @@ var FsUtilGuidPipe = (function () {
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-var FsArray$1 = (function () {
-    function FsArray$$1() {
+var FsUtilModule$1 = (function () {
+    function FsUtilModule$$1() {
+    }
+    FsUtilModule$$1.decorators = [
+        { type: core.NgModule, args: [{
+                    declarations: [
+                        FsUtilStringifyPipe,
+                        FsUtilGuidPipe
+                    ],
+                    providers: [
+                        FsUtil
+                    ],
+                    exports: [
+                        FsUtilStringifyPipe,
+                        FsUtilGuidPipe
+                    ]
+                },] },
+    ];
+    /** @nocollapse */
+    FsUtilModule$$1.ctorParameters = function () { return []; };
+    return FsUtilModule$$1;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+var FsArray = (function () {
+    function FsArray() {
     }
     /**
      * @param {?} array
@@ -504,7 +531,7 @@ var FsArray$1 = (function () {
      * @param {?} value
      * @return {?}
      */
-    FsArray$$1.prototype.nameValue = /**
+    FsArray.prototype.nameValue = /**
      * @param {?} array
      * @param {?} name
      * @param {?} value
@@ -531,7 +558,7 @@ var FsArray$1 = (function () {
      * @param {?} query
      * @return {?}
      */
-    FsArray$$1.prototype.remove = /**
+    FsArray.prototype.remove = /**
      * @param {?} array
      * @param {?} query
      * @return {?}
@@ -548,7 +575,7 @@ var FsArray$1 = (function () {
      * @param {?} query
      * @return {?}
      */
-    FsArray$$1.prototype.indexOf = /**
+    FsArray.prototype.indexOf = /**
      * @param {?} array
      * @param {?} query
      * @return {?}
@@ -573,7 +600,7 @@ var FsArray$1 = (function () {
      * @param {?} item
      * @return {?}
      */
-    FsArray$$1.prototype.compare = /**
+    FsArray.prototype.compare = /**
      * @param {?} query
      * @param {?} item
      * @return {?}
@@ -590,7 +617,7 @@ var FsArray$1 = (function () {
      * @param {?} query
      * @return {?}
      */
-    FsArray$$1.prototype.filter = /**
+    FsArray.prototype.filter = /**
      * @param {?} array
      * @param {?} query
      * @return {?}
@@ -624,7 +651,7 @@ var FsArray$1 = (function () {
      * @param {?} property
      * @return {?}
      */
-    FsArray$$1.prototype.index = /**
+    FsArray.prototype.index = /**
      * @param {?} array
      * @param {?} property
      * @return {?}
@@ -642,7 +669,7 @@ var FsArray$1 = (function () {
      * @param {?=} reverse
      * @return {?}
      */
-    FsArray$$1.prototype.sort = /**
+    FsArray.prototype.sort = /**
      * @param {?} array
      * @param {?} query
      * @param {?=} reverse
@@ -680,7 +707,7 @@ var FsArray$1 = (function () {
      * @param {?} query
      * @return {?}
      */
-    FsArray$$1.prototype.rsort = /**
+    FsArray.prototype.rsort = /**
      * @param {?} array
      * @param {?} query
      * @return {?}
@@ -694,7 +721,7 @@ var FsArray$1 = (function () {
      * @param {?=} index
      * @return {?}
      */
-    FsArray$$1.prototype.list = /**
+    FsArray.prototype.list = /**
      * @param {?} array
      * @param {?} property
      * @param {?=} index
@@ -720,7 +747,7 @@ var FsArray$1 = (function () {
      * @param {?=} depth_property
      * @return {?}
      */
-    FsArray$$1.prototype.applyDepth = /**
+    FsArray.prototype.applyDepth = /**
      * @param {?} objects
      * @param {?} parent_property
      * @param {?=} id_property
@@ -752,7 +779,7 @@ var FsArray$1 = (function () {
      * @param {?} array
      * @return {?}
      */
-    FsArray$$1.prototype.inArray = /**
+    FsArray.prototype.inArray = /**
      * @param {?} values
      * @param {?} array
      * @return {?}
@@ -773,7 +800,7 @@ var FsArray$1 = (function () {
      * @param {?} key
      * @return {?}
      */
-    FsArray$$1.prototype.keyExists = /**
+    FsArray.prototype.keyExists = /**
      * @param {?} array
      * @param {?} key
      * @return {?}
@@ -785,7 +812,7 @@ var FsArray$1 = (function () {
      * @param {?} array
      * @return {?}
      */
-    FsArray$$1.prototype.length = /**
+    FsArray.prototype.length = /**
      * @param {?} array
      * @return {?}
      */
@@ -796,7 +823,7 @@ var FsArray$1 = (function () {
      * @param {?} unordered
      * @return {?}
      */
-    FsArray$$1.prototype.ksort = /**
+    FsArray.prototype.ksort = /**
      * @param {?} unordered
      * @return {?}
      */
@@ -807,27 +834,46 @@ var FsArray$1 = (function () {
             unordered[key] = value;
         });
     };
-    FsArray$$1.decorators = [
+    FsArray.decorators = [
         { type: core.Injectable },
     ];
     /** @nocollapse */
-    FsArray$$1.ctorParameters = function () { return []; };
-    return FsArray$$1;
+    FsArray.ctorParameters = function () { return []; };
+    return FsArray;
 }());
 
 /**
  * @fileoverview added by tsickle
  * @suppress {checkTypes} checked by tsc
  */
-var FsMath$1 = (function () {
-    function FsMath$$1() {
+var FsArrayModule$1 = (function () {
+    function FsArrayModule$$1() {
+    }
+    FsArrayModule$$1.decorators = [
+        { type: core.NgModule, args: [{
+                    providers: [
+                        FsArray
+                    ]
+                },] },
+    ];
+    /** @nocollapse */
+    FsArrayModule$$1.ctorParameters = function () { return []; };
+    return FsArrayModule$$1;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+var FsMath = (function () {
+    function FsMath() {
     }
     /**
      * @param {?} number
      * @param {?} precision
      * @return {?}
      */
-    FsMath$$1.prototype.round = /**
+    FsMath.prototype.round = /**
      * @param {?} number
      * @param {?} precision
      * @return {?}
@@ -839,12 +885,31 @@ var FsMath$1 = (function () {
         var /** @type {?} */ roundedTempNumber = Math.round(tempNumber);
         return roundedTempNumber / factor;
     };
-    FsMath$$1.decorators = [
+    FsMath.decorators = [
         { type: core.Injectable },
     ];
     /** @nocollapse */
-    FsMath$$1.ctorParameters = function () { return []; };
-    return FsMath$$1;
+    FsMath.ctorParameters = function () { return []; };
+    return FsMath;
+}());
+
+/**
+ * @fileoverview added by tsickle
+ * @suppress {checkTypes} checked by tsc
+ */
+var FsMathModule$1 = (function () {
+    function FsMathModule$$1() {
+    }
+    FsMathModule$$1.decorators = [
+        { type: core.NgModule, args: [{
+                    providers: [
+                        FsMath
+                    ]
+                },] },
+    ];
+    /** @nocollapse */
+    FsMathModule$$1.ctorParameters = function () { return []; };
+    return FsMathModule$$1;
 }());
 
 /**
@@ -863,30 +928,24 @@ var FsCommonModule = (function () {
     function () {
         return {
             ngModule: FsCommonModule,
-            providers: [
-                fsarray_service.FsArray,
-                fsmath_service.FsMath,
-                fsutil_service.FsUtil
-            ]
+            providers: []
         };
     };
     FsCommonModule.decorators = [
         { type: core.NgModule, args: [{
                     imports: [
-                        common.CommonModule
+                        common.CommonModule,
+                        fsUtil_module.FsUtilModule,
+                        fsArray_module.FsArrayModule,
+                        fsMath_module.FsMathModule
                     ],
-                    declarations: [
-                        FsUtilStringifyPipe,
-                        FsUtilGuidPipe
-                    ],
-                    providers: [
-                        fsarray_service.FsArray,
-                        fsmath_service.FsMath,
-                        fsutil_service.FsUtil
-                    ],
+                    declarations: [],
+                    providers: [],
                     exports: [
-                        FsUtilStringifyPipe,
-                        FsUtilGuidPipe
+                        common.CommonModule,
+                        fsUtil_module.FsUtilModule,
+                        fsArray_module.FsArrayModule,
+                        fsMath_module.FsMathModule
                     ]
                 },] },
     ];
@@ -896,6 +955,9 @@ var FsCommonModule = (function () {
 }());
 
 exports.FsCommonModule = FsCommonModule;
+exports.FsUtilModule = FsUtilModule$1;
+exports.FsUtilStringifyPipe = FsUtilStringifyPipe;
+exports.FsUtilGuidPipe = FsUtilGuidPipe;
 exports.KEY_CANCEL = KEY_CANCEL;
 exports.KEY_HELP = KEY_HELP;
 exports.KEY_BACKSPACE = KEY_BACKSPACE;
@@ -933,12 +995,12 @@ exports.KEY_8 = KEY_8;
 exports.KEY_9 = KEY_9;
 exports.KEY_SEMICOLON = KEY_SEMICOLON;
 exports.KEY_EQUALS = KEY_EQUALS;
-exports.FsUtil = FsUtil$1;
+exports.FsUtil = FsUtil;
 exports.FsObject = FsObject;
-exports.FsArray = FsArray$1;
-exports.FsMath = FsMath$1;
-exports.FsUtilStringifyPipe = FsUtilStringifyPipe;
-exports.FsUtilGuidPipe = FsUtilGuidPipe;
+exports.FsArrayModule = FsArrayModule$1;
+exports.FsArray = FsArray;
+exports.FsMathModule = FsMathModule$1;
+exports.FsMath = FsMath;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 

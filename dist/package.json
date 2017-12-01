@@ -1,6 +1,6 @@
 {
   "name": "@firestitch/common",
-  "version": "0.1.6",
+  "version": "0.1.13",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/fs-common"
@@ -21,8 +21,8 @@
   "jsnext:main": "fs-common.js",
   "typings": "fs-common.d.ts",
   "peerDependencies": {
-    "@angular/core": "^4.0.0",
-    "rxjs": "^5.1.0",
+    "@angular/core": "^5.0.0",
+    "rxjs": "^5.5.2",
     "zone.js": "^0.8.4"
   }
 }

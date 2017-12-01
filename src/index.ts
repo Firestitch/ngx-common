@@ -1,33 +1,37 @@
-import { FsUtilGuidPipe, FsUtilStringifyPipe } from './fsutil.pipe';
-
 import { HttpClientModule } from '@angular/common/http';
 
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FsArray } from 'fsarray.service';
-import { FsMath } from 'fsmath.service';
-import { FsUtil } from 'fsutil.service';
+import { FsArrayModule } from 'fs-array.module';
+import { FsMathModule } from 'fs-math.module';
+import { FsUtilModule } from 'fs-util.module';
 
-export * from './fsutil.service';
-export * from './fsarray.service';
-export * from './fsmath.service';
-export * from './fsutil.pipe';
+export * from './fs-util.module';
+export * from './fs-util.pipe';
+export * from './fs-util.service';
+export * from './fs-array.module';
+export * from './fs-array.service';
+export * from './fs-math.module';
+export * from './fs-math.service';
+
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FsUtilModule,
+    FsArrayModule,
+    FsMathModule
 ],
 declarations: [
-  FsUtilStringifyPipe,
-  FsUtilGuidPipe    
+  // FsUtilStringifyPipe,
+  // FsUtilGuidPipe    
 ],
 providers: [
-  FsArray,
-  FsMath,
-  FsUtil
 ],
 exports: [
-  FsUtilStringifyPipe,
-  FsUtilGuidPipe
+  CommonModule,
+  FsUtilModule,
+  FsArrayModule,
+  FsMathModule
 ]
 })
 export class FsCommonModule {
@@ -35,9 +39,6 @@ export class FsCommonModule {
     return {
       ngModule: FsCommonModule,
       providers: [
-        FsArray,
-        FsMath,
-        FsUtil
       ]
     };
   }
