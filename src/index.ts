@@ -22,16 +22,10 @@ declarations: [
   FsUtilGuidPipe
 ],
 providers: [
-  FsArray,
-  FsUtil,
-  FsMath
 ],
 exports: [
   FsUtilStringifyPipe,
-  FsUtilGuidPipe,
-  FsUtil,
-  FsArray,
-  FsMath  
+  FsUtilGuidPipe
 ]
 })
 export class FsCommonModule {

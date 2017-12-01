@@ -876,17 +876,10 @@ var FsCommonModule = (function () {
                         FsUtilStringifyPipe,
                         FsUtilGuidPipe
                     ],
-                    providers: [
-                        FsArray,
-                        FsUtil,
-                        FsMath
-                    ],
+                    providers: [],
                     exports: [
                         FsUtilStringifyPipe,
-                        FsUtilGuidPipe,
-                        FsUtil,
-                        FsArray,
-                        FsMath
+                        FsUtilGuidPipe
                     ]
                 },] },
     ];
