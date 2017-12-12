@@ -6,8 +6,8 @@
     "url": "https://github.com/Firestitch/fs-common"
   },
   "author": {
-    "name": "Maksim Sergeev",
-    "email": "sergeev.maxs@gmail.com"
+    "name": "Firestitch",
+    "email": "admin@firestitch.com"
   },
   "keywords": [
     "angular"
@@ -16,10 +16,10 @@
   "bugs": {
     "url": "https://github.com/Firestitch/fs-common/issues"
   },
-  "main": "fs-common.umd.js",
-  "module": "fs-common.js",
-  "jsnext:main": "fs-common.js",
-  "typings": "fs-common.d.ts",
+  "main": "common.umd.js",
+  "module": "common.js",
+  "jsnext:main": "common.js",
+  "typings": "common.d.ts",
   "peerDependencies": {
     "@angular/core": "^5.0.0",
     "rxjs": "^5.5.2",

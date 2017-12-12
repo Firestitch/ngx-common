@@ -21,8 +21,8 @@
     "annotateForClosureCompiler": true,
     "strictMetadataEmit": true,
     "skipTemplateCodegen": true,
-    "flatModuleOutFile": "fs-common.js",
-    "flatModuleId": "fs-common"
+    "flatModuleOutFile": "common.js",
+    "flatModuleId": "common"
   },
   "files": [
     "./index.ts"

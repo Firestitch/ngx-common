@@ -16,17 +16,20 @@ export * from './fs-math.service';
 @NgModule({
   imports: [
     CommonModule
-],
-declarations: [
-  FsUtilStringifyPipe,
-  FsUtilGuidPipe
-],
-providers: [
-],
-exports: [
-  FsUtilStringifyPipe,
-  FsUtilGuidPipe
-]
+  ],
+  declarations: [
+    FsUtilStringifyPipe,
+    FsUtilGuidPipe
+  ],
+  providers: [
+    FsArray,
+    FsUtil,
+    FsMath  
+  ],
+  exports: [
+    FsUtilStringifyPipe,
+    FsUtilGuidPipe
+  ]
 })
 export class FsCommonModule {
   static forRoot(): ModuleWithProviders {
@@ -40,3 +43,4 @@ export class FsCommonModule {
     };
   }
 }
+

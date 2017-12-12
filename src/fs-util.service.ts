@@ -253,8 +253,3 @@ export class FsUtil {
       return JSON.stringify(value);
     }
 }
-
-
-export class FsObject {
-
-}
