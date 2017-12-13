@@ -12,14 +12,12 @@ import { FsCommonModule, FsUtil }  from '@firestitch/common';
   styleUrls: [
     'styles.scss'
   ],
-  encapsulation: ViewEncapsulation.None,  
+  encapsulation: ViewEncapsulation.None,
 })
 class AppComponent {
 
   object = { somevalue: 92394872394 };
-  
   constructor(private FsUtil: FsUtil) {
-    alert(FsUtil.guid());
   }
 
 }

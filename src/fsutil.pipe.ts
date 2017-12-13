@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { FsUtil } from './fs-util.service';
+import { FsUtil } from './fsutil.service';
 
 @Pipe({
   name: 'fsUtilStringify'

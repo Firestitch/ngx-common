@@ -2,16 +2,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FsArray } from './fs-array.service';
-import { FsMath } from './fs-math.service';
-import { FsUtil } from './fs-util.service';
-import { FsUtilGuidPipe, FsUtilStringifyPipe } from './fs-util.pipe';
+import { FsArray } from './fsarray.service';
+import { FsMath } from './fsmath.service';
+import { FsUtil } from './fsutil.service';
+import { FsUtilGuidPipe, FsUtilStringifyPipe } from './fsutil.pipe';
 
 
-export * from './fs-util.pipe';
-export * from './fs-util.service';
-export * from './fs-array.service';
-export * from './fs-math.service';
+export * from './fsutil.pipe';
+export * from './fsutil.service';
+export * from './fsarray.service';
+export * from './fsmath.service';
 
 @NgModule({
   imports: [

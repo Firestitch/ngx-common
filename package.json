@@ -1,6 +1,4 @@
 {
-  "name": "@firestitch/common",
-  "version": "0.1.17",
   "scripts": {
     "build": "gulp build",
     "build:watch": "gulp",
@@ -13,21 +11,6 @@
     "playground:build": "tsc -p playground -w",
     "playground": "concurrently \"npm run build:watch\" \"npm run playground:build\" \"npm run lite\"",
     "test": "tsc && karma start"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Firestitch/fs-common"
-  },
-  "author": {
-    "name": "Firestitch",
-    "email": "admin@firestitch.com"
-  },
-  "keywords": [
-    "angular"
-  ],
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Firestitch/fs-common/issues"
   },
   "devDependencies": {
     "@angular/common": "^5.0.0",
