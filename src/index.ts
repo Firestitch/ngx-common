@@ -5,6 +5,7 @@ import { CommonModule } from '@angular/common';
 import { FsArray } from './fsarray.service';
 import { FsMath } from './fsmath.service';
 import { FsUtil } from './fsutil.service';
+import { FsValidate } from './fsvaildate.service';
 import { FsUtilGuidPipe, FsUtilStringifyPipe } from './fsutil.pipe';
 
 
@@ -24,7 +25,8 @@ export * from './fsmath.service';
   providers: [
     FsArray,
     FsUtil,
-    FsMath  
+    FsMath,
+    FsValidate
   ],
   exports: [
     FsUtilStringifyPipe,
@@ -38,7 +40,8 @@ export class FsCommonModule {
       providers: [
         FsArray,
         FsUtil,
-        FsMath
+        FsMath,
+        FsValidate
       ]
     };
   }
