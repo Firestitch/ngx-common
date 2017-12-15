@@ -13,6 +13,7 @@ export * from './fsutil.pipe';
 export * from './fsutil.service';
 export * from './fsarray.service';
 export * from './fsmath.service';
+export * from './fsvaildate.service';
 
 @NgModule({
   imports: [
