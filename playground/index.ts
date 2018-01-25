@@ -18,7 +18,17 @@ class AppComponent {
 
   object = { somevalue: 92394872394 };
   constructor(private FsUtil: FsUtil) {
+
+    console.log('FsUtil.isEmpty(10)', FsUtil.isEmpty(10));
+    console.log('FsUtil.isEmpty({ a: 1 })', FsUtil.isEmpty({ a: 1 }));
+    console.log('FsUtil.isEmpty(true)', FsUtil.isEmpty(true));
+
+    console.log('FsUtil.isEmpty(0)', FsUtil.isEmpty(0));
+    console.log('FsUtil.isEmpty(false)', FsUtil.isEmpty(false));
+    console.log('FsUtil.isEmpty(null)', FsUtil.isEmpty(null));
+    console.log('FsUtil.isEmpty({})', FsUtil.isEmpty({}));
   }
+
 
 }
 

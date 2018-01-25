@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
 
-/*
-    Basically, just copy-pasted functionality from fs-boilerplate v1.x, with some small changes (like we dont have angular.bind anymore, had to go with a workaround)
-*/
-
 @Injectable()
 export class FsArray {
     public nameValue(array, name, value): Array<any> {

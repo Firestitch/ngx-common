@@ -92,18 +92,21 @@ export class FsUtil {
             string = '';
         }
 
-        return string.toString();
+        return (string).toString();
     }
-
 
     public isEmpty(value, options?): boolean {
         options = options || {};
         return value === undefined ||
             value === null ||
+            value === false ||
             value === '' ||
-            (this.isObject(value) && (value.constructor.name == 'Object' && !Object.keys(value).length)) ||
-            !value.length ||
-            (!options.zero && (value === 0 || value === '0'));
+            !this.string(value).length ||
+            (
+                this.isObject(value) &&
+                (value.constructor.name === 'Object' && !Object.keys(value).length)) ||
+                (!options.zero && (value === 0 || value === '0')
+            );
     }
 
     public isInt(value, type?) {
