@@ -1,0 +1,15 @@
+<p>Initial array: {{array|fsUtilStringify}}</p>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Code</th>
+      <th>Result</th>
+    </tr>
+  </thead>
+  <tr *ngFor="let example of examples">
+      <td>{{example.name}}</td>
+      <td>{{example.code}}</td>
+      <td>{{example.result}}</td>
+  </tr>
+</table>
