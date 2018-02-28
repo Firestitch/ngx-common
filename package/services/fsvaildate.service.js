@@ -15,10 +15,16 @@ var FsValidate = (function () {
     function FsValidate(fsUtil) {
         this.fsUtil = fsUtil;
     }
+    /**
+     * @deprecated use import { email } from @firestitch/common/validate; instead
+    */
     FsValidate.prototype.phone = function (value) {
         var valid = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(value);
         return valid || !String(value).length;
     };
+    /**
+      * @deprecated use import { email } from @firestitch/common/validate; instead
+    */
     FsValidate.prototype.email = function (value) {
         return !!this.fsUtil.string(value).match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     };

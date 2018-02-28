@@ -456,6 +456,9 @@ var FsUtil = (function () {
     function FsUtil() {
         this.intervals = {};
     }
+    /**
+    * @deprecated use @firestitch/common/util/guid instead
+    */
     FsUtil.prototype.guid = function (pattern) {
         pattern = pattern || 'xxxxxx';
         return pattern.replace(/[xy]/g, function (c) {
@@ -463,9 +466,15 @@ var FsUtil = (function () {
             return v.toString(16);
         });
     };
+    /**
+     * @deprecated use import { uuid } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.uuid = function () {
         return this.guid('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
     };
+    /**
+     * @deprecated use import { resolve } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.resolve = function (promise, defaults) {
         if (defaults === void 0) { defaults = []; }
         var result = defaults;
@@ -476,6 +485,9 @@ var FsUtil = (function () {
             });
         });
     };
+    /**
+     * @deprecated use _.toInteger() instead
+    */
     FsUtil.prototype.int = function (value) {
         value = parseInt(value);
         if (isNaN(value)) {
@@ -483,6 +495,9 @@ var FsUtil = (function () {
         }
         return value;
     };
+    /**
+     * @deprecated use _.toFinite() instaed
+    */
     FsUtil.prototype.float = function (value) {
         value = parseFloat(value);
         if (isNaN(value)) {
@@ -490,6 +505,9 @@ var FsUtil = (function () {
         }
         return value;
     };
+    /**
+     * @deprecated use _.toString() instead
+    */
     FsUtil.prototype.string = function (string) {
         if (string === null || string === undefined) {
             string = '';
@@ -507,6 +525,9 @@ var FsUtil = (function () {
                 (value.constructor.name === 'Object' && !Object.keys(value).length)) ||
             (!options.zero && (value === 0 || value === '0'));
     };
+    /**
+     * @deprecated use _.isInteger() instead
+    */
     FsUtil.prototype.isInt = function (value, type) {
         var int = !!this.string(value).match(/^\d+$/);
         if (!int) {
@@ -517,6 +538,9 @@ var FsUtil = (function () {
         }
         return true;
     };
+    /**
+     * @deprecated use _.each() instead {@link https://lodash.com/docs/4.17.5#forEach}
+    */
     FsUtil.prototype.each = function (object, func) {
         if (!this.isArray(object) && !this.isObject(object)) {
             return;
@@ -525,12 +549,22 @@ var FsUtil = (function () {
             func(object[key], key);
         });
     };
+    /**
+     * @deprecated use _.isArrayLikeObject() {@link https://lodash.com/docs/4.17.5#isArrayLikeObject}
+     * or _.isObject() {@link https://lodash.com/docs/4.17.5#isObject} istead
+    */
     FsUtil.prototype.isObject = function (value) {
         return value !== null && typeof value === 'object' && !this.isArray(value);
     };
+    /**
+      * @deprecated use _.isString() instead {@link https://lodash.com/docs/4.17.5#isString}
+    */
     FsUtil.prototype.isString = function (value) {
         return typeof value === 'string' || value instanceof String;
     };
+    /**
+     * @deprecated use _.isArray() instead {@link https://lodash.com/docs/4.17.5#isArray}
+    */
     FsUtil.prototype.isArray = function (value) {
         return value instanceof Array;
     };
@@ -554,6 +588,9 @@ var FsUtil = (function () {
         }
         return false;
     };
+    /**
+      * @deprecated use _.isBoolean() instead {@link https://lodash.com/docs/4.17.5#isBoolean}
+    */
     FsUtil.prototype.isBoolean = function (value) {
         return value === true || value === false;
     };
@@ -592,6 +629,9 @@ var FsUtil = (function () {
             }
         };
     };
+    /**
+     * @deprecated use import { debounce } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.debounce = function (func, wait, immediate) {
         var timeout;
         return function () {
@@ -608,6 +648,9 @@ var FsUtil = (function () {
                 func.apply(context, args);
         };
     };
+    /**
+     * @deprecated use import { length } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.length = function (object) {
         if (this.isObject(object)) {
             return Object.keys(object).length;
@@ -617,9 +660,15 @@ var FsUtil = (function () {
         }
         return 0;
     };
+    /**
+     * @deprecated use import { boolean } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.boolean = function (value) {
         return this.string(value).toLowerCase() !== 'false' && !!value;
     };
+    /**
+     * @deprecated use import { stringify } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.stringify = function (value) {
         return JSON.stringify(value);
     };
@@ -654,10 +703,16 @@ var FsValidate = (function () {
     function FsValidate(fsUtil) {
         this.fsUtil = fsUtil;
     }
+    /**
+     * @deprecated use import { email } from @firestitch/common/validate; instead
+    */
     FsValidate.prototype.phone = function (value) {
         var valid = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(value);
         return valid || !String(value).length;
     };
+    /**
+      * @deprecated use import { email } from @firestitch/common/validate; instead
+    */
     FsValidate.prototype.email = function (value) {
         return !!this.fsUtil.string(value).match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     };

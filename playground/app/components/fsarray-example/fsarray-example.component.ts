@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { FsArray } from './../../../../src/services/fsarray.service';
+// import { } from '../../../../package/format/currency';
+import { round } from '../../../../package/round'
+import { KEY_4 } from '../../../../src/services/fsutil.service';
 
 @Component({
   selector: 'fsarray-example',
