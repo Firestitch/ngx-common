@@ -10,6 +10,9 @@ var core_1 = require("@angular/core");
 var FsMath = (function () {
     function FsMath() {
     }
+    /**
+     * @deprecated use import { round } from @firestitch/common/math; instead
+    */
     FsMath.prototype.round = function (number, precision) {
         precision = precision || 0;
         var factor = Math.pow(10, precision);

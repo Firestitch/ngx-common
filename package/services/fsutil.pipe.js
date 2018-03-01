@@ -10,35 +10,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var fsutil_service_1 = require("./fsutil.service");
+var util_1 = require("../util");
 var FsUtilStringifyPipe = (function () {
-    function FsUtilStringifyPipe(FsUtil) {
-        this.FsUtil = FsUtil;
+    function FsUtilStringifyPipe() {
     }
     FsUtilStringifyPipe.prototype.transform = function (value) {
-        return this.FsUtil.stringify(value);
+        return util_1.stringify(value);
     };
     FsUtilStringifyPipe = __decorate([
         core_1.Pipe({
             name: 'fsUtilStringify'
         }),
-        __metadata("design:paramtypes", [fsutil_service_1.FsUtil])
+        __metadata("design:paramtypes", [])
     ], FsUtilStringifyPipe);
     return FsUtilStringifyPipe;
 }());
 exports.FsUtilStringifyPipe = FsUtilStringifyPipe;
 var FsUtilGuidPipe = (function () {
-    function FsUtilGuidPipe(FsUtil) {
-        this.FsUtil = FsUtil;
+    function FsUtilGuidPipe() {
     }
     FsUtilGuidPipe.prototype.transform = function () {
-        return this.FsUtil.guid();
+        return util_1.guid();
     };
     FsUtilGuidPipe = __decorate([
         core_1.Pipe({
             name: 'fsUtilGuid'
         }),
-        __metadata("design:paramtypes", [fsutil_service_1.FsUtil])
+        __metadata("design:paramtypes", [])
     ], FsUtilGuidPipe);
     return FsUtilGuidPipe;
 }());

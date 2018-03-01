@@ -24,6 +24,8 @@
     "skipLibCheck": true
   },
   "include": [
+    "./src/array/**/*.ts",
+    "./src/math/**/*.ts",
     "./src/util/**/*.ts",
     "./src/validate/**/*.ts"
   ],

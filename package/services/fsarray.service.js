@@ -10,6 +10,9 @@ var core_1 = require("@angular/core");
 var FsArray = (function () {
     function FsArray() {
     }
+    /**
+     * @deprecated use import { nameValue } from @firestitch/common/array; instead
+    */
     FsArray.prototype.nameValue = function (array, name, value) {
         var list = [];
         if (name || value) {
@@ -26,6 +29,9 @@ var FsArray = (function () {
         }
         return list;
     };
+    /**
+     * @deprecated use import { remove } from @firestitch/common/array; instead
+    */
     FsArray.prototype.remove = function (array, query) {
         var idx = this.indexOf(array, query);
         if (idx >= 0) {
@@ -33,6 +39,9 @@ var FsArray = (function () {
         }
         return idx;
     };
+    /**
+     * @deprecated use import { indexOf } from @firestitch/common/array; instead
+    */
     FsArray.prototype.indexOf = function (array, query) {
         var _this = this;
         if (typeof query !== 'function') {
@@ -48,6 +57,9 @@ var FsArray = (function () {
         }
         return -1;
     };
+    /**
+     * @deprecated use import { compare } from @firestitch/common/array; instead
+    */
     FsArray.prototype.compare = function (query, item) {
         var value = true;
         for (var key in query) {
@@ -55,6 +67,9 @@ var FsArray = (function () {
         }
         return value;
     };
+    /**
+     * @deprecated use import { filter } from @firestitch/common/array; instead
+    */
     FsArray.prototype.filter = function (array, query) {
         var _this = this;
         if (typeof query !== 'function') {
@@ -79,6 +94,9 @@ var FsArray = (function () {
             });
         return list;
     };
+    /**
+     * @deprecated use import { index } from @firestitch/common/array; instead
+    */
     FsArray.prototype.index = function (array, property) {
         var list = {};
         array.forEach(function (item, idx) {
@@ -86,6 +104,9 @@ var FsArray = (function () {
         });
         return list;
     };
+    /**
+     * @deprecated use import { sort } from @firestitch/common/array; instead
+    */
     FsArray.prototype.sort = function (array, query, reverse) {
         if (reverse === void 0) { reverse = false; }
         if (typeof query !== 'function') {
@@ -113,9 +134,15 @@ var FsArray = (function () {
         array.sort(query);
         return array;
     };
+    /**
+     * @deprecated use import { rsort } from @firestitch/common/array; instead
+    */
     FsArray.prototype.rsort = function (array, query) {
         return this.sort(array, query, true);
     };
+    /**
+     * @deprecated use import { list } from @firestitch/common/array; instead
+    */
     FsArray.prototype.list = function (array, property, index) {
         if (index === void 0) { index = null; }
         var list = index ? {} : [];
@@ -129,6 +156,9 @@ var FsArray = (function () {
         });
         return list;
     };
+    /**
+     * @deprecated use import { applyDepth } from @firestitch/common/array; instead
+    */
     FsArray.prototype.applyDepth = function (objects, parent_property, id_property, depth_property) {
         if (id_property === void 0) { id_property = 'id'; }
         if (depth_property === void 0) { depth_property = 'depth'; }
@@ -150,6 +180,9 @@ var FsArray = (function () {
         });
         return keyed;
     };
+    /**
+     * @deprecated use import { inArray } from @firestitch/common/array; instead
+    */
     FsArray.prototype.inArray = function (values, array) {
         if (!Array.isArray(values)) {
             values = [values];
@@ -161,12 +194,21 @@ var FsArray = (function () {
         }
         return false;
     };
+    /**
+     * @deprecated use import { keyExists } from @firestitch/common/array; instead
+    */
     FsArray.prototype.keyExists = function (array, key) {
         return array.hasOwnProperty(key);
     };
+    /**
+     * @deprecated use import { length } from @firestitch/common/array; instead
+    */
     FsArray.prototype.length = function (array) {
         return array.length;
     };
+    /**
+     * @deprecated use import { ksort } from @firestitch/common/array; instead
+    */
     FsArray.prototype.ksort = function (unordered) {
         Object.keys(unordered).sort().forEach(function (key) {
             var value = unordered[key];

@@ -1,0 +1,1 @@
+[{"__symbolic":"module","version":4,"metadata":{"uuid":{"__symbolic":"function","parameters":[],"value":{"__symbolic":"call","expression":{"__symbolic":"reference","module":"../guid","name":"guid","line":3,"character":9},"arguments":["xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"]}}}}]
