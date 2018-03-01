@@ -1,14 +1,16 @@
 <table class="table">
   <thead>
-    <tr>
-      <th>Description</th>
-      <th>Code</th>
-      <th>Result</th>
-    </tr>
+  <tr>
+    <th>Description</th>
+    <th>Deprecated Code</th>
+    <th>Code</th>
+    <th>Result</th>
+  </tr>
   </thead>
   <tr *ngFor="let example of examples">
-      <td>{{example.name}}</td>
-      <td>{{example.code}}</td>
-      <td>{{example.result}}</td>
+    <td>{{example.name}}</td>
+    <td>{{example.deprecatedCode}}</td>
+    <td>{{example.code}}</td>
+    <td>{{example.result}}</td>
   </tr>
 </table>
