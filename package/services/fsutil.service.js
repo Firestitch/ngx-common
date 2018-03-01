@@ -74,6 +74,9 @@ var FsUtil = (function () {
         }
         return (string).toString();
     };
+    /**
+     * @deprecated use import { isEmpty } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.isEmpty = function (value, options) {
         options = options || {};
         return value === undefined ||
@@ -128,9 +131,15 @@ var FsUtil = (function () {
     FsUtil.prototype.isArray = function (value) {
         return value instanceof Array;
     };
+    /**
+     * @deprecated use import { isNumeric } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.isNumeric = function (value) {
         return this.string(value).length && !!this.string(value).match(/^-?\d*\.?\d*$/);
     };
+    /**
+     * @deprecated use import { isClass } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.isClass = function (value, cls) {
         if (this.isObject(value)) {
             if (this.isString(cls)) {
@@ -154,6 +163,9 @@ var FsUtil = (function () {
     FsUtil.prototype.isBoolean = function (value) {
         return value === true || value === false;
     };
+    /**
+     * @deprecated use import { value } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.value = function (object, key, def) {
         if (this.isObject(object) || this.isArray(object)) {
             if (object.hasOwnProperty(key)) {
@@ -177,6 +189,9 @@ var FsUtil = (function () {
             window.clearInterval(instance);
         }
     };
+    /**
+     * @deprecated use import { isClass } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.throttle = function (func, wait) {
         var waiting = false; // Initially, we're not waiting
         return function () {

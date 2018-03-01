@@ -114,7 +114,9 @@ export class FsUtil {
         return (string).toString();
     }
 
-
+    /**
+     * @deprecated use import { isEmpty } from @firestitch/common/util; instead
+    */
     public isEmpty(value, options?): boolean {
         options = options || {};
         return value === undefined ||
@@ -181,10 +183,16 @@ export class FsUtil {
         return value instanceof Array;
     }
 
+    /**
+     * @deprecated use import { isNumeric } from @firestitch/common/util; instead
+    */
     public isNumeric(value): boolean {
         return this.string(value).length && !!this.string(value).match(/^-?\d*\.?\d*$/);
     }
 
+    /**
+     * @deprecated use import { isClass } from @firestitch/common/util; instead
+    */
     public isClass(value, cls) {
 
         if (this.isObject(value)) {
@@ -215,6 +223,9 @@ export class FsUtil {
         return value === true || value === false;
     }
 
+    /**
+     * @deprecated use import { value } from @firestitch/common/util; instead
+    */
     public value(object, key, def): any {
 
         if (this.isObject(object) || this.isArray(object)) {
@@ -248,6 +259,9 @@ export class FsUtil {
         }
     }
 
+    /**
+     * @deprecated use import { isClass } from @firestitch/common/util; instead
+    */
     public throttle(func, wait) {
       let waiting = false;                  	// Initially, we're not waiting
         return function () {               		// We return a throttled function

@@ -25,6 +25,9 @@ export declare class FsUtil {
      * @deprecated use _.toString() instead
     */
     string(string: any): string;
+    /**
+     * @deprecated use import { isEmpty } from @firestitch/common/util; instead
+    */
     isEmpty(value: any, options?: any): boolean;
     /**
      * @deprecated use _.isInteger() instead
@@ -47,15 +50,27 @@ export declare class FsUtil {
      * @deprecated use _.isArray() instead {@link https://lodash.com/docs/4.17.5#isArray}
     */
     isArray(value: any): boolean;
+    /**
+     * @deprecated use import { isNumeric } from @firestitch/common/util; instead
+    */
     isNumeric(value: any): boolean;
+    /**
+     * @deprecated use import { isClass } from @firestitch/common/util; instead
+    */
     isClass(value: any, cls: any): boolean;
     /**
       * @deprecated use _.isBoolean() instead {@link https://lodash.com/docs/4.17.5#isBoolean}
     */
     isBoolean(value: any): boolean;
+    /**
+     * @deprecated use import { value } from @firestitch/common/util; instead
+    */
     value(object: any, key: any, def: any): any;
     interval(fn: any, delay: any, name: any): () => void;
     clearInterval(name: any): void;
+    /**
+     * @deprecated use import { isClass } from @firestitch/common/util; instead
+    */
     throttle(func: any, wait: any): () => void;
     /**
      * @deprecated use import { debounce } from @firestitch/common/util; instead

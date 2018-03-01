@@ -7,3 +7,7 @@ export * from './resolve';
 export * from './stringify';
 export * from './uuid';
 export * from './value';
+export * from './isClass';
+export * from './isNumeric';
+export * from './isEmpty';
+export * from './throttle';
