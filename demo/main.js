@@ -1911,7 +1911,7 @@ exports.AppComponent = AppComponent;
 /***/ "./app/components/fsarray-example/fsarray-example.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>Initial array: {{array|fsUtilStringify}}</p>\n<table class=\"table\">\n  <thead>\n    <tr>\n      <th>Description</th>\n      <th>Code</th>\n      <th>Result</th>\n    </tr>\n  </thead>\n  <tr *ngFor=\"let example of examples\">\n      <td>{{example.name}}</td>\n      <td>{{example.code}}</td>\n      <td>{{example.result}}</td>\n  </tr>\n</table>\n"
+module.exports = "<p>Initial array: {{array|fsUtilStringify}}</p>\n<table class=\"table\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Deprecated Code</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr *ngFor=\"let example of examples\">\n    <td>{{example.name}}</td>\n    <td>{{example.deprecatedCode}}</td>\n    <td>{{example.code}}</td>\n    <td>{{example.result}}</td>\n  </tr>\n</table>\n"
 
 /***/ }),
 
