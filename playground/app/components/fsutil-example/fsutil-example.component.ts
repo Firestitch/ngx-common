@@ -1,5 +1,4 @@
 import {Component} from '@angular/core';
-import {FsUtil} from '../../../../src/services/fsutil.service';
 import {
   guid,
   uuid,
@@ -28,7 +27,7 @@ export class FsUtilExampleComponent {
 
   examples = [];
 
-  constructor(public FsUtil: FsUtil) {
+  constructor() {
     this.examples = [
       {
         name: 'GUID',

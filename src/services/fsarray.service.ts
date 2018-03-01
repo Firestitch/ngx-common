@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class FsArray {
+    /**
+     * @deprecated use import { nameValue } from @firestitch/common/array; instead
+    */
     public nameValue(array, name, value): Array<any> {
 
         let list = [];
@@ -23,6 +26,9 @@ export class FsArray {
         return list;
     }
 
+    /**
+     * @deprecated use import { remove } from @firestitch/common/array; instead
+    */
     public remove(array, query): any {
 
         let idx = this.indexOf(array, query);
@@ -34,8 +40,9 @@ export class FsArray {
         return idx;
     }
 
-
-
+    /**
+     * @deprecated use import { indexOf } from @firestitch/common/array; instead
+    */
     public indexOf(array, query): number {
 
         if (typeof query !== 'function') {
@@ -55,6 +62,9 @@ export class FsArray {
         return -1;
     }
 
+    /**
+     * @deprecated use import { compare } from @firestitch/common/array; instead
+    */
     public compare(query, item): boolean {
 
         let value = true;
@@ -65,6 +75,9 @@ export class FsArray {
         return value;
     }
 
+    /**
+     * @deprecated use import { filter } from @firestitch/common/array; instead
+    */
     public filter(array, query): Array<any> {
 
         if (typeof query !== 'function') {
@@ -91,6 +104,9 @@ export class FsArray {
         return list;
     }
 
+    /**
+     * @deprecated use import { index } from @firestitch/common/array; instead
+    */
     public index(array, property): Object {
         let list = {};
         array.forEach(function (item, idx) {
@@ -100,6 +116,9 @@ export class FsArray {
     }
 
 
+    /**
+     * @deprecated use import { sort } from @firestitch/common/array; instead
+    */
     public sort(array, query, reverse = false): Array<any> {
         if (typeof query !== 'function') {
             let queryStr = query;
@@ -125,11 +144,17 @@ export class FsArray {
         return array;
     }
 
+    /**
+     * @deprecated use import { rsort } from @firestitch/common/array; instead
+    */
     public rsort(array, query): Array<any> {
         return this.sort(array, query, true);
     }
 
 
+    /**
+     * @deprecated use import { list } from @firestitch/common/array; instead
+    */
     public list(array, property, index = null): Object {
         let list: any = index ? {} : [];
         array.forEach(function (item, idx) {
@@ -142,6 +167,9 @@ export class FsArray {
         return list;
     }
 
+    /**
+     * @deprecated use import { applyDepth } from @firestitch/common/array; instead
+    */
     public applyDepth(objects, parent_property, id_property = 'id', depth_property = 'depth') {
 
         let keyed = {};
@@ -165,6 +193,9 @@ export class FsArray {
         return keyed;
     }
 
+    /**
+     * @deprecated use import { inArray } from @firestitch/common/array; instead
+    */
     inArray(values, array) {
 
         if (!Array.isArray(values)) {
@@ -180,14 +211,23 @@ export class FsArray {
         return false;
     }
 
+    /**
+     * @deprecated use import { keyExists } from @firestitch/common/array; instead
+    */
     keyExists(array, key) {
         return array.hasOwnProperty(key);
     }
 
+    /**
+     * @deprecated use import { length } from @firestitch/common/array; instead
+    */
     length(array) {
         return array.length;
     }
 
+    /**
+     * @deprecated use import { ksort } from @firestitch/common/array; instead
+    */
     ksort(unordered) {
         Object.keys(unordered).sort().forEach(function (key) {
             let value = unordered[key];

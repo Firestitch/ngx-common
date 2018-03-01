@@ -1,7 +1,6 @@
 import {Component} from '@angular/core';
-import {FsMath} from './../../../../src/services/fsmath.service';
-
 import {round} from '../../../../src/math';
+
 
 @Component({
   selector: 'fsmath-example',
@@ -12,7 +11,7 @@ export class FsMathExampleComponent {
 
   examples = [];
 
-  constructor(public FsMath: FsMath) {
+  constructor() {
     this.examples = [
       {
         name: 'Round',
