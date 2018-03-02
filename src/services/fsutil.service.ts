@@ -48,6 +48,10 @@ export const KEY_CANCEL = 3,
 export class FsUtil {
 
     private intervals = {};
+
+    /**
+    * @deprecated use @firestitch/common/util/guid instead
+    */
     public guid(pattern?: string): string {
       pattern = pattern || 'xxxxxx';
       return pattern.replace(/[xy]/g, function(c) {
@@ -56,10 +60,16 @@ export class FsUtil {
       });
     }
 
+    /**
+     * @deprecated use import { uuid } from @firestitch/common/util; instead
+    */
     public uuid(): string {
       return this.guid('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
     }
 
+    /**
+     * @deprecated use import { resolve } from @firestitch/common/util; instead
+    */
     public resolve(promise: Promise<object>, defaults = []): Promise<object> {
       const result = defaults;
       return new Promise(resolve => {
@@ -70,6 +80,9 @@ export class FsUtil {
        })
     }
 
+    /**
+     * @deprecated use _.toInteger() instead
+    */
     public int(value: any): number {
         value = parseInt(value);
         if (isNaN(value)) {
@@ -78,6 +91,9 @@ export class FsUtil {
         return value;
     }
 
+    /**
+     * @deprecated use _.toFinite() instaed
+    */
     public float(value): number {
         value = parseFloat(value);
         if (isNaN(value)) {
@@ -86,6 +102,9 @@ export class FsUtil {
         return value;
     }
 
+    /**
+     * @deprecated use _.toString() instead
+    */
     public string(string): string {
 
         if (string === null || string === undefined) {
@@ -95,6 +114,9 @@ export class FsUtil {
         return (string).toString();
     }
 
+    /**
+     * @deprecated use import { isEmpty } from @firestitch/common/util; instead
+    */
     public isEmpty(value, options?): boolean {
         options = options || {};
         return value === undefined ||
@@ -109,6 +131,9 @@ export class FsUtil {
             );
     }
 
+    /**
+     * @deprecated use _.isInteger() instead
+    */
     public isInt(value, type?) {
         const int = !!this.string(value).match(/^\d+$/);
 
@@ -123,6 +148,9 @@ export class FsUtil {
         return true;
     }
 
+    /**
+     * @deprecated use _.each() instead {@link https://lodash.com/docs/4.17.5#forEach}
+    */
     public each(object, func) {
       if (!this.isArray(object) && !this.isObject(object)) {
         return;
@@ -133,22 +161,38 @@ export class FsUtil {
       });
     }
 
+    /**
+     * @deprecated use _.isArrayLikeObject() {@link https://lodash.com/docs/4.17.5#isArrayLikeObject}
+     * or _.isObject() {@link https://lodash.com/docs/4.17.5#isObject} istead
+    */
     public isObject(value): boolean {
         return value !== null && typeof value === 'object' && !this.isArray(value);
     }
 
+    /**
+      * @deprecated use _.isString() instead {@link https://lodash.com/docs/4.17.5#isString}
+    */
     public isString(value): boolean {
         return typeof value === 'string' || value instanceof String;
     }
 
+    /**
+     * @deprecated use _.isArray() instead {@link https://lodash.com/docs/4.17.5#isArray}
+    */
     public isArray(value): boolean {
         return value instanceof Array;
     }
 
+    /**
+     * @deprecated use import { isNumeric } from @firestitch/common/util; instead
+    */
     public isNumeric(value): boolean {
         return this.string(value).length && !!this.string(value).match(/^-?\d*\.?\d*$/);
     }
 
+    /**
+     * @deprecated use import { isClass } from @firestitch/common/util; instead
+    */
     public isClass(value, cls) {
 
         if (this.isObject(value)) {
@@ -172,10 +216,16 @@ export class FsUtil {
         return false;
     }
 
+    /**
+      * @deprecated use _.isBoolean() instead {@link https://lodash.com/docs/4.17.5#isBoolean}
+    */
     public isBoolean(value): boolean {
         return value === true || value === false;
     }
 
+    /**
+     * @deprecated use import { value } from @firestitch/common/util; instead
+    */
     public value(object, key, def): any {
 
         if (this.isObject(object) || this.isArray(object)) {
@@ -209,6 +259,9 @@ export class FsUtil {
         }
     }
 
+    /**
+     * @deprecated use import { isClass } from @firestitch/common/util; instead
+    */
     public throttle(func, wait) {
       let waiting = false;                  	// Initially, we're not waiting
         return function () {               		// We return a throttled function
@@ -222,6 +275,9 @@ export class FsUtil {
         }
     }
 
+    /**
+     * @deprecated use import { debounce } from @firestitch/common/util; instead
+    */
     public debounce(func, wait, immediate) {
         var timeout;
         return function () {
@@ -236,6 +292,10 @@ export class FsUtil {
             if (callNow) func.apply(context, args);
         };
     }
+
+    /**
+     * @deprecated use import { length } from @firestitch/common/util; instead
+    */
     public length(object): number {
         if (this.isObject(object)) {
             return Object.keys(object).length;
@@ -248,10 +308,16 @@ export class FsUtil {
         return 0;
     }
 
+    /**
+     * @deprecated use import { boolean } from @firestitch/common/util; instead
+    */
     public boolean(value) {
         return this.string(value).toLowerCase() !== 'false' && !!value;
     }
 
+    /**
+     * @deprecated use import { stringify } from @firestitch/common/util; instead
+    */
     public stringify(value) {
       return JSON.stringify(value);
     }

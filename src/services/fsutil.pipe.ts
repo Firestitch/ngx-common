@@ -1,15 +1,15 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { FsUtil } from './fsutil.service';
+import { stringify, guid } from '../util';
 
 @Pipe({
   name: 'fsUtilStringify'
 })
 export class FsUtilStringifyPipe implements PipeTransform {
 
-  constructor(private FsUtil: FsUtil) {}
+  constructor() {}
 
   transform(value: any): string {
-    return this.FsUtil.stringify(value);
+    return stringify(value);
   }
 }
 
@@ -18,9 +18,9 @@ export class FsUtilStringifyPipe implements PipeTransform {
   name: 'fsUtilGuid'
 })
 export class FsUtilGuidPipe implements PipeTransform {
-  constructor(public FsUtil: FsUtil) {}
+  constructor() {}
 
   transform(): string {
-    return this.FsUtil.guid();
+    return guid();
   }
 }

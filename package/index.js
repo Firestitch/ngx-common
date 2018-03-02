@@ -1,13 +1,13 @@
 (function webpackUniversalModuleDefinition(root, factory) {
 	if(typeof exports === 'object' && typeof module === 'object')
-		module.exports = factory(require("@angular/core"), require("@angular/common"));
+		module.exports = factory();
 	else if(typeof define === 'function' && define.amd)
-		define("@firestitch/common", ["@angular/core", "@angular/common"], factory);
+		define("@firestitch/common", [], factory);
 	else if(typeof exports === 'object')
-		exports["@firestitch/common"] = factory(require("@angular/core"), require("@angular/common"));
+		exports["@firestitch/common"] = factory();
 	else
-		root["@firestitch/common"] = factory(root["@angular/core"], root["@angular/common"]);
-})(typeof self !== 'undefined' ? self : this, function(__WEBPACK_EXTERNAL_MODULE__angular_core__, __WEBPACK_EXTERNAL_MODULE__angular_common__) {
+		root["@firestitch/common"] = factory();
+})(typeof self !== 'undefined' ? self : this, function() {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -174,6 +174,9 @@ var core_1 = __webpack_require__("@angular/core");
 var FsArray = (function () {
     function FsArray() {
     }
+    /**
+     * @deprecated use import { nameValue } from @firestitch/common/array; instead
+    */
     FsArray.prototype.nameValue = function (array, name, value) {
         var list = [];
         if (name || value) {
@@ -190,6 +193,9 @@ var FsArray = (function () {
         }
         return list;
     };
+    /**
+     * @deprecated use import { remove } from @firestitch/common/array; instead
+    */
     FsArray.prototype.remove = function (array, query) {
         var idx = this.indexOf(array, query);
         if (idx >= 0) {
@@ -197,6 +203,9 @@ var FsArray = (function () {
         }
         return idx;
     };
+    /**
+     * @deprecated use import { indexOf } from @firestitch/common/array; instead
+    */
     FsArray.prototype.indexOf = function (array, query) {
         var _this = this;
         if (typeof query !== 'function') {
@@ -212,6 +221,9 @@ var FsArray = (function () {
         }
         return -1;
     };
+    /**
+     * @deprecated use import { compare } from @firestitch/common/array; instead
+    */
     FsArray.prototype.compare = function (query, item) {
         var value = true;
         for (var key in query) {
@@ -219,6 +231,9 @@ var FsArray = (function () {
         }
         return value;
     };
+    /**
+     * @deprecated use import { filter } from @firestitch/common/array; instead
+    */
     FsArray.prototype.filter = function (array, query) {
         var _this = this;
         if (typeof query !== 'function') {
@@ -243,6 +258,9 @@ var FsArray = (function () {
             });
         return list;
     };
+    /**
+     * @deprecated use import { index } from @firestitch/common/array; instead
+    */
     FsArray.prototype.index = function (array, property) {
         var list = {};
         array.forEach(function (item, idx) {
@@ -250,6 +268,9 @@ var FsArray = (function () {
         });
         return list;
     };
+    /**
+     * @deprecated use import { sort } from @firestitch/common/array; instead
+    */
     FsArray.prototype.sort = function (array, query, reverse) {
         if (reverse === void 0) { reverse = false; }
         if (typeof query !== 'function') {
@@ -277,9 +298,15 @@ var FsArray = (function () {
         array.sort(query);
         return array;
     };
+    /**
+     * @deprecated use import { rsort } from @firestitch/common/array; instead
+    */
     FsArray.prototype.rsort = function (array, query) {
         return this.sort(array, query, true);
     };
+    /**
+     * @deprecated use import { list } from @firestitch/common/array; instead
+    */
     FsArray.prototype.list = function (array, property, index) {
         if (index === void 0) { index = null; }
         var list = index ? {} : [];
@@ -293,6 +320,9 @@ var FsArray = (function () {
         });
         return list;
     };
+    /**
+     * @deprecated use import { applyDepth } from @firestitch/common/array; instead
+    */
     FsArray.prototype.applyDepth = function (objects, parent_property, id_property, depth_property) {
         if (id_property === void 0) { id_property = 'id'; }
         if (depth_property === void 0) { depth_property = 'depth'; }
@@ -314,6 +344,9 @@ var FsArray = (function () {
         });
         return keyed;
     };
+    /**
+     * @deprecated use import { inArray } from @firestitch/common/array; instead
+    */
     FsArray.prototype.inArray = function (values, array) {
         if (!Array.isArray(values)) {
             values = [values];
@@ -325,12 +358,21 @@ var FsArray = (function () {
         }
         return false;
     };
+    /**
+     * @deprecated use import { keyExists } from @firestitch/common/array; instead
+    */
     FsArray.prototype.keyExists = function (array, key) {
         return array.hasOwnProperty(key);
     };
+    /**
+     * @deprecated use import { length } from @firestitch/common/array; instead
+    */
     FsArray.prototype.length = function (array) {
         return array.length;
     };
+    /**
+     * @deprecated use import { ksort } from @firestitch/common/array; instead
+    */
     FsArray.prototype.ksort = function (unordered) {
         Object.keys(unordered).sort().forEach(function (key) {
             var value = unordered[key];
@@ -364,6 +406,9 @@ var core_1 = __webpack_require__("@angular/core");
 var FsMath = (function () {
     function FsMath() {
     }
+    /**
+     * @deprecated use import { round } from @firestitch/common/math; instead
+    */
     FsMath.prototype.round = function (number, precision) {
         precision = precision || 0;
         var factor = Math.pow(10, precision);
@@ -397,35 +442,33 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("@angular/core");
-var fsutil_service_1 = __webpack_require__("./services/fsutil.service.ts");
+var util_1 = __webpack_require__("./util/index.ts");
 var FsUtilStringifyPipe = (function () {
-    function FsUtilStringifyPipe(FsUtil) {
-        this.FsUtil = FsUtil;
+    function FsUtilStringifyPipe() {
     }
     FsUtilStringifyPipe.prototype.transform = function (value) {
-        return this.FsUtil.stringify(value);
+        return util_1.stringify(value);
     };
     FsUtilStringifyPipe = __decorate([
         core_1.Pipe({
             name: 'fsUtilStringify'
         }),
-        __metadata("design:paramtypes", [fsutil_service_1.FsUtil])
+        __metadata("design:paramtypes", [])
     ], FsUtilStringifyPipe);
     return FsUtilStringifyPipe;
 }());
 exports.FsUtilStringifyPipe = FsUtilStringifyPipe;
 var FsUtilGuidPipe = (function () {
-    function FsUtilGuidPipe(FsUtil) {
-        this.FsUtil = FsUtil;
+    function FsUtilGuidPipe() {
     }
     FsUtilGuidPipe.prototype.transform = function () {
-        return this.FsUtil.guid();
+        return util_1.guid();
     };
     FsUtilGuidPipe = __decorate([
         core_1.Pipe({
             name: 'fsUtilGuid'
         }),
-        __metadata("design:paramtypes", [fsutil_service_1.FsUtil])
+        __metadata("design:paramtypes", [])
     ], FsUtilGuidPipe);
     return FsUtilGuidPipe;
 }());
@@ -456,6 +499,9 @@ var FsUtil = (function () {
     function FsUtil() {
         this.intervals = {};
     }
+    /**
+    * @deprecated use @firestitch/common/util/guid instead
+    */
     FsUtil.prototype.guid = function (pattern) {
         pattern = pattern || 'xxxxxx';
         return pattern.replace(/[xy]/g, function (c) {
@@ -463,9 +509,15 @@ var FsUtil = (function () {
             return v.toString(16);
         });
     };
+    /**
+     * @deprecated use import { uuid } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.uuid = function () {
         return this.guid('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
     };
+    /**
+     * @deprecated use import { resolve } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.resolve = function (promise, defaults) {
         if (defaults === void 0) { defaults = []; }
         var result = defaults;
@@ -476,6 +528,9 @@ var FsUtil = (function () {
             });
         });
     };
+    /**
+     * @deprecated use _.toInteger() instead
+    */
     FsUtil.prototype.int = function (value) {
         value = parseInt(value);
         if (isNaN(value)) {
@@ -483,6 +538,9 @@ var FsUtil = (function () {
         }
         return value;
     };
+    /**
+     * @deprecated use _.toFinite() instaed
+    */
     FsUtil.prototype.float = function (value) {
         value = parseFloat(value);
         if (isNaN(value)) {
@@ -490,12 +548,18 @@ var FsUtil = (function () {
         }
         return value;
     };
+    /**
+     * @deprecated use _.toString() instead
+    */
     FsUtil.prototype.string = function (string) {
         if (string === null || string === undefined) {
             string = '';
         }
         return (string).toString();
     };
+    /**
+     * @deprecated use import { isEmpty } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.isEmpty = function (value, options) {
         options = options || {};
         return value === undefined ||
@@ -507,6 +571,9 @@ var FsUtil = (function () {
                 (value.constructor.name === 'Object' && !Object.keys(value).length)) ||
             (!options.zero && (value === 0 || value === '0'));
     };
+    /**
+     * @deprecated use _.isInteger() instead
+    */
     FsUtil.prototype.isInt = function (value, type) {
         var int = !!this.string(value).match(/^\d+$/);
         if (!int) {
@@ -517,6 +584,9 @@ var FsUtil = (function () {
         }
         return true;
     };
+    /**
+     * @deprecated use _.each() instead {@link https://lodash.com/docs/4.17.5#forEach}
+    */
     FsUtil.prototype.each = function (object, func) {
         if (!this.isArray(object) && !this.isObject(object)) {
             return;
@@ -525,18 +595,34 @@ var FsUtil = (function () {
             func(object[key], key);
         });
     };
+    /**
+     * @deprecated use _.isArrayLikeObject() {@link https://lodash.com/docs/4.17.5#isArrayLikeObject}
+     * or _.isObject() {@link https://lodash.com/docs/4.17.5#isObject} istead
+    */
     FsUtil.prototype.isObject = function (value) {
         return value !== null && typeof value === 'object' && !this.isArray(value);
     };
+    /**
+      * @deprecated use _.isString() instead {@link https://lodash.com/docs/4.17.5#isString}
+    */
     FsUtil.prototype.isString = function (value) {
         return typeof value === 'string' || value instanceof String;
     };
+    /**
+     * @deprecated use _.isArray() instead {@link https://lodash.com/docs/4.17.5#isArray}
+    */
     FsUtil.prototype.isArray = function (value) {
         return value instanceof Array;
     };
+    /**
+     * @deprecated use import { isNumeric } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.isNumeric = function (value) {
         return this.string(value).length && !!this.string(value).match(/^-?\d*\.?\d*$/);
     };
+    /**
+     * @deprecated use import { isClass } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.isClass = function (value, cls) {
         if (this.isObject(value)) {
             if (this.isString(cls)) {
@@ -554,9 +640,15 @@ var FsUtil = (function () {
         }
         return false;
     };
+    /**
+      * @deprecated use _.isBoolean() instead {@link https://lodash.com/docs/4.17.5#isBoolean}
+    */
     FsUtil.prototype.isBoolean = function (value) {
         return value === true || value === false;
     };
+    /**
+     * @deprecated use import { value } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.value = function (object, key, def) {
         if (this.isObject(object) || this.isArray(object)) {
             if (object.hasOwnProperty(key)) {
@@ -580,6 +672,9 @@ var FsUtil = (function () {
             window.clearInterval(instance);
         }
     };
+    /**
+     * @deprecated use import { isClass } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.throttle = function (func, wait) {
         var waiting = false; // Initially, we're not waiting
         return function () {
@@ -592,6 +687,9 @@ var FsUtil = (function () {
             }
         };
     };
+    /**
+     * @deprecated use import { debounce } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.debounce = function (func, wait, immediate) {
         var timeout;
         return function () {
@@ -608,6 +706,9 @@ var FsUtil = (function () {
                 func.apply(context, args);
         };
     };
+    /**
+     * @deprecated use import { length } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.length = function (object) {
         if (this.isObject(object)) {
             return Object.keys(object).length;
@@ -617,9 +718,15 @@ var FsUtil = (function () {
         }
         return 0;
     };
+    /**
+     * @deprecated use import { boolean } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.boolean = function (value) {
         return this.string(value).toLowerCase() !== 'false' && !!value;
     };
+    /**
+     * @deprecated use import { stringify } from @firestitch/common/util; instead
+    */
     FsUtil.prototype.stringify = function (value) {
         return JSON.stringify(value);
     };
@@ -654,10 +761,16 @@ var FsValidate = (function () {
     function FsValidate(fsUtil) {
         this.fsUtil = fsUtil;
     }
+    /**
+     * @deprecated use import { email } from @firestitch/common/validate; instead
+    */
     FsValidate.prototype.phone = function (value) {
         var valid = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(value);
         return valid || !String(value).length;
     };
+    /**
+      * @deprecated use import { email } from @firestitch/common/validate; instead
+    */
     FsValidate.prototype.email = function (value) {
         return !!this.fsUtil.string(value).match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
     };
@@ -672,17 +785,529 @@ exports.FsValidate = FsValidate;
 
 /***/ }),
 
+/***/ "./util/boolean/boolean.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var lodash_1 = __webpack_require__("lodash");
+function boolean(value) {
+    return lodash_1.toString(value).toLowerCase() !== 'false' && !!value;
+}
+exports.boolean = boolean;
+
+
+/***/ }),
+
+/***/ "./util/boolean/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./util/boolean/boolean.ts"));
+
+
+/***/ }),
+
+/***/ "./util/debounce/debounce.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function debounce(func, wait, immediate) {
+    var timeout;
+    return function () {
+        var context = this, args = arguments;
+        var later = function () {
+            timeout = null;
+            if (!immediate)
+                func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow)
+            func.apply(context, args);
+    };
+}
+exports.debounce = debounce;
+
+
+/***/ }),
+
+/***/ "./util/debounce/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./util/debounce/debounce.ts"));
+
+
+/***/ }),
+
+/***/ "./util/guid/guid.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function guid(pattern) {
+    pattern = pattern || 'xxxxxx';
+    return pattern.replace(/[xy]/g, function (c) {
+        var r = Math.random() * 16 | 0;
+        var v = c == 'x' ? r : (r & 0x3 | 0x8);
+        return v.toString(16);
+    });
+}
+exports.guid = guid;
+
+
+/***/ }),
+
+/***/ "./util/guid/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./util/guid/guid.ts"));
+
+
+/***/ }),
+
+/***/ "./util/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./util/boolean/index.ts"));
+__export(__webpack_require__("./util/debounce/index.ts"));
+__export(__webpack_require__("./util/guid/index.ts"));
+__export(__webpack_require__("./util/keys/index.ts"));
+__export(__webpack_require__("./util/length/index.ts"));
+__export(__webpack_require__("./util/resolve/index.ts"));
+__export(__webpack_require__("./util/stringify/index.ts"));
+__export(__webpack_require__("./util/uuid/index.ts"));
+__export(__webpack_require__("./util/value/index.ts"));
+__export(__webpack_require__("./util/isClass/index.ts"));
+__export(__webpack_require__("./util/isNumeric/index.ts"));
+__export(__webpack_require__("./util/isEmpty/index.ts"));
+__export(__webpack_require__("./util/throttle/index.ts"));
+
+
+/***/ }),
+
+/***/ "./util/isClass/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./util/isClass/isClass.ts"));
+
+
+/***/ }),
+
+/***/ "./util/isClass/isClass.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var util_1 = __webpack_require__("util");
+function isClass(value, cls) {
+    if (util_1.isObject(value)) {
+        if (util_1.isString(cls)) {
+            if (value.constructor) {
+                if (value.constructor.name === cls) {
+                    return true;
+                }
+            }
+        }
+        else {
+            if (value instanceof cls) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+exports.isClass = isClass;
+
+
+/***/ }),
+
+/***/ "./util/isEmpty/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./util/isEmpty/isEmpty.ts"));
+
+
+/***/ }),
+
+/***/ "./util/isEmpty/isEmpty.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var lodash_1 = __webpack_require__("lodash");
+function isEmpty(value, options) {
+    options = options || {};
+    return value === undefined ||
+        value === null ||
+        value === false ||
+        value === '' ||
+        !lodash_1.toString(value).length ||
+        (lodash_1.isObject(value) &&
+            (value.constructor.name === 'Object' && !Object.keys(value).length)) ||
+        (!options.zero && (value === 0 || value === '0'));
+}
+exports.isEmpty = isEmpty;
+
+
+/***/ }),
+
+/***/ "./util/isNumeric/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./util/isNumeric/isNumeric.ts"));
+
+
+/***/ }),
+
+/***/ "./util/isNumeric/isNumeric.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var lodash_1 = __webpack_require__("lodash");
+function isNumeric(value) {
+    var str = lodash_1.toString(value);
+    return str.length && !!str.match(/^-?\d*\.?\d*$/);
+}
+exports.isNumeric = isNumeric;
+
+
+/***/ }),
+
+/***/ "./util/keys/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./util/keys/keys.ts"));
+
+
+/***/ }),
+
+/***/ "./util/keys/keys.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.KEY_CANCEL = 3;
+exports.KEY_HELP = 6;
+exports.KEY_BACKSPACE = 8;
+exports.KEY_TAB = 9;
+exports.KEY_CLEAR = 12;
+exports.KEY_RETURN = 13;
+exports.KEY_ENTER = 14;
+exports.KEY_SHIFT = 16;
+exports.KEY_CONTROL = 17;
+exports.KEY_ALT = 18;
+exports.KEY_PAUSE = 19;
+exports.KEY_CAPS_LOCK = 20;
+exports.KEY_ESCAPE = 27;
+exports.KEY_SPACE = 32;
+exports.KEY_PAGE_UP = 33;
+exports.KEY_PAGE_DOWN = 34;
+exports.KEY_END = 35;
+exports.KEY_HOME = 36;
+exports.KEY_LEFT = 37;
+exports.KEY_UP = 38;
+exports.KEY_RIGHT = 39;
+exports.KEY_DOWN = 40;
+exports.KEY_PRINTSCREEN = 44;
+exports.KEY_INSERT = 45;
+exports.KEY_DELETE = 46;
+exports.KEY_0 = 48;
+exports.KEY_1 = 49;
+exports.KEY_2 = 50;
+exports.KEY_3 = 51;
+exports.KEY_4 = 52;
+exports.KEY_5 = 53;
+exports.KEY_6 = 54;
+exports.KEY_7 = 55;
+exports.KEY_8 = 56;
+exports.KEY_9 = 57;
+exports.KEY_SEMICOLON = 59;
+exports.KEY_EQUALS = 61;
+
+
+/***/ }),
+
+/***/ "./util/length/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./util/length/length.ts"));
+
+
+/***/ }),
+
+/***/ "./util/length/length.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var lodash_1 = __webpack_require__("lodash");
+function length(object) {
+    if (lodash_1.isObject(object)) {
+        return Object.keys(object).length;
+    }
+    if (lodash_1.isArray(object)) {
+        return object.length;
+    }
+    return 0;
+}
+exports.length = length;
+
+
+/***/ }),
+
+/***/ "./util/resolve/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./util/resolve/resolve.ts"));
+
+
+/***/ }),
+
+/***/ "./util/resolve/resolve.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function resolve(promise, defaults) {
+    if (defaults === void 0) { defaults = []; }
+    var result = defaults;
+    return new Promise(function (resolve) {
+        promise.then(function (data) {
+            Object.keys(data).forEach(function (key) { return result[key] = data[key]; });
+            resolve(result);
+        });
+    });
+}
+exports.resolve = resolve;
+
+
+/***/ }),
+
+/***/ "./util/stringify/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./util/stringify/stringify.ts"));
+
+
+/***/ }),
+
+/***/ "./util/stringify/stringify.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function stringify(value) {
+    return JSON.stringify(value);
+}
+exports.stringify = stringify;
+
+
+/***/ }),
+
+/***/ "./util/throttle/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./util/throttle/throttle.ts"));
+
+
+/***/ }),
+
+/***/ "./util/throttle/throttle.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function throttle(func, wait) {
+    var waiting = false; // Initially, we're not waiting
+    return function () {
+        if (!waiting) {
+            func.apply(null, arguments); // Execute users function
+            waiting = true; // Prevent future invocations
+            setTimeout(function () {
+                waiting = false; // And allow future invocations
+            }, wait);
+        }
+    };
+}
+exports.throttle = throttle;
+
+
+/***/ }),
+
+/***/ "./util/uuid/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./util/uuid/uuid.ts"));
+
+
+/***/ }),
+
+/***/ "./util/uuid/uuid.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var guid_1 = __webpack_require__("./util/guid/index.ts");
+function uuid() {
+    return guid_1.guid('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
+}
+exports.uuid = uuid;
+
+
+/***/ }),
+
+/***/ "./util/value/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./util/value/value.ts"));
+
+
+/***/ }),
+
+/***/ "./util/value/value.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var util_1 = __webpack_require__("util");
+function value(object, key, def) {
+    if (util_1.isObject(object) || Array.isArray(object)) {
+        if (object.hasOwnProperty(key)) {
+            return object[key];
+        }
+    }
+    return def;
+}
+exports.value = value;
+
+
+/***/ }),
+
 /***/ "@angular/common":
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__angular_common__;
+module.exports = require("@angular/common");
 
 /***/ }),
 
 /***/ "@angular/core":
 /***/ (function(module, exports) {
 
-module.exports = __WEBPACK_EXTERNAL_MODULE__angular_core__;
+module.exports = require("@angular/core");
+
+/***/ }),
+
+/***/ "lodash":
+/***/ (function(module, exports) {
+
+module.exports = require("lodash");
+
+/***/ }),
+
+/***/ "util":
+/***/ (function(module, exports) {
+
+module.exports = require("util");
 
 /***/ })
 

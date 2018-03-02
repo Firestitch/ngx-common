@@ -1,0 +1,1 @@
+{"version":3,"file":"index.js","sourceRoot":"","sources":["../../../src/array/index/index.ts"],"names":[],"mappings":"AAAA,MAAM,gBAAgB,KAAK,EAAE,QAAQ;IACnC,MAAM,IAAI,GAAG,EAAE,CAAC;IAEhB,KAAK,CAAC,OAAO,CAAC,UAAU,IAAI,EAAE,GAAG;QAC/B,IAAI,CAAC,IAAI,CAAC,QAAQ,CAAC,CAAC,GAAG,IAAI,CAAC;IAC9B,CAAC,CAAC,CAAC;IAEH,MAAM,CAAC,IAAI,CAAC;AACd,CAAC"}
