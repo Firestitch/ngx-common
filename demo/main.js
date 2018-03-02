@@ -8,7 +8,7 @@ exports = module.exports = __webpack_require__("../node_modules/css-loader/lib/c
 
 
 // module
-exports.push([module.i, ".table {\n  border: 1px solid #ccc;\n  border-spacing: 0px;\n  border-collapse: collapse;\n  width: 100%;\n}\n\n.table td {\n  border: 1px solid #ccc;\n  padding: 5px 15px;\n  white-space: pre-wrap;\n  word-wrap: break-word;\n}", "", {"version":3,"sources":["/Users/Basters/dev/firestitch/fs-common/fsarray-example.component.css"],"names":[],"mappings":"AAAA;EACE,uBAAA;EACA,oBAAA;EACA,0BAAA;EACA,YAAA;CACD;;AAED;EACE,uBAAA;EACA,kBAAA;EACA,sBAAA;EACA,sBAAA;CACD","file":"fsarray-example.component.css","sourcesContent":[".table {\n  border: 1px solid #ccc;\n  border-spacing: 0px;\n  border-collapse: collapse;\n  width: 100%\n}\n\n.table td {\n  border: 1px solid #ccc;\n  padding: 5px 15px;\n  white-space: pre-wrap;\n  word-wrap: break-word;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".table {\n  border: 1px solid #ccc;\n  border-spacing: 0px;\n  border-collapse: collapse;\n  width: 100%;\n}\n\n.table td {\n  border: 1px solid #ccc;\n  padding: 5px 15px;\n  white-space: pre-wrap;\n  word-wrap: break-word;\n}", "", {"version":3,"sources":["C:/Projects/fs-common/playground/app/components/fsarray-example/C:/Projects/fs-common/fsarray-example.component.css"],"names":[],"mappings":"AAAA;EACE,uBAAA;EACA,oBAAA;EACA,0BAAA;EACA,YAAA;CACD;;AAED;EACE,uBAAA;EACA,kBAAA;EACA,sBAAA;EACA,sBAAA;CACD","file":"fsarray-example.component.css","sourcesContent":[".table {\r\n  border: 1px solid #ccc;\r\n  border-spacing: 0px;\r\n  border-collapse: collapse;\r\n  width: 100%\r\n}\r\n\r\n.table td {\r\n  border: 1px solid #ccc;\r\n  padding: 5px 15px;\r\n  white-space: pre-wrap;\r\n  word-wrap: break-word;\r\n}\r\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -23,7 +23,7 @@ exports = module.exports = __webpack_require__("../node_modules/css-loader/lib/c
 
 
 // module
-exports.push([module.i, ".table {\n  border: 1px solid #ccc;\n  border-spacing: 0px;\n  border-collapse: collapse;\n  width: 100%;\n}\n\n.table td {\n  border: 1px solid #ccc;\n  padding: 5px 15px;\n  white-space: pre-wrap;\n  word-wrap: break-word;\n}", "", {"version":3,"sources":["/Users/Basters/dev/firestitch/fs-common/fsmath-example.component.css"],"names":[],"mappings":"AAAA;EACE,uBAAA;EACA,oBAAA;EACA,0BAAA;EACA,YAAA;CACD;;AAED;EACE,uBAAA;EACA,kBAAA;EACA,sBAAA;EACA,sBAAA;CACD","file":"fsmath-example.component.css","sourcesContent":[".table {\n  border: 1px solid #ccc;\n  border-spacing: 0px;\n  border-collapse: collapse;\n  width: 100%\n}\n\n.table td {\n  border: 1px solid #ccc;\n  padding: 5px 15px;\n  white-space: pre-wrap;\n  word-wrap: break-word;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".table {\n  border: 1px solid #ccc;\n  border-spacing: 0px;\n  border-collapse: collapse;\n  width: 100%;\n}\n\n.table td {\n  border: 1px solid #ccc;\n  padding: 5px 15px;\n  white-space: pre-wrap;\n  word-wrap: break-word;\n}", "", {"version":3,"sources":["C:/Projects/fs-common/playground/app/components/fsmath-example/C:/Projects/fs-common/fsmath-example.component.css"],"names":[],"mappings":"AAAA;EACE,uBAAA;EACA,oBAAA;EACA,0BAAA;EACA,YAAA;CACD;;AAED;EACE,uBAAA;EACA,kBAAA;EACA,sBAAA;EACA,sBAAA;CACD","file":"fsmath-example.component.css","sourcesContent":[".table {\r\n  border: 1px solid #ccc;\r\n  border-spacing: 0px;\r\n  border-collapse: collapse;\r\n  width: 100%\r\n}\r\n\r\n.table td {\r\n  border: 1px solid #ccc;\r\n  padding: 5px 15px;\r\n  white-space: pre-wrap;\r\n  word-wrap: break-word;\r\n}\r\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -38,7 +38,7 @@ exports = module.exports = __webpack_require__("../node_modules/css-loader/lib/c
 
 
 // module
-exports.push([module.i, ".table {\n  border: 1px solid #ccc;\n  border-spacing: 0px;\n  border-collapse: collapse;\n  width: 100%;\n}\n\n.table td {\n  border: 1px solid #ccc;\n  padding: 5px 15px;\n  white-space: pre-wrap;\n  word-wrap: break-word;\n}", "", {"version":3,"sources":["/Users/Basters/dev/firestitch/fs-common/fsutil-example.component.css"],"names":[],"mappings":"AAAA;EACE,uBAAA;EACA,oBAAA;EACA,0BAAA;EACA,YAAA;CACD;;AAED;EACE,uBAAA;EACA,kBAAA;EACA,sBAAA;EACA,sBAAA;CACD","file":"fsutil-example.component.css","sourcesContent":[".table {\n  border: 1px solid #ccc;\n  border-spacing: 0px;\n  border-collapse: collapse;\n  width: 100%\n}\n\n.table td {\n  border: 1px solid #ccc;\n  padding: 5px 15px;\n  white-space: pre-wrap;\n  word-wrap: break-word;\n}\n"],"sourceRoot":""}]);
+exports.push([module.i, ".table {\n  border: 1px solid #ccc;\n  border-spacing: 0px;\n  border-collapse: collapse;\n  width: 100%;\n}\n\n.table td {\n  border: 1px solid #ccc;\n  padding: 5px 15px;\n  white-space: pre-wrap;\n  word-wrap: break-word;\n}", "", {"version":3,"sources":["C:/Projects/fs-common/playground/app/components/fsutil-example/C:/Projects/fs-common/fsutil-example.component.css"],"names":[],"mappings":"AAAA;EACE,uBAAA;EACA,oBAAA;EACA,0BAAA;EACA,YAAA;CACD;;AAED;EACE,uBAAA;EACA,kBAAA;EACA,sBAAA;EACA,sBAAA;CACD","file":"fsutil-example.component.css","sourcesContent":[".table {\r\n  border: 1px solid #ccc;\r\n  border-spacing: 0px;\r\n  border-collapse: collapse;\r\n  width: 100%\r\n}\r\n\r\n.table td {\r\n  border: 1px solid #ccc;\r\n  padding: 5px 15px;\r\n  white-space: pre-wrap;\r\n  word-wrap: break-word;\r\n}\r\n"],"sourceRoot":""}]);
 
 // exports
 
@@ -1860,7 +1860,7 @@ webpackEmptyAsyncContext.id = "../tools lazy recursive";
 /***/ "./app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>FsCommon Examples</h1>\n<div class=\"example\">\n    <fs-example title=\"FsArray\" componentName=\"fsarray-example\">\n        <fsarray-example></fsarray-example>\n    </fs-example>\n</div>\n<div class=\"example\">\n  <fs-example title=\"FsUtil\" componentName=\"fsutil-example\">\n      <fsutil-example></fsutil-example>\n  </fs-example>\n</div>\n<div class=\"example\">\n  <fs-example title=\"FsMath\" componentName=\"fsmath-example\">\n      <fsmath-example></fsmath-example>\n  </fs-example>\n</div>\n"
+module.exports = "<h1>FsCommon Examples</h1>\r\n<div class=\"example\">\r\n    <fs-example title=\"FsArray\" componentName=\"fsarray-example\">\r\n        <fsarray-example></fsarray-example>\r\n    </fs-example>\r\n</div>\r\n<div class=\"example\">\r\n  <fs-example title=\"FsUtil\" componentName=\"fsutil-example\">\r\n      <fsutil-example></fsutil-example>\r\n  </fs-example>\r\n</div>\r\n<div class=\"example\">\r\n  <fs-example title=\"FsMath\" componentName=\"fsmath-example\">\r\n      <fsmath-example></fsmath-example>\r\n  </fs-example>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -1911,7 +1911,7 @@ exports.AppComponent = AppComponent;
 /***/ "./app/components/fsarray-example/fsarray-example.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>Initial array: {{array|fsUtilStringify}}</p>\n<table class=\"table\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Deprecated Code</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr *ngFor=\"let example of examples\">\n    <td>{{example.name}}</td>\n    <td>{{example.deprecatedCode}}</td>\n    <td>{{example.code}}</td>\n    <td>{{example.result}}</td>\n  </tr>\n</table>\n"
+module.exports = "<p>Initial array: {{array|fsUtilStringify}}</p>\r\n<table class=\"table\">\r\n  <thead>\r\n  <tr>\r\n    <th>Description</th>\r\n    <th>Deprecated Code</th>\r\n    <th>Code</th>\r\n    <th>Result</th>\r\n  </tr>\r\n  </thead>\r\n  <tr *ngFor=\"let example of examples\">\r\n    <td>{{example.name}}</td>\r\n    <td>{{example.deprecatedCode}}</td>\r\n    <td>{{example.code}}</td>\r\n    <td>{{example.result}}</td>\r\n  </tr>\r\n</table>\r\n"
 
 /***/ }),
 
@@ -2084,7 +2084,7 @@ exports.FsArrayExampleComponent = FsArrayExampleComponent;
 /***/ "./app/components/fsmath-example/fsmath-example.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Deprecated Code</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr *ngFor=\"let example of examples\">\n    <td>{{example.name}}</td>\n    <td>{{example.deprecatedCode}}</td>\n    <td>{{example.code}}</td>\n    <td>{{example.result}}</td>\n  </tr>\n</table>\n"
+module.exports = "<table class=\"table\">\r\n  <thead>\r\n  <tr>\r\n    <th>Description</th>\r\n    <th>Deprecated Code</th>\r\n    <th>Code</th>\r\n    <th>Result</th>\r\n  </tr>\r\n  </thead>\r\n  <tr *ngFor=\"let example of examples\">\r\n    <td>{{example.name}}</td>\r\n    <td>{{example.deprecatedCode}}</td>\r\n    <td>{{example.code}}</td>\r\n    <td>{{example.result}}</td>\r\n  </tr>\r\n</table>\r\n"
 
 /***/ }),
 
@@ -2153,7 +2153,7 @@ exports.FsMathExampleComponent = FsMathExampleComponent;
 /***/ "./app/components/fsutil-example/fsutil-example.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<table class=\"table\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Deprecated Code</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr *ngFor=\"let example of examples\">\n    <td>{{example.name}}</td>\n    <td>{{example.deprecatedCode}}</td>\n    <td>{{example.code}}</td>\n    <td>{{example.result}}</td>\n  </tr>\n</table>\n"
+module.exports = "<table class=\"table\">\r\n  <thead>\r\n  <tr>\r\n    <th>Description</th>\r\n    <th>Deprecated Code</th>\r\n    <th>Code</th>\r\n    <th>Result</th>\r\n  </tr>\r\n  </thead>\r\n  <tr *ngFor=\"let example of examples\">\r\n    <td>{{example.name}}</td>\r\n    <td>{{example.deprecatedCode}}</td>\r\n    <td>{{example.code}}</td>\r\n    <td>{{example.result}}</td>\r\n  </tr>\r\n</table>\r\n"
 
 /***/ }),
 
