@@ -1,0 +1,15 @@
+<h2>Functions</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Description</th>
+    <th>Code</th>
+    <th>Result</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let example of examples">
+    <td>{{example.name}}</td>
+    <td><pre class="code-ts hljs"><code mwlHighlightJs [source]="example.code" language="ts"></code></pre></td>
+    <td><pre class="code-json hljs"><code mwlHighlightJs [source]="example.result" language="json"></code></pre></td>
+  </tr>
+</table>
