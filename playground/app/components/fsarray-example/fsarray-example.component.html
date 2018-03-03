@@ -1,17 +1,22 @@
-<p>Initial array: {{array|fsUtilStringify}}</p>
+<h2>Functions</h2>
+<fieldset style="margin-top:0;">
+  <legend>Initial Array</legend>
+  {{ array | json }}
+</fieldset>
+
+<br>
+
 <table class="table">
   <thead>
   <tr>
     <th>Description</th>
-    <th>Deprecated Code</th>
     <th>Code</th>
     <th>Result</th>
   </tr>
   </thead>
   <tr *ngFor="let example of examples">
     <td>{{example.name}}</td>
-    <td>{{example.deprecatedCode}}</td>
-    <td>{{example.code}}</td>
-    <td>{{example.result}}</td>
+    <td><pre class="code-ts hljs"><code mwlHighlightJs [source]="example.code" language="ts"></code></pre></td>
+    <td><pre class="code-json hljs"><code mwlHighlightJs [source]="example.result" language="json"></code></pre></td>
   </tr>
 </table>

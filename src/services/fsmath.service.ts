@@ -3,9 +3,10 @@ import { Injectable } from '@angular/core';
 export class FsMath {
 
     /**
-     * @deprecated use import { round } from @firestitch/common/math; instead
+     *@deprecated use _.each() instead {@link https://lodash.com/docs/4.17.5#round}
     */
     public round(number, precision): number {
+        console.warn('@deprecated use _.each() instead {@link https://lodash.com/docs/4.17.5#round}')
         precision = precision || 0;
         let factor = Math.pow(10, precision);
         let tempNumber = number * factor;
