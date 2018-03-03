@@ -14,7 +14,8 @@ import {
 export class FsFormatExampleComponent {
 
   examples = [];
-
+  pipes = [];
+  
   constructor() {
     this.examples = [
       {
@@ -26,7 +27,9 @@ export class FsFormatExampleComponent {
 
     this.examples.forEach((example) => {
       example.result = JSON.stringify(example.result);
-    })
+    });
+
+    this.pipes['number'] = 'import { FsFormatNumber } from \'@firestitch/format/number/pipe\'\n{{42397803.23987|fsFormatNumber:2}}';
   }
 
 }

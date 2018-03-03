@@ -1964,7 +1964,7 @@ exports.FsArrayExampleComponent = FsArrayExampleComponent;
 /***/ "./app/components/fsformat-example/fsformat-example.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Functions</h2>\n<table class=\"table\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr *ngFor=\"let example of examples\">\n    <td>{{example.name}}</td>\n    <td><pre class=\"code-ts hljs\"><code mwlHighlightJs [source]=\"example.code\" language=\"ts\"></code></pre></td>\n    <td><pre class=\"code-json hljs\"><code mwlHighlightJs [source]=\"example.result\" language=\"json\"></code></pre></td>\n  </tr>\n</table>\n\n<h2>Pipes</h2>\n<table class=\"table\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr>\n    <td>Number</td>\n    <td><pre class=\"code-pipe\"><code ngNonBindable>import { FsFormatNumber } from '@firestitch/format/number/pipe<br>{{42397803.23987|fsFormatNumber:2}}</code></pre></td>\n    <td><pre class=\"code-json hljs\">{{42397803.23987|fsFormatNumber:2}}</pre></td>\n  </tr>\n</table>"
+module.exports = "<h2>Functions</h2>\n<table class=\"table\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr *ngFor=\"let example of examples\">\n    <td>{{example.name}}</td>\n    <td><pre class=\"code-ts hljs\"><code mwlHighlightJs [source]=\"example.code\" language=\"ts\"></code></pre></td>\n    <td><pre class=\"code-json hljs\"><code mwlHighlightJs [source]=\"example.result\" language=\"json\"></code></pre></td>\n  </tr>\n</table>\n\n<h2>Pipes</h2>\n<table class=\"table\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr>\n    <td>Number</td>\n    <td><pre class=\"code-pipes hljs\"><code mwlHighlightJs [source]=\"pipes.number\" language=\"ts\"></code></pre></td>\n    <td><pre class=\"code-json hljs\">{{42397803.23987|fsFormatNumber:2}}</pre></td>\n  </tr>\n</table>"
 
 /***/ }),
 
@@ -1988,6 +1988,7 @@ var number_1 = __webpack_require__("../src/format/number/index.ts");
 var FsFormatExampleComponent = (function () {
     function FsFormatExampleComponent() {
         this.examples = [];
+        this.pipes = [];
         this.examples = [
             {
                 name: 'Number',
@@ -1998,6 +1999,7 @@ var FsFormatExampleComponent = (function () {
         this.examples.forEach(function (example) {
             example.result = JSON.stringify(example.result);
         });
+        this.pipes['number'] = 'import { FsFormatNumber } from \'@firestitch/format/number/pipe\'\n{{42397803.23987|fsFormatNumber:2}}';
     }
     FsFormatExampleComponent = __decorate([
         core_1.Component({
