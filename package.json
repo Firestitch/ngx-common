@@ -20,7 +20,7 @@
   "typings": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "npm-run-all -s copy:package & npm publish ./package --public",
+    "publish": "npm publish ./package --public",
     "clean:build": "rimraf build",
     "clean:demo": "rimraf demo",
     "clean:package": "rimraf package",
