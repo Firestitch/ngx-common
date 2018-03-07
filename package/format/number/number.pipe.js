@@ -7,19 +7,19 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
-var number_1 = require("./../number");
-var FsFormatNumber = (function () {
-    function FsFormatNumber() {
+var number_1 = require("./number");
+var FsFormatNumberPipe = (function () {
+    function FsFormatNumberPipe() {
     }
-    FsFormatNumber.prototype.transform = function (value) {
-        return number_1.number(value);
+    FsFormatNumberPipe.prototype.transform = function (value, decimals) {
+        return number_1.number(value, decimals);
     };
-    FsFormatNumber = __decorate([
+    FsFormatNumberPipe = __decorate([
         core_1.Pipe({
             name: 'fsFormatNumber'
         })
-    ], FsFormatNumber);
-    return FsFormatNumber;
+    ], FsFormatNumberPipe);
+    return FsFormatNumberPipe;
 }());
-exports.FsFormatNumber = FsFormatNumber;
+exports.FsFormatNumberPipe = FsFormatNumberPipe;
 //# sourceMappingURL=number.pipe.js.map

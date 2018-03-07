@@ -101,7 +101,7 @@
                                     <a href="../injectables/FsUtil.html" >FsUtil</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/FsValidate.html"  data-type="entity-link" class="active" >FsValidate</a>
+                                    <a href="../injectables/FsValidate.html" >FsValidate</a>
                                 </li>
                         </ul>
                     </li>
@@ -120,7 +120,7 @@
                                 id="xs-pipes-links"
                             >
                                 <li class="link">
-                                    <a href="../pipes/FsFormatNumberPipe.html" >FsFormatNumberPipe</a>
+                                    <a href="../pipes/FsFormatNumberPipe.html"  data-type="entity-link" class="active" >FsFormatNumberPipe</a>
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/FsUtilGuidPipe.html" >FsUtilGuidPipe</a>
@@ -248,7 +248,7 @@
                                            <a href="../injectables/FsUtil.html" >FsUtil</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/FsValidate.html"  data-type="entity-link" class="active" >FsValidate</a>
+                                           <a href="../injectables/FsValidate.html" >FsValidate</a>
                                        </li>
                                </ul>
                            </li>
@@ -267,7 +267,7 @@
                                        id="pipes-links"
                    >
                                        <li class="link">
-                                           <a href="../pipes/FsFormatNumberPipe.html" >FsFormatNumberPipe</a>
+                                           <a href="../pipes/FsFormatNumberPipe.html"  data-type="entity-link" class="active" >FsFormatNumberPipe</a>
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/FsUtilGuidPipe.html" >FsUtilGuidPipe</a>
@@ -308,7 +308,7 @@
                    
                    </nav>
                </div>
-               <div class="content injectable">
+               <div class="content pipe">
                    <div class="content-data">
 
 
@@ -316,9 +316,11 @@
 
 
 
+
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li>FsValidate</li>
+  <li>Pipes</li>
+  <li>FsFormatNumberPipe</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -327,86 +329,32 @@
     </li>
 
 
+
 </ul>
 
 <div class="tab-content">
     <div class="tab-pane fade active in" id="c-info">
+
         <p class="comment">
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/services/fsvaildate.service.ts</code>
+            <code>src/format/number/number.pipe.ts</code>
         </p>
 
 
 
-            <section>
-                <h3 id="index">Index</h3>
-                <table class="table table-sm table-bordered index-table">
-                    <tbody>
-                        <tr>
-                            <td class="col-md-4">
-                                <h6><b>Methods</b></h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                        <a href="#email">email</a>
-                                    </li>
-                                    <li>
-                                        <a href="#phone">phone</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
-            <section>
-                <h3 id="constructor">Constructor</h3>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-            <code>constructor(fsUtil: <a href="../injectables/FsUtil.html">FsUtil</a>)</code>
-                                </td>
-                            </tr>
-            
-                            <tr>
-                                <td class="col-md-4">
-                                        <div>
-                                                <b>Parameters :</b>
-                                                <table class="params">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>Name</td>
-                                                            <td>Type</td>
-                                                            <td>Optional</td>
-                                                            <td>Description</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                            <tr>
-                                                              <td>fsUtil</td>
-                                                              <td>
-                                                                        <code><a href="../injectables/FsUtil.html" target="_self" >FsUtil</a></code>
-                                                              </td>
-                                                              <td>
-                                                                    no
-                                                              </td>
-                                                              <td></td>
-                                                            </tr>
-                                                    </tbody>
-                                                </table>
-                                        </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-            </section>
+        <section>
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover">
+                <tbody>
+                    <tr>
+                        <td class="col-md-3">name</td>
+                        <td class="col-md-9">fsFormatNumber</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
             <section>
                 
@@ -417,18 +365,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="email"></a>
+                                    <a name="transform"></a>
                                     <span class="name">
                                         <b>
-                                        email
+                                        transform
                                         </b>
-                                        <a href="#email"><span class="fa fa-link"></span></a>
+                                        <a href="#transform"><span class="fa fa-link"></span></a>
                                     </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-            <code>email(value: )</code>
+            <code>transform(value: , decimals?: )</code>
                                 </td>
                             </tr>
             
@@ -462,65 +410,12 @@
                                                               </td>
                                                               <td></td>
                                                             </tr>
-                                                    </tbody>
-                                                </table>
-                                        </div>
-                                        <div>
-                                        </div>
-                                        <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="../miscellaneous/functions.html#boolean" target="_self" >boolean</a></code>
-            
-                                        </div>
-                                            <div class="io-description">
-                                                
-                                            </div>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <table class="table table-sm table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="col-md-4">
-                                    <a name="phone"></a>
-                                    <span class="name">
-                                        <b>
-                                        phone
-                                        </b>
-                                        <a href="#phone"><span class="fa fa-link"></span></a>
-                                    </span>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="col-md-4">
-            <code>phone(value: )</code>
-                                </td>
-                            </tr>
-            
-            
-            
-                            <tr>
-                                <td class="col-md-4">
-            
-                                        <div class="io-description">
-                                                <b>Parameters :</b>
-                                                <table class="params">
-                                                    <thead>
-                                                        <tr>
-                                                            <td>Name</td>
-                                                            <td>Type</td>
-                                                            <td>Optional</td>
-                                                            <td>Default value</td>
-                                                            <td>Description</td>
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
                                                             <tr>
-                                                              <td>value</td>
+                                                              <td>decimals</td>
                                                               <td>
                                                               </td>
                                                               <td>
-                                                                  no
+                                                                  yes
                                                               </td>
                                                               <td>
                                                                   <code></code>
@@ -533,7 +428,7 @@
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            <b>Returns : </b>    <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
             
                                         </div>
                                             <div class="io-description">
@@ -551,8 +446,6 @@
 
 
 </div>
-
-
 
 
 

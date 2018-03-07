@@ -15,3 +15,11 @@
 .table th {
   padding: 10px;
 }
+
+.table.three-col-example td {
+  width: 33%;
+}
+
+.table.three-col-example td:first-child {
+  width: 15%;
+}
