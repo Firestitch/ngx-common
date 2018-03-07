@@ -75,6 +75,52 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
+/***/ "./format/number/number.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function number(value, decimals) {
+    return value.toLocaleString(undefined, { maximumFractionDigits: decimals });
+}
+exports.number = number;
+
+
+/***/ }),
+
+/***/ "./format/number/pipe/number.pipe.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("@angular/core");
+var number_1 = __webpack_require__("./format/number/number.ts");
+var FsFormatNumber = (function () {
+    function FsFormatNumber() {
+    }
+    FsFormatNumber.prototype.transform = function (value) {
+        return number_1.number(value);
+    };
+    FsFormatNumber = __decorate([
+        core_1.Pipe({
+            name: 'fsFormatNumber'
+        })
+    ], FsFormatNumber);
+    return FsFormatNumber;
+}());
+exports.FsFormatNumber = FsFormatNumber;
+
+
+/***/ }),
+
 /***/ "./fs-common.module.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -94,6 +140,7 @@ var fsmath_service_1 = __webpack_require__("./services/fsmath.service.ts");
 var fsutil_service_1 = __webpack_require__("./services/fsutil.service.ts");
 var fsvaildate_service_1 = __webpack_require__("./services/fsvaildate.service.ts");
 var fsutil_pipe_1 = __webpack_require__("./services/fsutil.pipe.ts");
+var number_pipe_1 = __webpack_require__("./format/number/pipe/number.pipe.ts");
 var FsCommonModule = (function () {
     function FsCommonModule() {
     }
@@ -116,12 +163,14 @@ var FsCommonModule = (function () {
             ],
             exports: [
                 fsutil_pipe_1.FsUtilGuidPipe,
-                fsutil_pipe_1.FsUtilStringifyPipe
+                fsutil_pipe_1.FsUtilStringifyPipe,
+                number_pipe_1.FsFormatNumber
             ],
             entryComponents: [],
             declarations: [
                 fsutil_pipe_1.FsUtilGuidPipe,
-                fsutil_pipe_1.FsUtilStringifyPipe
+                fsutil_pipe_1.FsUtilStringifyPipe,
+                number_pipe_1.FsFormatNumber
             ],
             providers: [
                 fsarray_service_1.FsArray,
@@ -150,7 +199,6 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__("./fs-common.module.ts"));
 __export(__webpack_require__("./services/fsarray.service.ts"));
-__export(__webpack_require__("./services/fsmath.service.ts"));
 __export(__webpack_require__("./services/fsutil.pipe.ts"));
 __export(__webpack_require__("./services/fsutil.service.ts"));
 __export(__webpack_require__("./services/fsvaildate.service.ts"));
@@ -407,9 +455,10 @@ var FsMath = (function () {
     function FsMath() {
     }
     /**
-     * @deprecated use import { round } from @firestitch/common/math; instead
+     * @deprecated use _.round() instead {@link https://lodash.com/docs/4.17.5#round}
     */
     FsMath.prototype.round = function (number, precision) {
+        console.warn('@deprecated use _.round() instead {@link https://lodash.com/docs/4.17.5#round}');
         precision = precision || 0;
         var factor = Math.pow(10, precision);
         var tempNumber = number * factor;
@@ -532,6 +581,7 @@ var FsUtil = (function () {
      * @deprecated use _.toInteger() instead
     */
     FsUtil.prototype.int = function (value) {
+        console.warn('@deprecated use _.toInteger() instead');
         value = parseInt(value);
         if (isNaN(value)) {
             value = 0;
@@ -539,9 +589,10 @@ var FsUtil = (function () {
         return value;
     };
     /**
-     * @deprecated use _.toFinite() instaed
+     * @deprecated use _.toFinite() instead
     */
     FsUtil.prototype.float = function (value) {
+        console.warn('@deprecated use _.toFinite() instead');
         value = parseFloat(value);
         if (isNaN(value)) {
             value = 0;
@@ -552,6 +603,7 @@ var FsUtil = (function () {
      * @deprecated use _.toString() instead
     */
     FsUtil.prototype.string = function (string) {
+        console.warn('@deprecated use _.toString() instead');
         if (string === null || string === undefined) {
             string = '';
         }
@@ -561,6 +613,7 @@ var FsUtil = (function () {
      * @deprecated use import { isEmpty } from @firestitch/common/util; instead
     */
     FsUtil.prototype.isEmpty = function (value, options) {
+        console.warn('@deprecated use import { isEmpty } from @firestitch/common/util; instead');
         options = options || {};
         return value === undefined ||
             value === null ||
@@ -575,6 +628,7 @@ var FsUtil = (function () {
      * @deprecated use _.isInteger() instead
     */
     FsUtil.prototype.isInt = function (value, type) {
+        console.warn('@deprecated use _.isInteger() instead');
         var int = !!this.string(value).match(/^\d+$/);
         if (!int) {
             return false;
@@ -588,6 +642,7 @@ var FsUtil = (function () {
      * @deprecated use _.each() instead {@link https://lodash.com/docs/4.17.5#forEach}
     */
     FsUtil.prototype.each = function (object, func) {
+        console.warn('@deprecated use _.each() instead {@link https://lodash.com/docs/4.17.5#forEach}');
         if (!this.isArray(object) && !this.isObject(object)) {
             return;
         }
@@ -597,33 +652,38 @@ var FsUtil = (function () {
     };
     /**
      * @deprecated use _.isArrayLikeObject() {@link https://lodash.com/docs/4.17.5#isArrayLikeObject}
-     * or _.isObject() {@link https://lodash.com/docs/4.17.5#isObject} istead
+     * or _.isObject() {@link https://lodash.com/docs/4.17.5#isObject} instead
     */
     FsUtil.prototype.isObject = function (value) {
+        console.warn('@deprecated use _.isArrayLikeObject() {@link https://lodash.com/docs/4.17.5#isArrayLikeObject} or _.isObject() {@link https://lodash.com/docs/4.17.5#isObject} instead');
         return value !== null && typeof value === 'object' && !this.isArray(value);
     };
     /**
       * @deprecated use _.isString() instead {@link https://lodash.com/docs/4.17.5#isString}
     */
     FsUtil.prototype.isString = function (value) {
+        console.warn('@deprecated use _.isString() instead {@link https://lodash.com/docs/4.17.5#isString}');
         return typeof value === 'string' || value instanceof String;
     };
     /**
      * @deprecated use _.isArray() instead {@link https://lodash.com/docs/4.17.5#isArray}
     */
     FsUtil.prototype.isArray = function (value) {
+        console.warn('@deprecated use _.isArray() instead {@link https://lodash.com/docs/4.17.5#isArray}');
         return value instanceof Array;
     };
     /**
      * @deprecated use import { isNumeric } from @firestitch/common/util; instead
     */
     FsUtil.prototype.isNumeric = function (value) {
+        console.warn('@deprecated use import { isNumeric } from @firestitch/common/util; instead');
         return this.string(value).length && !!this.string(value).match(/^-?\d*\.?\d*$/);
     };
     /**
      * @deprecated use import { isClass } from @firestitch/common/util; instead
     */
     FsUtil.prototype.isClass = function (value, cls) {
+        console.warn('@deprecated use import { isClass } from @firestitch/common/util; instead');
         if (this.isObject(value)) {
             if (this.isString(cls)) {
                 if (value.constructor) {
@@ -644,12 +704,14 @@ var FsUtil = (function () {
       * @deprecated use _.isBoolean() instead {@link https://lodash.com/docs/4.17.5#isBoolean}
     */
     FsUtil.prototype.isBoolean = function (value) {
+        console.warn('@deprecated use _.isBoolean() instead {@link https://lodash.com/docs/4.17.5#isBoolean}');
         return value === true || value === false;
     };
     /**
      * @deprecated use import { value } from @firestitch/common/util; instead
     */
     FsUtil.prototype.value = function (object, key, def) {
+        console.warn('@deprecated use import { value } from @firestitch/common/util; instead');
         if (this.isObject(object) || this.isArray(object)) {
             if (object.hasOwnProperty(key)) {
                 return object[key];
@@ -657,25 +719,8 @@ var FsUtil = (function () {
         }
         return def;
     };
-    FsUtil.prototype.interval = function (fn, delay, name) {
-        var instance = setInterval(fn, delay);
-        if (name) {
-            this.intervals[name] = instance;
-        }
-        return function () {
-            window.clearInterval(instance);
-        };
-    };
-    FsUtil.prototype.clearInterval = function (name) {
-        var instance = this.intervals[name];
-        if (instance) {
-            window.clearInterval(instance);
-        }
-    };
-    /**
-     * @deprecated use import { isClass } from @firestitch/common/util; instead
-    */
     FsUtil.prototype.throttle = function (func, wait) {
+        console.warn('@deprecated use import { throttle } from @firestitch/common/util; instead');
         var waiting = false; // Initially, we're not waiting
         return function () {
             if (!waiting) {
@@ -691,6 +736,7 @@ var FsUtil = (function () {
      * @deprecated use import { debounce } from @firestitch/common/util; instead
     */
     FsUtil.prototype.debounce = function (func, wait, immediate) {
+        console.warn('@deprecated use import { debounce } from @firestitch/common/util; instead');
         var timeout;
         return function () {
             var context = this, args = arguments;
@@ -710,6 +756,7 @@ var FsUtil = (function () {
      * @deprecated use import { length } from @firestitch/common/util; instead
     */
     FsUtil.prototype.length = function (object) {
+        console.warn('@deprecated use import { length } from @firestitch/common/util; instead');
         if (this.isObject(object)) {
             return Object.keys(object).length;
         }
@@ -722,12 +769,14 @@ var FsUtil = (function () {
      * @deprecated use import { boolean } from @firestitch/common/util; instead
     */
     FsUtil.prototype.boolean = function (value) {
+        console.warn('@deprecated use import { boolean } from @firestitch/common/util; instead');
         return this.string(value).toLowerCase() !== 'false' && !!value;
     };
     /**
      * @deprecated use import { stringify } from @firestitch/common/util; instead
     */
     FsUtil.prototype.stringify = function (value) {
+        console.warn('@deprecated use import { stringify } from @firestitch/common/util; instead');
         return JSON.stringify(value);
     };
     FsUtil = __decorate([

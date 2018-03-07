@@ -1,6 +1,6 @@
 {
   "name": "@firestitch/common",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/fs-common"
@@ -16,19 +16,21 @@
   "bugs": {
     "url": "https://github.com/Firestitch/fs-common/issues"
   },
-  "main": "package/index.js",
-  "typings": "package/index.d.ts",
+  "main": "index.js",
+  "typings": "index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "publish": "npm publish ./package --public",
     "clean:build": "rimraf build",
     "clean:demo": "rimraf demo",
     "clean:package": "rimraf package",
     "copy:build": "cpx -v \"src/**/*\" \"build\"",
+    "copy:package": "cpx -v \"package.json\" \"package\"",
     "copy:styles": "cpx -v \"build/**/*.css\" \"package\"",
     "copy:templates": "cpx -v \"build/**/*.html\" \"package\"",
     "package": "npm-run-all -s clean:build clean:package copy:build build:sass package:replace-scss package:aot package:build copy:styles copy:templates package:minify clean:build package:functions package:cleanup",
     "package:functions": "tsc -p tsconfig.es6.json",
-    "package:cleanup": "rimraf package/services rimraf package/fs-common.*",
+    "package:cleanup": "rimraf package/services/**/*.js package/fs-common.module.js",
     "package:aot": "ngc -p tsconfig.aot.json",
     "package:replace-scss": "node ./tools/replace-scss.js",
     "package:dev": "webpack --config=tools/webpack.dev.js --progress --profile --watch",

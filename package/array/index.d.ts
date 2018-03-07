@@ -1,4 +1,3 @@
-export * from './applyDepth';
 export * from './compare';
 export * from './filter';
 export * from './inArray';
