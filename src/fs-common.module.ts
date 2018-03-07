@@ -6,7 +6,7 @@ import { FsMath } from './services/fsmath.service';
 import { FsUtil } from './services/fsutil.service';
 import { FsValidate } from './services/fsvaildate.service';
 import { FsUtilGuidPipe, FsUtilStringifyPipe } from './services/fsutil.pipe';
-import { FsFormatNumber } from './format/number/pipe/number.pipe';
+import { FsFormatNumberPipe } from './format';
 
 
 @NgModule({
@@ -16,14 +16,14 @@ import { FsFormatNumber } from './format/number/pipe/number.pipe';
   exports: [
     FsUtilGuidPipe,
     FsUtilStringifyPipe,
-    FsFormatNumber
+    FsFormatNumberPipe
   ],
   entryComponents: [
   ],
   declarations: [
     FsUtilGuidPipe,
     FsUtilStringifyPipe,
-    FsFormatNumber
+    FsFormatNumberPipe
   ],
   providers: [
     FsArray,

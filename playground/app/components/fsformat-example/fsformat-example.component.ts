@@ -1,11 +1,6 @@
-import {Component} from '@angular/core';
-import {
-  FsFormatNumber
-} from '../../../../src/format/number/pipe';
-
-import {
-  number
-} from '../../../../src/format/number';
+import { Component } from '@angular/core';
+import { number } from '../../../../src/format';
+import { FsUtil } from '../../../../src';
 
 @Component({
   selector: 'fsformat-example',
@@ -15,13 +10,14 @@ export class FsFormatExampleComponent {
 
   examples = [];
   pipes = [];
-  
-  constructor() {
+
+  constructor(fsUtil: FsUtil) {
+    console.log(fsUtil.guid());
     this.examples = [
       {
         name: 'Number',
-        code: `import { number } from '@firestitch/common/format';\nformat(42397803.23987,2)`,
-        result: number(42397803)
+        code: `import { number } from '@firestitch/common/format';\nnumber(42397803.23987, 2)`,
+        result: number(42397803.23987, 2)
       }
     ];
 
@@ -29,7 +25,7 @@ export class FsFormatExampleComponent {
       example.result = JSON.stringify(example.result);
     });
 
-    this.pipes['number'] = 'import { FsFormatNumber } from \'@firestitch/format/number/pipe\'\n{{42397803.23987|fsFormatNumber:2}}';
+    this.pipes['number'] = '{{42397803.23987|fsFormatNumber:2}}';
   }
 
 }
