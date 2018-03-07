@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { number } from '../../../../src/format';
-import { FsUtil } from '../../../../src';
 
 @Component({
   selector: 'fsformat-example',
@@ -11,8 +10,8 @@ export class FsFormatExampleComponent {
   examples = [];
   pipes = [];
 
-  constructor(fsUtil: FsUtil) {
-    console.log(fsUtil.guid());
+  constructor() {
+
     this.examples = [
       {
         name: 'Number',
