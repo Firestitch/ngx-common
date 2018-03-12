@@ -1,5 +1,5 @@
 <h2>Functions</h2>
-<table class="table">
+<table class="table three-col-example">
   <thead>
   <tr>
     <th>Description</th>
@@ -9,7 +9,7 @@
   </thead>
   <tr *ngFor="let example of examples">
     <td>{{example.name}}</td>
-    <td><pre class="code-ts hljs"><code mwlHighlightJs [source]="example.code" language="ts"></code></pre></td>
-    <td><pre class="code-json hljs"><code mwlHighlightJs [source]="example.result" language="json"></code></pre></td>
+    <td><div class="code-ts hljs"><code mwlHighlightJs [source]="example.code" language="ts"></code></div></td>
+    <td><div class="code-json hljs"><code mwlHighlightJs [source]="example.result" language="json"></code></div></td>
   </tr>
 </table>

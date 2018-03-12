@@ -75,21 +75,36 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
-/***/ "./format/number/number.ts":
+/***/ "./format/index.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
-Object.defineProperty(exports, "__esModule", { value: true });
-function number(value, decimals) {
-    return value.toLocaleString(undefined, { maximumFractionDigits: decimals });
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
 }
-exports.number = number;
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./format/number/index.ts"));
 
 
 /***/ }),
 
-/***/ "./format/number/pipe/number.pipe.ts":
+/***/ "./format/number/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./format/number/number.ts"));
+__export(__webpack_require__("./format/number/number.pipe.ts"));
+
+
+/***/ }),
+
+/***/ "./format/number/number.pipe.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -103,20 +118,34 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("@angular/core");
 var number_1 = __webpack_require__("./format/number/number.ts");
-var FsFormatNumber = (function () {
-    function FsFormatNumber() {
+var FsFormatNumberPipe = (function () {
+    function FsFormatNumberPipe() {
     }
-    FsFormatNumber.prototype.transform = function (value) {
-        return number_1.number(value);
+    FsFormatNumberPipe.prototype.transform = function (value, decimals) {
+        return number_1.number(value, decimals);
     };
-    FsFormatNumber = __decorate([
+    FsFormatNumberPipe = __decorate([
         core_1.Pipe({
             name: 'fsFormatNumber'
         })
-    ], FsFormatNumber);
-    return FsFormatNumber;
+    ], FsFormatNumberPipe);
+    return FsFormatNumberPipe;
 }());
-exports.FsFormatNumber = FsFormatNumber;
+exports.FsFormatNumberPipe = FsFormatNumberPipe;
+
+
+/***/ }),
+
+/***/ "./format/number/number.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function number(value, decimals) {
+    return value.toLocaleString(undefined, { maximumFractionDigits: decimals });
+}
+exports.number = number;
 
 
 /***/ }),
@@ -140,7 +169,7 @@ var fsmath_service_1 = __webpack_require__("./services/fsmath.service.ts");
 var fsutil_service_1 = __webpack_require__("./services/fsutil.service.ts");
 var fsvaildate_service_1 = __webpack_require__("./services/fsvaildate.service.ts");
 var fsutil_pipe_1 = __webpack_require__("./services/fsutil.pipe.ts");
-var number_pipe_1 = __webpack_require__("./format/number/pipe/number.pipe.ts");
+var format_1 = __webpack_require__("./format/index.ts");
 var FsCommonModule = (function () {
     function FsCommonModule() {
     }
@@ -164,13 +193,13 @@ var FsCommonModule = (function () {
             exports: [
                 fsutil_pipe_1.FsUtilGuidPipe,
                 fsutil_pipe_1.FsUtilStringifyPipe,
-                number_pipe_1.FsFormatNumber
+                format_1.FsFormatNumberPipe
             ],
             entryComponents: [],
             declarations: [
                 fsutil_pipe_1.FsUtilGuidPipe,
                 fsutil_pipe_1.FsUtilStringifyPipe,
-                number_pipe_1.FsFormatNumber
+                format_1.FsFormatNumberPipe
             ],
             providers: [
                 fsarray_service_1.FsArray,
@@ -226,6 +255,7 @@ var FsArray = (function () {
      * @deprecated use import { nameValue } from @firestitch/common/array; instead
     */
     FsArray.prototype.nameValue = function (array, name, value) {
+        console.warn('@deprecated use import { nameValue } from @firestitch/common/array; instead');
         var list = [];
         if (name || value) {
             var nameFn_1 = typeof name === 'function' ? name : function (item) { return item[name]; };
@@ -245,6 +275,7 @@ var FsArray = (function () {
      * @deprecated use import { remove } from @firestitch/common/array; instead
     */
     FsArray.prototype.remove = function (array, query) {
+        console.warn('@deprecated use import { remove } from @firestitch/common/array; instead');
         var idx = this.indexOf(array, query);
         if (idx >= 0) {
             return array.splice(idx, 1);
@@ -256,6 +287,7 @@ var FsArray = (function () {
     */
     FsArray.prototype.indexOf = function (array, query) {
         var _this = this;
+        console.warn('@deprecated use import { indexOf } from @firestitch/common/array; instead');
         if (typeof query !== 'function') {
             var queryObj_1 = query;
             query = function (item) {
@@ -273,6 +305,7 @@ var FsArray = (function () {
      * @deprecated use import { compare } from @firestitch/common/array; instead
     */
     FsArray.prototype.compare = function (query, item) {
+        console.warn('@deprecated use import { compare } from @firestitch/common/array; instead');
         var value = true;
         for (var key in query) {
             value = value && item[key] == query[key];
@@ -284,6 +317,7 @@ var FsArray = (function () {
     */
     FsArray.prototype.filter = function (array, query) {
         var _this = this;
+        console.warn('@deprecated use import { filter } from @firestitch/common/array; instead');
         if (typeof query !== 'function') {
             var queryObj_2 = query;
             query = function (item) {
@@ -310,6 +344,7 @@ var FsArray = (function () {
      * @deprecated use import { index } from @firestitch/common/array; instead
     */
     FsArray.prototype.index = function (array, property) {
+        console.warn('@deprecated use import { index } from @firestitch/common/array; instead');
         var list = {};
         array.forEach(function (item, idx) {
             list[item[property]] = item;
@@ -321,6 +356,7 @@ var FsArray = (function () {
     */
     FsArray.prototype.sort = function (array, query, reverse) {
         if (reverse === void 0) { reverse = false; }
+        console.warn('@deprecated use import { sort } from @firestitch/common/array; instead');
         if (typeof query !== 'function') {
             var queryStr_1 = query;
             query = function (a, b) {
@@ -350,6 +386,7 @@ var FsArray = (function () {
      * @deprecated use import { rsort } from @firestitch/common/array; instead
     */
     FsArray.prototype.rsort = function (array, query) {
+        console.warn('@deprecated use import { rsort } from @firestitch/common/array; instead');
         return this.sort(array, query, true);
     };
     /**
@@ -357,6 +394,7 @@ var FsArray = (function () {
     */
     FsArray.prototype.list = function (array, property, index) {
         if (index === void 0) { index = null; }
+        console.warn('@deprecated use import { list } from @firestitch/common/array; instead');
         var list = index ? {} : [];
         array.forEach(function (item, idx) {
             if (index) {
@@ -374,10 +412,12 @@ var FsArray = (function () {
     FsArray.prototype.applyDepth = function (objects, parent_property, id_property, depth_property) {
         if (id_property === void 0) { id_property = 'id'; }
         if (depth_property === void 0) { depth_property = 'depth'; }
+        console.warn('@deprecated use import { applyDepth } from @firestitch/common/array; instead');
         var keyed = {};
         objects.forEach(function (object) {
-            if (!object[parent_property])
+            if (!object[parent_property]) {
                 object[depth_property] = 0;
+            }
             keyed[object[id_property]] = object;
         });
         Object.keys(keyed).forEach(function (key) {
@@ -396,6 +436,7 @@ var FsArray = (function () {
      * @deprecated use import { inArray } from @firestitch/common/array; instead
     */
     FsArray.prototype.inArray = function (values, array) {
+        console.warn('@deprecated use import { inArray } from @firestitch/common/array; instead');
         if (!Array.isArray(values)) {
             values = [values];
         }
@@ -410,18 +451,21 @@ var FsArray = (function () {
      * @deprecated use import { keyExists } from @firestitch/common/array; instead
     */
     FsArray.prototype.keyExists = function (array, key) {
+        console.warn('@deprecated use import { keyExists } from @firestitch/common/array; instead');
         return array.hasOwnProperty(key);
     };
     /**
      * @deprecated use import { length } from @firestitch/common/array; instead
     */
     FsArray.prototype.length = function (array) {
+        console.warn('@deprecated use import { length } from @firestitch/common/array; instead');
         return array.length;
     };
     /**
      * @deprecated use import { ksort } from @firestitch/common/array; instead
     */
     FsArray.prototype.ksort = function (unordered) {
+        console.warn('@deprecated use import { ksort } from @firestitch/common/array; instead');
         Object.keys(unordered).sort().forEach(function (key) {
             var value = unordered[key];
             delete unordered[key];
@@ -552,6 +596,7 @@ var FsUtil = (function () {
     * @deprecated use @firestitch/common/util/guid instead
     */
     FsUtil.prototype.guid = function (pattern) {
+        console.warn('@deprecated use @firestitch/common/util/guid instead');
         pattern = pattern || 'xxxxxx';
         return pattern.replace(/[xy]/g, function (c) {
             var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -562,6 +607,7 @@ var FsUtil = (function () {
      * @deprecated use import { uuid } from @firestitch/common/util; instead
     */
     FsUtil.prototype.uuid = function () {
+        console.warn('@deprecated use @firestitch/common/util/uuid instead');
         return this.guid('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
     };
     /**
@@ -569,6 +615,7 @@ var FsUtil = (function () {
     */
     FsUtil.prototype.resolve = function (promise, defaults) {
         if (defaults === void 0) { defaults = []; }
+        console.warn('@deprecated use @firestitch/common/util/resolve instead');
         var result = defaults;
         return new Promise(function (resolve) {
             promise.then(function (data) {

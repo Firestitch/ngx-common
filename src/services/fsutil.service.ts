@@ -53,6 +53,7 @@ export class FsUtil {
     * @deprecated use @firestitch/common/util/guid instead
     */
     public guid(pattern?: string): string {
+      console.warn('@deprecated use @firestitch/common/util/guid instead');
       pattern = pattern || 'xxxxxx';
       return pattern.replace(/[xy]/g, function(c) {
         var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -64,6 +65,7 @@ export class FsUtil {
      * @deprecated use import { uuid } from @firestitch/common/util; instead
     */
     public uuid(): string {
+      console.warn('@deprecated use @firestitch/common/util/uuid instead');
       return this.guid('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
     }
 
@@ -71,6 +73,7 @@ export class FsUtil {
      * @deprecated use import { resolve } from @firestitch/common/util; instead
     */
     public resolve(promise: Promise<object>, defaults = []): Promise<object> {
+      console.warn('@deprecated use @firestitch/common/util/resolve instead');
       const result = defaults;
       return new Promise(resolve => {
             promise.then(function (data) {
@@ -108,7 +111,7 @@ export class FsUtil {
      * @deprecated use _.toString() instead
     */
     public string(string): string {
-      console.warn('@deprecated use _.toString() instead'); 
+      console.warn('@deprecated use _.toString() instead');
         if (string === null || string === undefined) {
             string = '';
         }
@@ -120,7 +123,7 @@ export class FsUtil {
      * @deprecated use import { isEmpty } from @firestitch/common/util; instead
     */
     public isEmpty(value, options?): boolean {
-        console.warn('@deprecated use import { isEmpty } from @firestitch/common/util; instead'); 
+        console.warn('@deprecated use import { isEmpty } from @firestitch/common/util; instead');
         options = options || {};
         return value === undefined ||
             value === null ||
@@ -138,7 +141,7 @@ export class FsUtil {
      * @deprecated use _.isInteger() instead
     */
     public isInt(value, type?) {
-        console.warn('@deprecated use _.isInteger() instead'); 
+        console.warn('@deprecated use _.isInteger() instead');
         const int = !!this.string(value).match(/^\d+$/);
 
         if (!int) {
@@ -156,7 +159,7 @@ export class FsUtil {
      * @deprecated use _.each() instead {@link https://lodash.com/docs/4.17.5#forEach}
     */
     public each(object, func) {
-      console.warn('@deprecated use _.each() instead {@link https://lodash.com/docs/4.17.5#forEach}'); 
+      console.warn('@deprecated use _.each() instead {@link https://lodash.com/docs/4.17.5#forEach}');
       if (!this.isArray(object) && !this.isObject(object)) {
         return;
       }
@@ -171,7 +174,7 @@ export class FsUtil {
      * or _.isObject() {@link https://lodash.com/docs/4.17.5#isObject} instead
     */
     public isObject(value): boolean {
-      console.warn('@deprecated use _.isArrayLikeObject() {@link https://lodash.com/docs/4.17.5#isArrayLikeObject} or _.isObject() {@link https://lodash.com/docs/4.17.5#isObject} instead'); 
+      console.warn('@deprecated use _.isArrayLikeObject() {@link https://lodash.com/docs/4.17.5#isArrayLikeObject} or _.isObject() {@link https://lodash.com/docs/4.17.5#isObject} instead');
       return value !== null && typeof value === 'object' && !this.isArray(value);
     }
 
@@ -179,7 +182,7 @@ export class FsUtil {
       * @deprecated use _.isString() instead {@link https://lodash.com/docs/4.17.5#isString}
     */
     public isString(value): boolean {
-      console.warn('@deprecated use _.isString() instead {@link https://lodash.com/docs/4.17.5#isString}'); 
+      console.warn('@deprecated use _.isString() instead {@link https://lodash.com/docs/4.17.5#isString}');
       return typeof value === 'string' || value instanceof String;
     }
 
@@ -187,7 +190,7 @@ export class FsUtil {
      * @deprecated use _.isArray() instead {@link https://lodash.com/docs/4.17.5#isArray}
     */
     public isArray(value): boolean {
-      console.warn('@deprecated use _.isArray() instead {@link https://lodash.com/docs/4.17.5#isArray}'); 
+      console.warn('@deprecated use _.isArray() instead {@link https://lodash.com/docs/4.17.5#isArray}');
       return value instanceof Array;
     }
 
@@ -195,7 +198,7 @@ export class FsUtil {
      * @deprecated use import { isNumeric } from @firestitch/common/util; instead
     */
     public isNumeric(value): boolean {
-      console.warn('@deprecated use import { isNumeric } from @firestitch/common/util; instead'); 
+      console.warn('@deprecated use import { isNumeric } from @firestitch/common/util; instead');
       return this.string(value).length && !!this.string(value).match(/^-?\d*\.?\d*$/);
     }
 
@@ -203,7 +206,7 @@ export class FsUtil {
      * @deprecated use import { isClass } from @firestitch/common/util; instead
     */
     public isClass(value, cls) {
-        console.warn('@deprecated use import { isClass } from @firestitch/common/util; instead'); 
+        console.warn('@deprecated use import { isClass } from @firestitch/common/util; instead');
         if (this.isObject(value)) {
 
             if (this.isString(cls)) {
@@ -229,7 +232,7 @@ export class FsUtil {
       * @deprecated use _.isBoolean() instead {@link https://lodash.com/docs/4.17.5#isBoolean}
     */
     public isBoolean(value): boolean {
-      console.warn('@deprecated use _.isBoolean() instead {@link https://lodash.com/docs/4.17.5#isBoolean}'); 
+      console.warn('@deprecated use _.isBoolean() instead {@link https://lodash.com/docs/4.17.5#isBoolean}');
       return value === true || value === false;
     }
 
@@ -237,7 +240,7 @@ export class FsUtil {
      * @deprecated use import { value } from @firestitch/common/util; instead
     */
     public value(object, key, def): any {
-      console.warn('@deprecated use import { value } from @firestitch/common/util; instead'); 
+      console.warn('@deprecated use import { value } from @firestitch/common/util; instead');
         if (this.isObject(object) || this.isArray(object)) {
 
             if (object.hasOwnProperty(key)) {
@@ -249,7 +252,7 @@ export class FsUtil {
     }
 
     public throttle(func, wait) {
-      console.warn('@deprecated use import { throttle } from @firestitch/common/util; instead'); 
+      console.warn('@deprecated use import { throttle } from @firestitch/common/util; instead');
       let waiting = false;                  	// Initially, we're not waiting
         return function () {               		// We return a throttled function
             if (!waiting) {                   	// If we're not waiting
@@ -266,7 +269,7 @@ export class FsUtil {
      * @deprecated use import { debounce } from @firestitch/common/util; instead
     */
     public debounce(func, wait, immediate) {
-      console.warn('@deprecated use import { debounce } from @firestitch/common/util; instead'); 
+      console.warn('@deprecated use import { debounce } from @firestitch/common/util; instead');
       var timeout;
         return function () {
             var context = this, args = arguments;
@@ -285,7 +288,7 @@ export class FsUtil {
      * @deprecated use import { length } from @firestitch/common/util; instead
     */
     public length(object): number {
-      console.warn('@deprecated use import { length } from @firestitch/common/util; instead'); 
+      console.warn('@deprecated use import { length } from @firestitch/common/util; instead');
       if (this.isObject(object)) {
             return Object.keys(object).length;
         }
@@ -301,7 +304,7 @@ export class FsUtil {
      * @deprecated use import { boolean } from @firestitch/common/util; instead
     */
     public boolean(value) {
-      console.warn('@deprecated use import { boolean } from @firestitch/common/util; instead'); 
+      console.warn('@deprecated use import { boolean } from @firestitch/common/util; instead');
       return this.string(value).toLowerCase() !== 'false' && !!value;
     }
 
@@ -309,7 +312,7 @@ export class FsUtil {
      * @deprecated use import { stringify } from @firestitch/common/util; instead
     */
     public stringify(value) {
-      console.warn('@deprecated use import { stringify } from @firestitch/common/util; instead'); 
+      console.warn('@deprecated use import { stringify } from @firestitch/common/util; instead');
       return JSON.stringify(value);
     }
 }

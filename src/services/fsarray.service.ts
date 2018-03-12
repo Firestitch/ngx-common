@@ -6,7 +6,7 @@ export class FsArray {
      * @deprecated use import { nameValue } from @firestitch/common/array; instead
     */
     public nameValue(array, name, value): Array<any> {
-
+        console.warn('@deprecated use import { nameValue } from @firestitch/common/array; instead');
         let list = [];
         if (name || value) {
 
@@ -30,7 +30,7 @@ export class FsArray {
      * @deprecated use import { remove } from @firestitch/common/array; instead
     */
     public remove(array, query): any {
-
+        console.warn('@deprecated use import { remove } from @firestitch/common/array; instead');
         let idx = this.indexOf(array, query);
 
         if (idx >= 0) {
@@ -44,7 +44,7 @@ export class FsArray {
      * @deprecated use import { indexOf } from @firestitch/common/array; instead
     */
     public indexOf(array, query): number {
-
+        console.warn('@deprecated use import { indexOf } from @firestitch/common/array; instead');
         if (typeof query !== 'function') {
             let queryObj = query;
             query = (item) => {
@@ -66,7 +66,7 @@ export class FsArray {
      * @deprecated use import { compare } from @firestitch/common/array; instead
     */
     public compare(query, item): boolean {
-
+        console.warn('@deprecated use import { compare } from @firestitch/common/array; instead');
         let value = true;
         for (let key in query) {
             value = value && item[key] == query[key];
@@ -79,7 +79,7 @@ export class FsArray {
      * @deprecated use import { filter } from @firestitch/common/array; instead
     */
     public filter(array, query): Array<any> {
-
+        console.warn('@deprecated use import { filter } from @firestitch/common/array; instead');
         if (typeof query !== 'function') {
             let queryObj = query;
             query = (item) => {
@@ -108,6 +108,7 @@ export class FsArray {
      * @deprecated use import { index } from @firestitch/common/array; instead
     */
     public index(array, property): Object {
+        console.warn('@deprecated use import { index } from @firestitch/common/array; instead');
         let list = {};
         array.forEach(function (item, idx) {
             list[item[property]] = item;
@@ -120,6 +121,7 @@ export class FsArray {
      * @deprecated use import { sort } from @firestitch/common/array; instead
     */
     public sort(array, query, reverse = false): Array<any> {
+        console.warn('@deprecated use import { sort } from @firestitch/common/array; instead');
         if (typeof query !== 'function') {
             let queryStr = query;
             query = function (a, b) {
@@ -148,7 +150,8 @@ export class FsArray {
      * @deprecated use import { rsort } from @firestitch/common/array; instead
     */
     public rsort(array, query): Array<any> {
-        return this.sort(array, query, true);
+      console.warn('@deprecated use import { rsort } from @firestitch/common/array; instead');
+      return this.sort(array, query, true);
     }
 
 
@@ -156,6 +159,7 @@ export class FsArray {
      * @deprecated use import { list } from @firestitch/common/array; instead
     */
     public list(array, property, index = null): Object {
+        console.warn('@deprecated use import { list } from @firestitch/common/array; instead');
         let list: any = index ? {} : [];
         array.forEach(function (item, idx) {
             if (index) {
@@ -171,12 +175,12 @@ export class FsArray {
      * @deprecated use import { applyDepth } from @firestitch/common/array; instead
     */
     public applyDepth(objects, parent_property, id_property = 'id', depth_property = 'depth') {
-
+        console.warn('@deprecated use import { applyDepth } from @firestitch/common/array; instead');
         let keyed = {};
         objects.forEach(function (object) {
-            if (!object[parent_property])
+            if (!object[parent_property]) {
                 object[depth_property] = 0;
-
+            }
             keyed[object[id_property]] = object;
         });
         Object.keys(keyed).forEach(key => {
@@ -197,7 +201,7 @@ export class FsArray {
      * @deprecated use import { inArray } from @firestitch/common/array; instead
     */
     inArray(values, array) {
-
+        console.warn('@deprecated use import { inArray } from @firestitch/common/array; instead');
         if (!Array.isArray(values)) {
             values = [values];
         }
@@ -215,6 +219,7 @@ export class FsArray {
      * @deprecated use import { keyExists } from @firestitch/common/array; instead
     */
     keyExists(array, key) {
+        console.warn('@deprecated use import { keyExists } from @firestitch/common/array; instead');
         return array.hasOwnProperty(key);
     }
 
@@ -222,6 +227,7 @@ export class FsArray {
      * @deprecated use import { length } from @firestitch/common/array; instead
     */
     length(array) {
+        console.warn('@deprecated use import { length } from @firestitch/common/array; instead');
         return array.length;
     }
 
@@ -229,6 +235,7 @@ export class FsArray {
      * @deprecated use import { ksort } from @firestitch/common/array; instead
     */
     ksort(unordered) {
+        console.warn('@deprecated use import { ksort } from @firestitch/common/array; instead');
         Object.keys(unordered).sort().forEach(function (key) {
             let value = unordered[key];
             delete unordered[key];

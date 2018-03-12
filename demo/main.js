@@ -488,6 +488,20 @@ exports.sort = sort;
 
 /***/ }),
 
+/***/ "../src/format/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("../src/format/number/index.ts"));
+
+
+/***/ }),
+
 /***/ "../src/format/number/index.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -498,6 +512,39 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__("../src/format/number/number.ts"));
+__export(__webpack_require__("../src/format/number/number.pipe.ts"));
+
+
+/***/ }),
+
+/***/ "../src/format/number/number.pipe.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../node_modules/@angular/core/esm2015/core.js");
+var number_1 = __webpack_require__("../src/format/number/number.ts");
+var FsFormatNumberPipe = (function () {
+    function FsFormatNumberPipe() {
+    }
+    FsFormatNumberPipe.prototype.transform = function (value, decimals) {
+        return number_1.number(value, decimals);
+    };
+    FsFormatNumberPipe = __decorate([
+        core_1.Pipe({
+            name: 'fsFormatNumber'
+        })
+    ], FsFormatNumberPipe);
+    return FsFormatNumberPipe;
+}());
+exports.FsFormatNumberPipe = FsFormatNumberPipe;
 
 
 /***/ }),
@@ -512,38 +559,6 @@ function number(value, decimals) {
     return value.toLocaleString(undefined, { maximumFractionDigits: decimals });
 }
 exports.number = number;
-
-
-/***/ }),
-
-/***/ "../src/format/number/pipe/number.pipe.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../node_modules/@angular/core/esm2015/core.js");
-var number_1 = __webpack_require__("../src/format/number/number.ts");
-var FsFormatNumber = (function () {
-    function FsFormatNumber() {
-    }
-    FsFormatNumber.prototype.transform = function (value) {
-        return number_1.number(value);
-    };
-    FsFormatNumber = __decorate([
-        core_1.Pipe({
-            name: 'fsFormatNumber'
-        })
-    ], FsFormatNumber);
-    return FsFormatNumber;
-}());
-exports.FsFormatNumber = FsFormatNumber;
 
 
 /***/ }),
@@ -567,7 +582,7 @@ var fsmath_service_1 = __webpack_require__("../src/services/fsmath.service.ts");
 var fsutil_service_1 = __webpack_require__("../src/services/fsutil.service.ts");
 var fsvaildate_service_1 = __webpack_require__("../src/services/fsvaildate.service.ts");
 var fsutil_pipe_1 = __webpack_require__("../src/services/fsutil.pipe.ts");
-var number_pipe_1 = __webpack_require__("../src/format/number/pipe/number.pipe.ts");
+var format_1 = __webpack_require__("../src/format/index.ts");
 var FsCommonModule = (function () {
     function FsCommonModule() {
     }
@@ -591,13 +606,13 @@ var FsCommonModule = (function () {
             exports: [
                 fsutil_pipe_1.FsUtilGuidPipe,
                 fsutil_pipe_1.FsUtilStringifyPipe,
-                number_pipe_1.FsFormatNumber
+                format_1.FsFormatNumberPipe
             ],
             entryComponents: [],
             declarations: [
                 fsutil_pipe_1.FsUtilGuidPipe,
                 fsutil_pipe_1.FsUtilStringifyPipe,
-                number_pipe_1.FsFormatNumber
+                format_1.FsFormatNumberPipe
             ],
             providers: [
                 fsarray_service_1.FsArray,
@@ -653,6 +668,7 @@ var FsArray = (function () {
      * @deprecated use import { nameValue } from @firestitch/common/array; instead
     */
     FsArray.prototype.nameValue = function (array, name, value) {
+        console.warn('@deprecated use import { nameValue } from @firestitch/common/array; instead');
         var list = [];
         if (name || value) {
             var nameFn_1 = typeof name === 'function' ? name : function (item) { return item[name]; };
@@ -672,6 +688,7 @@ var FsArray = (function () {
      * @deprecated use import { remove } from @firestitch/common/array; instead
     */
     FsArray.prototype.remove = function (array, query) {
+        console.warn('@deprecated use import { remove } from @firestitch/common/array; instead');
         var idx = this.indexOf(array, query);
         if (idx >= 0) {
             return array.splice(idx, 1);
@@ -683,6 +700,7 @@ var FsArray = (function () {
     */
     FsArray.prototype.indexOf = function (array, query) {
         var _this = this;
+        console.warn('@deprecated use import { indexOf } from @firestitch/common/array; instead');
         if (typeof query !== 'function') {
             var queryObj_1 = query;
             query = function (item) {
@@ -700,6 +718,7 @@ var FsArray = (function () {
      * @deprecated use import { compare } from @firestitch/common/array; instead
     */
     FsArray.prototype.compare = function (query, item) {
+        console.warn('@deprecated use import { compare } from @firestitch/common/array; instead');
         var value = true;
         for (var key in query) {
             value = value && item[key] == query[key];
@@ -711,6 +730,7 @@ var FsArray = (function () {
     */
     FsArray.prototype.filter = function (array, query) {
         var _this = this;
+        console.warn('@deprecated use import { filter } from @firestitch/common/array; instead');
         if (typeof query !== 'function') {
             var queryObj_2 = query;
             query = function (item) {
@@ -737,6 +757,7 @@ var FsArray = (function () {
      * @deprecated use import { index } from @firestitch/common/array; instead
     */
     FsArray.prototype.index = function (array, property) {
+        console.warn('@deprecated use import { index } from @firestitch/common/array; instead');
         var list = {};
         array.forEach(function (item, idx) {
             list[item[property]] = item;
@@ -748,6 +769,7 @@ var FsArray = (function () {
     */
     FsArray.prototype.sort = function (array, query, reverse) {
         if (reverse === void 0) { reverse = false; }
+        console.warn('@deprecated use import { sort } from @firestitch/common/array; instead');
         if (typeof query !== 'function') {
             var queryStr_1 = query;
             query = function (a, b) {
@@ -777,6 +799,7 @@ var FsArray = (function () {
      * @deprecated use import { rsort } from @firestitch/common/array; instead
     */
     FsArray.prototype.rsort = function (array, query) {
+        console.warn('@deprecated use import { rsort } from @firestitch/common/array; instead');
         return this.sort(array, query, true);
     };
     /**
@@ -784,6 +807,7 @@ var FsArray = (function () {
     */
     FsArray.prototype.list = function (array, property, index) {
         if (index === void 0) { index = null; }
+        console.warn('@deprecated use import { list } from @firestitch/common/array; instead');
         var list = index ? {} : [];
         array.forEach(function (item, idx) {
             if (index) {
@@ -801,10 +825,12 @@ var FsArray = (function () {
     FsArray.prototype.applyDepth = function (objects, parent_property, id_property, depth_property) {
         if (id_property === void 0) { id_property = 'id'; }
         if (depth_property === void 0) { depth_property = 'depth'; }
+        console.warn('@deprecated use import { applyDepth } from @firestitch/common/array; instead');
         var keyed = {};
         objects.forEach(function (object) {
-            if (!object[parent_property])
+            if (!object[parent_property]) {
                 object[depth_property] = 0;
+            }
             keyed[object[id_property]] = object;
         });
         Object.keys(keyed).forEach(function (key) {
@@ -823,6 +849,7 @@ var FsArray = (function () {
      * @deprecated use import { inArray } from @firestitch/common/array; instead
     */
     FsArray.prototype.inArray = function (values, array) {
+        console.warn('@deprecated use import { inArray } from @firestitch/common/array; instead');
         if (!Array.isArray(values)) {
             values = [values];
         }
@@ -837,18 +864,21 @@ var FsArray = (function () {
      * @deprecated use import { keyExists } from @firestitch/common/array; instead
     */
     FsArray.prototype.keyExists = function (array, key) {
+        console.warn('@deprecated use import { keyExists } from @firestitch/common/array; instead');
         return array.hasOwnProperty(key);
     };
     /**
      * @deprecated use import { length } from @firestitch/common/array; instead
     */
     FsArray.prototype.length = function (array) {
+        console.warn('@deprecated use import { length } from @firestitch/common/array; instead');
         return array.length;
     };
     /**
      * @deprecated use import { ksort } from @firestitch/common/array; instead
     */
     FsArray.prototype.ksort = function (unordered) {
+        console.warn('@deprecated use import { ksort } from @firestitch/common/array; instead');
         Object.keys(unordered).sort().forEach(function (key) {
             var value = unordered[key];
             delete unordered[key];
@@ -882,10 +912,10 @@ var FsMath = (function () {
     function FsMath() {
     }
     /**
-     *@deprecated use _.each() instead {@link https://lodash.com/docs/4.17.5#round}
+     * @deprecated use _.round() instead {@link https://lodash.com/docs/4.17.5#round}
     */
     FsMath.prototype.round = function (number, precision) {
-        console.warn('@deprecated use _.each() instead {@link https://lodash.com/docs/4.17.5#round}');
+        console.warn('@deprecated use _.round() instead {@link https://lodash.com/docs/4.17.5#round}');
         precision = precision || 0;
         var factor = Math.pow(10, precision);
         var tempNumber = number * factor;
@@ -979,6 +1009,7 @@ var FsUtil = (function () {
     * @deprecated use @firestitch/common/util/guid instead
     */
     FsUtil.prototype.guid = function (pattern) {
+        console.warn('@deprecated use @firestitch/common/util/guid instead');
         pattern = pattern || 'xxxxxx';
         return pattern.replace(/[xy]/g, function (c) {
             var r = Math.random() * 16 | 0, v = c == 'x' ? r : (r & 0x3 | 0x8);
@@ -989,6 +1020,7 @@ var FsUtil = (function () {
      * @deprecated use import { uuid } from @firestitch/common/util; instead
     */
     FsUtil.prototype.uuid = function () {
+        console.warn('@deprecated use @firestitch/common/util/uuid instead');
         return this.guid('xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx');
     };
     /**
@@ -996,6 +1028,7 @@ var FsUtil = (function () {
     */
     FsUtil.prototype.resolve = function (promise, defaults) {
         if (defaults === void 0) { defaults = []; }
+        console.warn('@deprecated use @firestitch/common/util/resolve instead');
         var result = defaults;
         return new Promise(function (resolve) {
             promise.then(function (data) {
@@ -1822,7 +1855,7 @@ exports.AppComponent = AppComponent;
 /***/ "./app/components/fsarray-example/fsarray-example.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Functions</h2>\n<fieldset style=\"margin-top:0;\">\n  <legend>Initial Array</legend>\n  {{ array | json }}\n</fieldset>\n\n<br>\n\n<table class=\"table\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr *ngFor=\"let example of examples\">\n    <td>{{example.name}}</td>\n    <td><pre class=\"code-ts hljs\"><code mwlHighlightJs [source]=\"example.code\" language=\"ts\"></code></pre></td>\n    <td><pre class=\"code-json hljs\"><code mwlHighlightJs [source]=\"example.result\" language=\"json\"></code></pre></td>\n  </tr>\n</table>\n"
+module.exports = "<h2>Functions</h2>\n<fieldset style=\"margin-top:0;\">\n  <legend>Initial Array</legend>\n  {{ array | json }}\n</fieldset>\n\n<br>\n\n<table class=\"table three-col-example\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr *ngFor=\"let example of examples\">\n    <td>{{example.name}}</td>\n    <td><div class=\"code-ts hljs\"><code mwlHighlightJs [source]=\"example.code\" language=\"ts\"></code></div></td>\n    <td><div class=\"code-json hljs\"><code mwlHighlightJs [source]=\"example.result\" language=\"json\"></code></div></td>\n  </tr>\n</table>\n"
 
 /***/ }),
 
@@ -1964,7 +1997,7 @@ exports.FsArrayExampleComponent = FsArrayExampleComponent;
 /***/ "./app/components/fsformat-example/fsformat-example.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Functions</h2>\n<table class=\"table\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr *ngFor=\"let example of examples\">\n    <td>{{example.name}}</td>\n    <td><pre class=\"code-ts hljs\"><code mwlHighlightJs [source]=\"example.code\" language=\"ts\"></code></pre></td>\n    <td><pre class=\"code-json hljs\"><code mwlHighlightJs [source]=\"example.result\" language=\"json\"></code></pre></td>\n  </tr>\n</table>\n\n<h2>Pipes</h2>\n<table class=\"table\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr>\n    <td>Number</td>\n    <td><pre class=\"code-pipes hljs\"><code mwlHighlightJs [source]=\"pipes.number\" language=\"ts\"></code></pre></td>\n    <td><pre class=\"code-json hljs\">{{42397803.23987|fsFormatNumber:2}}</pre></td>\n  </tr>\n</table>"
+module.exports = "<h2>Functions</h2>\n<table class=\"table three-col-example\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr *ngFor=\"let example of examples\">\n    <td>{{example.name}}</td>\n    <td><div class=\"code-ts hljs\"><code mwlHighlightJs [source]=\"example.code\" language=\"ts\"></code></div></td>\n    <td><div class=\"code-json hljs\"><code mwlHighlightJs [source]=\"example.result\" language=\"json\"></code></div></td>\n  </tr>\n</table>\n\n<h2>Pipes</h2>\n<table class=\"table three-col-example\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr>\n    <td>Number</td>\n    <td><div class=\"code-pipes hljs\"><code mwlHighlightJs [source]=\"pipes.number\" language=\"ts\"></code></div></td>\n    <td><div class=\"code-json hljs\">{{42397803.23987|fsFormatNumber:2}}</div></td>\n  </tr>\n</table>\n"
 
 /***/ }),
 
@@ -1984,29 +2017,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../node_modules/@angular/core/esm2015/core.js");
-var number_1 = __webpack_require__("../src/format/number/index.ts");
+var format_1 = __webpack_require__("../src/format/index.ts");
+var src_1 = __webpack_require__("../src/index.ts");
 var FsFormatExampleComponent = (function () {
-    function FsFormatExampleComponent() {
+    function FsFormatExampleComponent(fsUtil) {
         this.examples = [];
         this.pipes = [];
+        console.log(fsUtil.guid());
         this.examples = [
             {
                 name: 'Number',
-                code: "import { number } from '@firestitch/common/format';\nformat(42397803.23987,2)",
-                result: number_1.number(42397803)
+                code: "import { number } from '@firestitch/common/format';\nnumber(42397803.23987, 2)",
+                result: format_1.number(42397803.23987, 2)
             }
         ];
         this.examples.forEach(function (example) {
             example.result = JSON.stringify(example.result);
         });
-        this.pipes['number'] = 'import { FsFormatNumber } from \'@firestitch/format/number/pipe\'\n{{42397803.23987|fsFormatNumber:2}}';
+        this.pipes['number'] = '{{42397803.23987|fsFormatNumber:2}}';
     }
     FsFormatExampleComponent = __decorate([
         core_1.Component({
             selector: 'fsformat-example',
             template: __webpack_require__("./app/components/fsformat-example/fsformat-example.component.html")
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [src_1.FsUtil])
     ], FsFormatExampleComponent);
     return FsFormatExampleComponent;
 }());
@@ -2018,7 +2053,7 @@ exports.FsFormatExampleComponent = FsFormatExampleComponent;
 /***/ "./app/components/fsutil-example/fsutil-example.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Functions</h2>\r\n<table class=\"table\">\r\n  <thead>\r\n  <tr>\r\n    <th>Description</th>\r\n    <th>Code</th>\r\n    <th>Result</th>\r\n  </tr>\r\n  </thead>\r\n  <tr *ngFor=\"let example of examples\">\r\n    <td>{{example.name}}</td>\r\n    <td><pre class=\"code-ts hljs\"><code mwlHighlightJs [source]=\"example.code\" language=\"ts\"></code></pre></td>\r\n    <td><pre class=\"code-json hljs\"><code mwlHighlightJs [source]=\"example.result\" language=\"json\"></code></pre></td>\r\n  </tr>\r\n</table>"
+module.exports = "<h2>Functions</h2>\n<table class=\"table three-col-example\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr *ngFor=\"let example of examples\">\n    <td>{{example.name}}</td>\n    <td><div class=\"code-ts hljs\"><code mwlHighlightJs [source]=\"example.code\" language=\"ts\"></code></div></td>\n    <td><div class=\"code-json hljs\"><code mwlHighlightJs [source]=\"example.result\" language=\"json\"></code></div></td>\n  </tr>\n</table>\n"
 
 /***/ }),
 
