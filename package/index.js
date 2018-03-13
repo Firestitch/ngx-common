@@ -228,6 +228,7 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__("./fs-common.module.ts"));
 __export(__webpack_require__("./services/fsarray.service.ts"));
+__export(__webpack_require__("./services/fsmath.service.ts"));
 __export(__webpack_require__("./services/fsutil.pipe.ts"));
 __export(__webpack_require__("./services/fsutil.service.ts"));
 __export(__webpack_require__("./services/fsvaildate.service.ts"));
