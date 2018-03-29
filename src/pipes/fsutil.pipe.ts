@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { stringify, guid } from '../util';
+import { stringify, guid, isEmpty } from '../util';
 
 @Pipe({
   name: 'fsUtilStringify'
@@ -22,5 +22,26 @@ export class FsUtilGuidPipe implements PipeTransform {
 
   transform(): string {
     return guid();
+  }
+}
+
+@Pipe({
+  name: 'fsUtilIsEmpty'
+})
+export class FsUtilIsEmptyPipe implements PipeTransform {
+
+  transform(value): any {
+    return isEmpty(value);
+  }
+}
+
+
+@Pipe({
+  name: 'fsUtilIsNotEmpty'
+})
+export class FsUtilIsNotEmptyPipe implements PipeTransform {
+
+  transform(value): any {
+    return !isEmpty(value);
   }
 }

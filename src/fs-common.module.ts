@@ -5,7 +5,8 @@ import { FsArray } from './services/fsarray.service';
 import { FsMath } from './services/fsmath.service';
 import { FsUtil } from './services/fsutil.service';
 import { FsValidate } from './services/fsvaildate.service';
-import { FsUtilGuidPipe, FsUtilStringifyPipe } from './services/fsutil.pipe';
+import {  FsUtilGuidPipe, FsUtilStringifyPipe,
+          FsUtilIsEmptyPipe, FsUtilIsNotEmptyPipe } from './pipes/fsutil.pipe';
 import { FsFormatNumberPipe } from './format';
 
 
@@ -16,12 +17,16 @@ import { FsFormatNumberPipe } from './format';
   exports: [
     FsUtilGuidPipe,
     FsUtilStringifyPipe,
-    FsFormatNumberPipe
+    FsFormatNumberPipe,
+    FsUtilIsEmptyPipe,
+    FsUtilIsNotEmptyPipe
   ],
   entryComponents: [
   ],
   declarations: [
     FsUtilGuidPipe,
+    FsUtilIsEmptyPipe,
+    FsUtilIsNotEmptyPipe,
     FsUtilStringifyPipe,
     FsFormatNumberPipe
   ],
