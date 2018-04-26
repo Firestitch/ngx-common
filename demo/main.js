@@ -581,7 +581,7 @@ var fsarray_service_1 = __webpack_require__("../src/services/fsarray.service.ts"
 var fsmath_service_1 = __webpack_require__("../src/services/fsmath.service.ts");
 var fsutil_service_1 = __webpack_require__("../src/services/fsutil.service.ts");
 var fsvaildate_service_1 = __webpack_require__("../src/services/fsvaildate.service.ts");
-var fsutil_pipe_1 = __webpack_require__("../src/services/fsutil.pipe.ts");
+var fsutil_pipe_1 = __webpack_require__("../src/pipes/fsutil.pipe.ts");
 var format_1 = __webpack_require__("../src/format/index.ts");
 var FsCommonModule = (function () {
     function FsCommonModule() {
@@ -606,11 +606,15 @@ var FsCommonModule = (function () {
             exports: [
                 fsutil_pipe_1.FsUtilGuidPipe,
                 fsutil_pipe_1.FsUtilStringifyPipe,
-                format_1.FsFormatNumberPipe
+                format_1.FsFormatNumberPipe,
+                fsutil_pipe_1.FsUtilIsEmptyPipe,
+                fsutil_pipe_1.FsUtilIsNotEmptyPipe
             ],
             entryComponents: [],
             declarations: [
                 fsutil_pipe_1.FsUtilGuidPipe,
+                fsutil_pipe_1.FsUtilIsEmptyPipe,
+                fsutil_pipe_1.FsUtilIsNotEmptyPipe,
                 fsutil_pipe_1.FsUtilStringifyPipe,
                 format_1.FsFormatNumberPipe
             ],
@@ -641,9 +645,89 @@ function __export(m) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__("../src/fs-common.module.ts"));
 __export(__webpack_require__("../src/services/fsarray.service.ts"));
-__export(__webpack_require__("../src/services/fsutil.pipe.ts"));
+__export(__webpack_require__("../src/services/fsmath.service.ts"));
 __export(__webpack_require__("../src/services/fsutil.service.ts"));
 __export(__webpack_require__("../src/services/fsvaildate.service.ts"));
+__export(__webpack_require__("../src/pipes/fsutil.pipe.ts"));
+
+
+/***/ }),
+
+/***/ "../src/pipes/fsutil.pipe.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("../node_modules/@angular/core/esm2015/core.js");
+var util_1 = __webpack_require__("../src/util/index.ts");
+var FsUtilStringifyPipe = (function () {
+    function FsUtilStringifyPipe() {
+    }
+    FsUtilStringifyPipe.prototype.transform = function (value) {
+        return util_1.stringify(value);
+    };
+    FsUtilStringifyPipe = __decorate([
+        core_1.Pipe({
+            name: 'fsUtilStringify'
+        }),
+        __metadata("design:paramtypes", [])
+    ], FsUtilStringifyPipe);
+    return FsUtilStringifyPipe;
+}());
+exports.FsUtilStringifyPipe = FsUtilStringifyPipe;
+var FsUtilGuidPipe = (function () {
+    function FsUtilGuidPipe() {
+    }
+    FsUtilGuidPipe.prototype.transform = function () {
+        return util_1.guid();
+    };
+    FsUtilGuidPipe = __decorate([
+        core_1.Pipe({
+            name: 'fsUtilGuid'
+        }),
+        __metadata("design:paramtypes", [])
+    ], FsUtilGuidPipe);
+    return FsUtilGuidPipe;
+}());
+exports.FsUtilGuidPipe = FsUtilGuidPipe;
+var FsUtilIsEmptyPipe = (function () {
+    function FsUtilIsEmptyPipe() {
+    }
+    FsUtilIsEmptyPipe.prototype.transform = function (value) {
+        return util_1.isEmpty(value);
+    };
+    FsUtilIsEmptyPipe = __decorate([
+        core_1.Pipe({
+            name: 'fsUtilIsEmpty'
+        })
+    ], FsUtilIsEmptyPipe);
+    return FsUtilIsEmptyPipe;
+}());
+exports.FsUtilIsEmptyPipe = FsUtilIsEmptyPipe;
+var FsUtilIsNotEmptyPipe = (function () {
+    function FsUtilIsNotEmptyPipe() {
+    }
+    FsUtilIsNotEmptyPipe.prototype.transform = function (value) {
+        return !util_1.isEmpty(value);
+    };
+    FsUtilIsNotEmptyPipe = __decorate([
+        core_1.Pipe({
+            name: 'fsUtilIsNotEmpty'
+        })
+    ], FsUtilIsNotEmptyPipe);
+    return FsUtilIsNotEmptyPipe;
+}());
+exports.FsUtilIsNotEmptyPipe = FsUtilIsNotEmptyPipe;
 
 
 /***/ }),
@@ -928,57 +1012,6 @@ var FsMath = (function () {
     return FsMath;
 }());
 exports.FsMath = FsMath;
-
-
-/***/ }),
-
-/***/ "../src/services/fsutil.pipe.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("../node_modules/@angular/core/esm2015/core.js");
-var util_1 = __webpack_require__("../src/util/index.ts");
-var FsUtilStringifyPipe = (function () {
-    function FsUtilStringifyPipe() {
-    }
-    FsUtilStringifyPipe.prototype.transform = function (value) {
-        return util_1.stringify(value);
-    };
-    FsUtilStringifyPipe = __decorate([
-        core_1.Pipe({
-            name: 'fsUtilStringify'
-        }),
-        __metadata("design:paramtypes", [])
-    ], FsUtilStringifyPipe);
-    return FsUtilStringifyPipe;
-}());
-exports.FsUtilStringifyPipe = FsUtilStringifyPipe;
-var FsUtilGuidPipe = (function () {
-    function FsUtilGuidPipe() {
-    }
-    FsUtilGuidPipe.prototype.transform = function () {
-        return util_1.guid();
-    };
-    FsUtilGuidPipe = __decorate([
-        core_1.Pipe({
-            name: 'fsUtilGuid'
-        }),
-        __metadata("design:paramtypes", [])
-    ], FsUtilGuidPipe);
-    return FsUtilGuidPipe;
-}());
-exports.FsUtilGuidPipe = FsUtilGuidPipe;
 
 
 /***/ }),
@@ -1819,7 +1852,7 @@ webpackEmptyAsyncContext.id = "../tools lazy recursive";
 /***/ "./app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h1>FsCommon Examples</h1>\r\n<div class=\"example\">\r\n    <fs-example title=\"FsArray\" componentName=\"fsarray-example\">\r\n        <fsarray-example></fsarray-example>\r\n    </fs-example>\r\n</div>\r\n\r\n<div class=\"example\">\r\n  <fs-example title=\"FsUtil\" componentName=\"fsutil-example\">\r\n      <fsutil-example></fsutil-example>\r\n  </fs-example>\r\n</div>\r\n\r\n<div class=\"example\">\r\n  <fs-example title=\"FsFormat\" componentName=\"fsformat-example\">\r\n      <fsformat-example></fsformat-example>\r\n  </fs-example>\r\n</div>"
+module.exports = "<fs-examples title=\"FsCommon\">\n  <fs-example title=\"FsArray\" componentName=\"fsarray-example\">\n    <fsarray-example></fsarray-example>\n  </fs-example>\n\n  <fs-example title=\"FsUtil\" componentName=\"fsutil-example\">\n    <fsutil-example></fsutil-example>\n  </fs-example>\n\n  <fs-example title=\"FsFormat\" componentName=\"fsformat-example\">\n    <fsformat-example></fsformat-example>\n  </fs-example>\n</fs-examples>\n"
 
 /***/ }),
 
@@ -2018,12 +2051,10 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("../node_modules/@angular/core/esm2015/core.js");
 var format_1 = __webpack_require__("../src/format/index.ts");
-var src_1 = __webpack_require__("../src/index.ts");
 var FsFormatExampleComponent = (function () {
-    function FsFormatExampleComponent(fsUtil) {
+    function FsFormatExampleComponent() {
         this.examples = [];
         this.pipes = [];
-        console.log(fsUtil.guid());
         this.examples = [
             {
                 name: 'Number',
@@ -2041,7 +2072,7 @@ var FsFormatExampleComponent = (function () {
             selector: 'fsformat-example',
             template: __webpack_require__("./app/components/fsformat-example/fsformat-example.component.html")
         }),
-        __metadata("design:paramtypes", [src_1.FsUtil])
+        __metadata("design:paramtypes", [])
     ], FsFormatExampleComponent);
     return FsFormatExampleComponent;
 }());
@@ -2053,7 +2084,7 @@ exports.FsFormatExampleComponent = FsFormatExampleComponent;
 /***/ "./app/components/fsutil-example/fsutil-example.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<h2>Functions</h2>\n<table class=\"table three-col-example\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr *ngFor=\"let example of examples\">\n    <td>{{example.name}}</td>\n    <td><div class=\"code-ts hljs\"><code mwlHighlightJs [source]=\"example.code\" language=\"ts\"></code></div></td>\n    <td><div class=\"code-json hljs\"><code mwlHighlightJs [source]=\"example.result\" language=\"json\"></code></div></td>\n  </tr>\n</table>\n"
+module.exports = "<h2>Functions</h2>\n<table class=\"table three-col-example\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr *ngFor=\"let example of examples\">\n    <td>{{example.name}}</td>\n    <td><div class=\"code-ts hljs\"><code mwlHighlightJs [source]=\"example.code\" language=\"ts\"></code></div></td>\n    <td><div class=\"code-json hljs\"><code mwlHighlightJs [source]=\"example.result\" language=\"json\"></code></div></td>\n  </tr>\n</table>\n\n<h2>Pipes</h2>\n<table class=\"table three-col-example\">\n  <thead>\n  <tr>\n    <th>Description</th>\n    <th>Code</th>\n    <th>Result</th>\n  </tr>\n  </thead>\n  <tr>\n    <td>IsEmpty</td>\n    <td><div class=\"code-pipes hljs\"><code mwlHighlightJs [source]=\"pipes.isEmpty\" language=\"ts\"></code></div></td>\n    <td><div class=\"code-json hljs\"><span *ngIf=\"{}|fsUtilIsEmpty\">Is Empty</span></div></td>\n  </tr>\n  <tr>\n    <td>IsEmpty</td>\n    <td><div class=\"code-pipes hljs\"><code mwlHighlightJs [source]=\"pipes.isNotEmpty\" language=\"ts\"></code></div></td>\n    <td><div class=\"code-json hljs\"><span *ngIf=\"{ key: 'value' }|fsUtilIsNotEmpty\">Is Not Empty</span></div></td>\n  </tr>\n</table>\n"
 
 /***/ }),
 
@@ -2077,6 +2108,7 @@ var util_1 = __webpack_require__("../src/util/index.ts");
 var FsUtilExampleComponent = (function () {
     function FsUtilExampleComponent() {
         this.examples = [];
+        this.pipes = [];
         this.examples = [
             {
                 name: 'GUID',
@@ -2137,6 +2169,8 @@ var FsUtilExampleComponent = (function () {
         this.examples.forEach(function (example) {
             example.result = JSON.stringify(example.result);
         });
+        this.pipes['isEmpty'] = '<span *ngIf="{}|fsUtilIsEmpty">Is Empty</span>';
+        this.pipes['isNotEmpty'] = '<span *ngIf="{ key: \'value\' }|fsUtilIsNotEmpty">Is Not Empty</span>';
     }
     FsUtilExampleComponent = __decorate([
         core_1.Component({

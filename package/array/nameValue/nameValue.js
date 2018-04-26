@@ -1,14 +1,14 @@
 export function nameValue(array, name, value) {
-    const list = [];
+    var list = [];
     if (name || value) {
-        const nameFn = typeof name === 'function' ? name : function (item) {
+        var nameFn_1 = typeof name === 'function' ? name : function (item) {
             return item[name];
         };
-        const valueFn = typeof value === 'function' ? value : function (item) {
+        var valueFn_1 = typeof value === 'function' ? value : function (item) {
             return item[value];
         };
         array.forEach(function (item) {
-            list.push({ name: nameFn(item), value: valueFn(item) });
+            list.push({ name: nameFn_1(item), value: valueFn_1(item) });
         });
     }
     else {

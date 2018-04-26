@@ -1,5 +1,5 @@
 export function throttle(func, wait) {
-    let waiting = false; // Initially, we're not waiting
+    var waiting = false; // Initially, we're not waiting
     return function () {
         if (!waiting) {
             func.apply(null, arguments); // Execute users function

@@ -1,5 +1,6 @@
-export function list(array, property, index = null) {
-    const resultList = index ? {} : [];
+export function list(array, property, index) {
+    if (index === void 0) { index = null; }
+    var resultList = index ? {} : [];
     array.forEach(function (item, idx) {
         if (index) {
             resultList[item[index]] = item[property];

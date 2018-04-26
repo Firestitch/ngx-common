@@ -12,7 +12,7 @@ var fsarray_service_1 = require("./services/fsarray.service");
 var fsmath_service_1 = require("./services/fsmath.service");
 var fsutil_service_1 = require("./services/fsutil.service");
 var fsvaildate_service_1 = require("./services/fsvaildate.service");
-var fsutil_pipe_1 = require("./services/fsutil.pipe");
+var fsutil_pipe_1 = require("./pipes/fsutil.pipe");
 var format_1 = require("./format");
 var FsCommonModule = (function () {
     function FsCommonModule() {
@@ -37,11 +37,15 @@ var FsCommonModule = (function () {
             exports: [
                 fsutil_pipe_1.FsUtilGuidPipe,
                 fsutil_pipe_1.FsUtilStringifyPipe,
-                format_1.FsFormatNumberPipe
+                format_1.FsFormatNumberPipe,
+                fsutil_pipe_1.FsUtilIsEmptyPipe,
+                fsutil_pipe_1.FsUtilIsNotEmptyPipe
             ],
             entryComponents: [],
             declarations: [
                 fsutil_pipe_1.FsUtilGuidPipe,
+                fsutil_pipe_1.FsUtilIsEmptyPipe,
+                fsutil_pipe_1.FsUtilIsNotEmptyPipe,
                 fsutil_pipe_1.FsUtilStringifyPipe,
                 format_1.FsFormatNumberPipe
             ],

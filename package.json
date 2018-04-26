@@ -1,6 +1,6 @@
 {
   "name": "@firestitch/common",
-  "version": "0.2.18",
+  "version": "0.2.19",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/fs-common"
@@ -28,7 +28,7 @@
     "copy:templates": "cpx -v \"build/**/*.html\" \"package\"",
     "copy:package": "cpx -v \"package.json\" \"package\"",
     "prepublish": "npm-run-all -s copy:package publish:replace",
-    "publish:replace": "replace-in-file /package\/index/g index package/package.json --isRegex",
+    "publish:replace": "replace-in-file /package/index/g index package/package.json --isRegex",
     "package": "npm-run-all -s clean:build clean:package copy:build build:sass package:replace-scss package:aot package:build copy:styles copy:templates package:minify clean:build package:functions",
     "package:functions": "tsc -p tsconfig.es6.json",
     "package:aot": "ngc -p tsconfig.aot.json",
@@ -59,7 +59,8 @@
     "@angular/platform-browser-dynamic": "^5.1.1",
     "@compodoc/compodoc": "^1.0.5",
     "@firestitch/common": "^0.1.22",
-    "@firestitch/example": "^0.1.8",
+    "@firestitch/example": "^0.2.1",
+    "@firestitch/iframe": "^0.1.5",
     "angular-highlight-js": "^2.0.1",
     "highlight.js": "^9.9.0",
     "@types/googlemaps": "^3.30.2",

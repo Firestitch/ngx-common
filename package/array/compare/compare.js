@@ -1,6 +1,6 @@
 export function compare(query, item) {
-    let value = true;
-    for (const key in query) {
+    var value = true;
+    for (var key in query) {
         value = value && item[key] == query[key];
     }
     return value;

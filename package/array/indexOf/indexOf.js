@@ -1,12 +1,12 @@
 import { compare } from '../compare';
 export function indexOf(array, query) {
     if (typeof query !== 'function') {
-        const queryObj = query;
-        query = (item) => {
-            return compare(queryObj, item);
+        var queryObj_1 = query;
+        query = function (item) {
+            return compare(queryObj_1, item);
         };
     }
-    for (let i = 0, len = array.length; i < len; i++) {
+    for (var i = 0, len = array.length; i < len; i++) {
         if (query(array[i])) {
             return i;
         }

@@ -26,6 +26,7 @@ import {
 export class FsUtilExampleComponent {
 
   examples = [];
+  pipes = [];
 
   constructor() {
     this.examples = [
@@ -67,7 +68,7 @@ export class FsUtilExampleComponent {
       {
         name: 'Debounce',
         code: `import { debounce } from '@firestitch/common/util';\nboolean(func, wait, immediate)`
-      },      
+      },
       {
         name: 'Resolve for Promises',
         code: `import { resolve } from '@firestitch/common/util';\nresolve(promise, defaults)`
@@ -86,10 +87,12 @@ export class FsUtilExampleComponent {
       }
     ];
 
-
     this.examples.forEach((example) => {
       example.result = JSON.stringify(example.result);
-    })
+    });
+
+    this.pipes['isEmpty'] = '<span *ngIf="{}|fsUtilIsEmpty">Is Empty</span>';
+    this.pipes['isNotEmpty'] = '<span *ngIf="{ key: \'value\' }|fsUtilIsNotEmpty">Is Not Empty</span>';
   }
 
 }

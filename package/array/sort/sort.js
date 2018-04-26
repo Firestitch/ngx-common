@@ -1,20 +1,21 @@
-export function sort(array, query, reverse = false) {
+export function sort(array, query, reverse) {
+    if (reverse === void 0) { reverse = false; }
     if (typeof query !== 'function') {
-        const queryStr = query;
+        var queryStr_1 = query;
         query = function (a, b) {
             if (reverse) {
-                if (a[queryStr] < b[queryStr]) {
+                if (a[queryStr_1] < b[queryStr_1]) {
                     return 1;
                 }
-                else if (a[queryStr] > b[queryStr]) {
+                else if (a[queryStr_1] > b[queryStr_1]) {
                     return -1;
                 }
             }
             else {
-                if (a[queryStr] > b[queryStr]) {
+                if (a[queryStr_1] > b[queryStr_1]) {
                     return 1;
                 }
-                else if (a[queryStr] < b[queryStr]) {
+                else if (a[queryStr_1] < b[queryStr_1]) {
                     return -1;
                 }
             }

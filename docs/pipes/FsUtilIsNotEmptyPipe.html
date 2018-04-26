@@ -95,7 +95,7 @@
                                     <a href="../injectables/FsArray.html" >FsArray</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../injectables/FsMath.html"  data-type="entity-link" class="active" >FsMath</a>
+                                    <a href="../injectables/FsMath.html" >FsMath</a>
                                 </li>
                                 <li class="link">
                                     <a href="../injectables/FsUtil.html" >FsUtil</a>
@@ -129,7 +129,7 @@
                                     <a href="../pipes/FsUtilIsEmptyPipe.html" >FsUtilIsEmptyPipe</a>
                                 </li>
                                 <li class="link">
-                                    <a href="../pipes/FsUtilIsNotEmptyPipe.html" >FsUtilIsNotEmptyPipe</a>
+                                    <a href="../pipes/FsUtilIsNotEmptyPipe.html"  data-type="entity-link" class="active" >FsUtilIsNotEmptyPipe</a>
                                 </li>
                                 <li class="link">
                                     <a href="../pipes/FsUtilStringifyPipe.html" >FsUtilStringifyPipe</a>
@@ -248,7 +248,7 @@
                                            <a href="../injectables/FsArray.html" >FsArray</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../injectables/FsMath.html"  data-type="entity-link" class="active" >FsMath</a>
+                                           <a href="../injectables/FsMath.html" >FsMath</a>
                                        </li>
                                        <li class="link">
                                            <a href="../injectables/FsUtil.html" >FsUtil</a>
@@ -282,7 +282,7 @@
                                            <a href="../pipes/FsUtilIsEmptyPipe.html" >FsUtilIsEmptyPipe</a>
                                        </li>
                                        <li class="link">
-                                           <a href="../pipes/FsUtilIsNotEmptyPipe.html" >FsUtilIsNotEmptyPipe</a>
+                                           <a href="../pipes/FsUtilIsNotEmptyPipe.html"  data-type="entity-link" class="active" >FsUtilIsNotEmptyPipe</a>
                                        </li>
                                        <li class="link">
                                            <a href="../pipes/FsUtilStringifyPipe.html" >FsUtilStringifyPipe</a>
@@ -320,7 +320,7 @@
                    
                    </nav>
                </div>
-               <div class="content injectable">
+               <div class="content pipe">
                    <div class="content-data">
 
 
@@ -328,9 +328,11 @@
 
 
 
+
+
 <ol class="breadcrumb">
-  <li>Injectables</li>
-  <li>FsMath</li>
+  <li>Pipes</li>
+  <li>FsUtilIsNotEmptyPipe</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -339,42 +341,32 @@
     </li>
 
 
+
 </ul>
 
 <div class="tab-content">
     <div class="tab-pane fade active in" id="c-info">
+
         <p class="comment">
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>src/services/fsmath.service.ts</code>
+            <code>src/pipes/fsutil.pipe.ts</code>
         </p>
 
 
 
-            <section>
-                <h3 id="index">Index</h3>
-                <table class="table table-sm table-bordered index-table">
-                    <tbody>
-                        <tr>
-                            <td class="col-md-4">
-                                <h6><b>Methods</b></h6>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <ul class="index-list">
-                                    <li>
-                                            <span class="modifier">Public</span>
-                                        <a href="#round">round</a>
-                                    </li>
-                                </ul>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </section>
-
+        <section>
+            <h3>Metadata</h3>
+            <table class="table table-sm table-hover">
+                <tbody>
+                    <tr>
+                        <td class="col-md-3">name</td>
+                        <td class="col-md-9">fsUtilIsNotEmpty</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
 
             <section>
                 
@@ -385,20 +377,18 @@
                         <tbody>
                             <tr>
                                 <td class="col-md-4">
-                                    <a name="round"></a>
+                                    <a name="transform"></a>
                                     <span class="name">
                                         <b>
-                                            <span class="modifier">Public</span>
-                                        round
+                                        transform
                                         </b>
-                                        <a href="#round"><span class="fa fa-link"></span></a>
+                                        <a href="#transform"><span class="fa fa-link"></span></a>
                                     </span>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="col-md-4">
-                                        <span class="modifier-icon fa fa-reset"></span>
-                                    <code>round(number: , precision: )</code>
+            <code>transform(value: )</code>
                                 </td>
                             </tr>
             
@@ -421,19 +411,7 @@
                                                     </thead>
                                                     <tbody>
                                                             <tr>
-                                                              <td>number</td>
-                                                              <td>
-                                                              </td>
-                                                              <td>
-                                                                  no
-                                                              </td>
-                                                              <td>
-                                                                  <code></code>
-                                                              </td>
-                                                              <td></td>
-                                                            </tr>
-                                                            <tr>
-                                                              <td>precision</td>
+                                                              <td>value</td>
                                                               <td>
                                                               </td>
                                                               <td>
@@ -450,7 +428,7 @@
                                         <div>
                                         </div>
                                         <div class="io-description">
-                                            <b>Returns : </b>    <code><a href="../miscellaneous/functions.html#number" target="_self" >number</a></code>
+                                            <b>Returns : </b>    <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
             
                                         </div>
                                             <div class="io-description">
@@ -468,8 +446,6 @@
 
 
 </div>
-
-
 
 
 

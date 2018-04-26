@@ -168,7 +168,7 @@ var fsarray_service_1 = __webpack_require__("./services/fsarray.service.ts");
 var fsmath_service_1 = __webpack_require__("./services/fsmath.service.ts");
 var fsutil_service_1 = __webpack_require__("./services/fsutil.service.ts");
 var fsvaildate_service_1 = __webpack_require__("./services/fsvaildate.service.ts");
-var fsutil_pipe_1 = __webpack_require__("./services/fsutil.pipe.ts");
+var fsutil_pipe_1 = __webpack_require__("./pipes/fsutil.pipe.ts");
 var format_1 = __webpack_require__("./format/index.ts");
 var FsCommonModule = (function () {
     function FsCommonModule() {
@@ -193,11 +193,15 @@ var FsCommonModule = (function () {
             exports: [
                 fsutil_pipe_1.FsUtilGuidPipe,
                 fsutil_pipe_1.FsUtilStringifyPipe,
-                format_1.FsFormatNumberPipe
+                format_1.FsFormatNumberPipe,
+                fsutil_pipe_1.FsUtilIsEmptyPipe,
+                fsutil_pipe_1.FsUtilIsNotEmptyPipe
             ],
             entryComponents: [],
             declarations: [
                 fsutil_pipe_1.FsUtilGuidPipe,
+                fsutil_pipe_1.FsUtilIsEmptyPipe,
+                fsutil_pipe_1.FsUtilIsNotEmptyPipe,
                 fsutil_pipe_1.FsUtilStringifyPipe,
                 format_1.FsFormatNumberPipe
             ],
@@ -229,9 +233,88 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__("./fs-common.module.ts"));
 __export(__webpack_require__("./services/fsarray.service.ts"));
 __export(__webpack_require__("./services/fsmath.service.ts"));
-__export(__webpack_require__("./services/fsutil.pipe.ts"));
 __export(__webpack_require__("./services/fsutil.service.ts"));
 __export(__webpack_require__("./services/fsvaildate.service.ts"));
+__export(__webpack_require__("./pipes/fsutil.pipe.ts"));
+
+
+/***/ }),
+
+/***/ "./pipes/fsutil.pipe.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+var core_1 = __webpack_require__("@angular/core");
+var util_1 = __webpack_require__("./util/index.ts");
+var FsUtilStringifyPipe = (function () {
+    function FsUtilStringifyPipe() {
+    }
+    FsUtilStringifyPipe.prototype.transform = function (value) {
+        return util_1.stringify(value);
+    };
+    FsUtilStringifyPipe = __decorate([
+        core_1.Pipe({
+            name: 'fsUtilStringify'
+        }),
+        __metadata("design:paramtypes", [])
+    ], FsUtilStringifyPipe);
+    return FsUtilStringifyPipe;
+}());
+exports.FsUtilStringifyPipe = FsUtilStringifyPipe;
+var FsUtilGuidPipe = (function () {
+    function FsUtilGuidPipe() {
+    }
+    FsUtilGuidPipe.prototype.transform = function () {
+        return util_1.guid();
+    };
+    FsUtilGuidPipe = __decorate([
+        core_1.Pipe({
+            name: 'fsUtilGuid'
+        }),
+        __metadata("design:paramtypes", [])
+    ], FsUtilGuidPipe);
+    return FsUtilGuidPipe;
+}());
+exports.FsUtilGuidPipe = FsUtilGuidPipe;
+var FsUtilIsEmptyPipe = (function () {
+    function FsUtilIsEmptyPipe() {
+    }
+    FsUtilIsEmptyPipe.prototype.transform = function (value) {
+        return util_1.isEmpty(value);
+    };
+    FsUtilIsEmptyPipe = __decorate([
+        core_1.Pipe({
+            name: 'fsUtilIsEmpty'
+        })
+    ], FsUtilIsEmptyPipe);
+    return FsUtilIsEmptyPipe;
+}());
+exports.FsUtilIsEmptyPipe = FsUtilIsEmptyPipe;
+var FsUtilIsNotEmptyPipe = (function () {
+    function FsUtilIsNotEmptyPipe() {
+    }
+    FsUtilIsNotEmptyPipe.prototype.transform = function (value) {
+        return !util_1.isEmpty(value);
+    };
+    FsUtilIsNotEmptyPipe = __decorate([
+        core_1.Pipe({
+            name: 'fsUtilIsNotEmpty'
+        })
+    ], FsUtilIsNotEmptyPipe);
+    return FsUtilIsNotEmptyPipe;
+}());
+exports.FsUtilIsNotEmptyPipe = FsUtilIsNotEmptyPipe;
 
 
 /***/ }),
@@ -516,57 +599,6 @@ var FsMath = (function () {
     return FsMath;
 }());
 exports.FsMath = FsMath;
-
-
-/***/ }),
-
-/***/ "./services/fsutil.pipe.ts":
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-var core_1 = __webpack_require__("@angular/core");
-var util_1 = __webpack_require__("./util/index.ts");
-var FsUtilStringifyPipe = (function () {
-    function FsUtilStringifyPipe() {
-    }
-    FsUtilStringifyPipe.prototype.transform = function (value) {
-        return util_1.stringify(value);
-    };
-    FsUtilStringifyPipe = __decorate([
-        core_1.Pipe({
-            name: 'fsUtilStringify'
-        }),
-        __metadata("design:paramtypes", [])
-    ], FsUtilStringifyPipe);
-    return FsUtilStringifyPipe;
-}());
-exports.FsUtilStringifyPipe = FsUtilStringifyPipe;
-var FsUtilGuidPipe = (function () {
-    function FsUtilGuidPipe() {
-    }
-    FsUtilGuidPipe.prototype.transform = function () {
-        return util_1.guid();
-    };
-    FsUtilGuidPipe = __decorate([
-        core_1.Pipe({
-            name: 'fsUtilGuid'
-        }),
-        __metadata("design:paramtypes", [])
-    ], FsUtilGuidPipe);
-    return FsUtilGuidPipe;
-}());
-exports.FsUtilGuidPipe = FsUtilGuidPipe;
 
 
 /***/ }),
