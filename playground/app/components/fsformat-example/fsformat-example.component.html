@@ -29,3 +29,23 @@
     <td><div class="code-json hljs">{{42397803.23987|fsFormatNumber:2}}</div></td>
   </tr>
 </table>
+
+<h2>Acronym</h2>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Original string</th>
+    <th>Code</th>
+    <th>1-letter acronym result</th>
+    <th>2-letters acronym result</th>
+    <th>3-letters acronym result</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let example of acronymExamples">
+    <td>{{example.acronymOriginalString}}</td>
+    <td><div class="code-ts hljs"><code mwlHighlightJs [source]="example.code" language="ts"></code></div></td>
+    <td><div class="code-json hljs">{{example.result1}}</div></td>
+    <td><div class="code-json hljs">{{example.result2}}</div></td>
+    <td><div class="code-json hljs">{{example.result3}}</div></td>
+  </tr>
+</table>
