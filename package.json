@@ -20,7 +20,7 @@
   "main": "package/index.js",
   "typings": "package/index.d.ts",
   "scripts": {
-    "package": "cd tools && npm run package",
+    "package": "cd tools && npm run package && npm run package:functions",
     "package:publish": "cd tools && npm run package:publish",
     "demo:build": "cd tools && npm run demo:build",
     "serve": "cd tools && npm run serve"
