@@ -75,6 +75,541 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
+/***/ "./array/compare/compare.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function compare(query, item) {
+    var value = true;
+    for (var key in query) {
+        value = value && item[key] == query[key];
+    }
+    return value;
+}
+exports.compare = compare;
+
+
+/***/ }),
+
+/***/ "./array/compare/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./array/compare/compare.ts"));
+
+
+/***/ }),
+
+/***/ "./array/filter/filter.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var compare_1 = __webpack_require__("./array/compare/index.ts");
+function filter(array, query) {
+    if (typeof query !== 'function') {
+        var queryObj_1 = query;
+        query = function (item) {
+            return compare_1.compare(queryObj_1, item);
+        };
+    }
+    var isarray = Array.isArray(array);
+    var list = isarray ? [] : {};
+    if (isarray) {
+        array.forEach(function (item, idx) {
+            if (query(item)) {
+                list.push(item);
+            }
+        });
+    }
+    else {
+        Object.keys(array).forEach(function (key) {
+            if (query(array[key])) {
+                list[key] = array[key];
+            }
+        });
+    }
+    return list;
+}
+exports.filter = filter;
+
+
+/***/ }),
+
+/***/ "./array/filter/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./array/filter/filter.ts"));
+
+
+/***/ }),
+
+/***/ "./array/inArray/inArray.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function inArray(values, array) {
+    if (!Array.isArray(values)) {
+        values = [values];
+    }
+    for (var i = 0, len = values.length; i < len; i++) {
+        if (array.indexOf(values[i]) >= 0) {
+            return true;
+        }
+    }
+    return false;
+}
+exports.inArray = inArray;
+
+
+/***/ }),
+
+/***/ "./array/inArray/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./array/inArray/inArray.ts"));
+
+
+/***/ }),
+
+/***/ "./array/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./array/compare/index.ts"));
+__export(__webpack_require__("./array/filter/index.ts"));
+__export(__webpack_require__("./array/inArray/index.ts"));
+__export(__webpack_require__("./array/index/index.ts"));
+__export(__webpack_require__("./array/indexOf/index.ts"));
+__export(__webpack_require__("./array/keyExists/index.ts"));
+__export(__webpack_require__("./array/ksort/index.ts"));
+__export(__webpack_require__("./array/length/index.ts"));
+__export(__webpack_require__("./array/list/index.ts"));
+__export(__webpack_require__("./array/nameValue/index.ts"));
+__export(__webpack_require__("./array/remove/index.ts"));
+__export(__webpack_require__("./array/rsort/index.ts"));
+__export(__webpack_require__("./array/sort/index.ts"));
+
+
+/***/ }),
+
+/***/ "./array/index/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function index(array, property) {
+    var list = {};
+    array.forEach(function (item, idx) {
+        list[item[property]] = item;
+    });
+    return list;
+}
+exports.index = index;
+
+
+/***/ }),
+
+/***/ "./array/indexOf/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./array/indexOf/indexOf.ts"));
+
+
+/***/ }),
+
+/***/ "./array/indexOf/indexOf.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var compare_1 = __webpack_require__("./array/compare/index.ts");
+function indexOf(array, query) {
+    if (typeof query !== 'function') {
+        var queryObj_1 = query;
+        query = function (item) {
+            return compare_1.compare(queryObj_1, item);
+        };
+    }
+    for (var i = 0, len = array.length; i < len; i++) {
+        if (query(array[i])) {
+            return i;
+        }
+    }
+    return -1;
+}
+exports.indexOf = indexOf;
+
+
+/***/ }),
+
+/***/ "./array/keyExists/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./array/keyExists/keyExists.ts"));
+
+
+/***/ }),
+
+/***/ "./array/keyExists/keyExists.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function keyExists(array, key) {
+    return array.hasOwnProperty(key);
+}
+exports.keyExists = keyExists;
+
+
+/***/ }),
+
+/***/ "./array/ksort/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./array/ksort/ksort.ts"));
+
+
+/***/ }),
+
+/***/ "./array/ksort/ksort.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function ksort(unordered) {
+    Object.keys(unordered).sort().forEach(function (key) {
+        var value = unordered[key];
+        delete unordered[key];
+        unordered[key] = value;
+    });
+}
+exports.ksort = ksort;
+
+
+/***/ }),
+
+/***/ "./array/length/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./array/length/length.ts"));
+
+
+/***/ }),
+
+/***/ "./array/length/length.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function length(array) {
+    return array.length;
+}
+exports.length = length;
+
+
+/***/ }),
+
+/***/ "./array/list/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./array/list/list.ts"));
+
+
+/***/ }),
+
+/***/ "./array/list/list.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function list(array, property, index) {
+    if (index === void 0) { index = null; }
+    var resultList = index ? {} : [];
+    array.forEach(function (item, idx) {
+        if (index) {
+            resultList[item[index]] = item[property];
+        }
+        else {
+            resultList.push(item[property]);
+        }
+    });
+    return resultList;
+}
+exports.list = list;
+
+
+/***/ }),
+
+/***/ "./array/nameValue/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./array/nameValue/nameValue.ts"));
+
+
+/***/ }),
+
+/***/ "./array/nameValue/nameValue.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function nameValue(array, name, value) {
+    var list = [];
+    if (name || value) {
+        var nameFn_1 = typeof name === 'function' ? name : function (item) {
+            return item[name];
+        };
+        var valueFn_1 = typeof value === 'function' ? value : function (item) {
+            return item[value];
+        };
+        array.forEach(function (item) {
+            list.push({ name: nameFn_1(item), value: valueFn_1(item) });
+        });
+    }
+    else {
+        array.forEach(function (n, v) {
+            list.push({ name: n, value: v });
+        });
+    }
+    return list;
+}
+exports.nameValue = nameValue;
+
+
+/***/ }),
+
+/***/ "./array/remove/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./array/remove/remove.ts"));
+
+
+/***/ }),
+
+/***/ "./array/remove/remove.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var indexOf_1 = __webpack_require__("./array/indexOf/index.ts");
+function remove(array, query) {
+    var idx = indexOf_1.indexOf(array, query);
+    if (idx >= 0) {
+        return array.splice(idx, 1);
+    }
+    return idx;
+}
+exports.remove = remove;
+
+
+/***/ }),
+
+/***/ "./array/rsort/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./array/rsort/rsort.ts"));
+
+
+/***/ }),
+
+/***/ "./array/rsort/rsort.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var sort_1 = __webpack_require__("./array/sort/index.ts");
+function rsort(array, query) {
+    return sort_1.sort(array, query, true);
+}
+exports.rsort = rsort;
+
+
+/***/ }),
+
+/***/ "./array/sort/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./array/sort/sort.ts"));
+
+
+/***/ }),
+
+/***/ "./array/sort/sort.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function sort(array, query, reverse) {
+    if (reverse === void 0) { reverse = false; }
+    if (typeof query !== 'function') {
+        var queryStr_1 = query;
+        query = function (a, b) {
+            if (reverse) {
+                if (a[queryStr_1] < b[queryStr_1]) {
+                    return 1;
+                }
+                else if (a[queryStr_1] > b[queryStr_1]) {
+                    return -1;
+                }
+            }
+            else {
+                if (a[queryStr_1] > b[queryStr_1]) {
+                    return 1;
+                }
+                else if (a[queryStr_1] < b[queryStr_1]) {
+                    return -1;
+                }
+            }
+            return 0;
+        };
+    }
+    array.sort(query);
+    return array;
+}
+exports.sort = sort;
+
+
+/***/ }),
+
+/***/ "./format/acronym/acronym.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function acronym(str, length) {
+    if (length === void 0) { length = 2; }
+    var splittedString = str
+        .replace(/[^a-zA-Z0-9]+/g, ' ')
+        .split(' ');
+    var result = '';
+    for (var i = 0; i < length; i++) {
+        if (!splittedString[i]) {
+            if (splittedString.length === 1) {
+                for (var j = 1; j < length; j++) {
+                    if (!splittedString[i - 1][j]) {
+                        break;
+                    }
+                    result += splittedString[i - 1][j].toUpperCase();
+                }
+            }
+            break;
+        }
+        result += splittedString[i][0].toUpperCase();
+    }
+    return result;
+}
+exports.acronym = acronym;
+
+
+/***/ }),
+
+/***/ "./format/acronym/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./format/acronym/acronym.ts"));
+
+
+/***/ }),
+
 /***/ "./format/index.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -85,6 +620,7 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__("./format/number/index.ts"));
+__export(__webpack_require__("./format/acronym/index.ts"));
 
 
 /***/ }),
@@ -236,6 +772,8 @@ __export(__webpack_require__("./services/fsmath.service.ts"));
 __export(__webpack_require__("./services/fsutil.service.ts"));
 __export(__webpack_require__("./services/fsvaildate.service.ts"));
 __export(__webpack_require__("./pipes/fsutil.pipe.ts"));
+__export(__webpack_require__("./validate/index.ts"));
+__export(__webpack_require__("./array/index.ts"));
 
 
 /***/ }),
@@ -1408,6 +1946,78 @@ function value(object, key, def) {
     return def;
 }
 exports.value = value;
+
+
+/***/ }),
+
+/***/ "./validate/email/email.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function email(value) {
+    return !!String(value).match(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
+}
+exports.email = email;
+
+
+/***/ }),
+
+/***/ "./validate/email/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./validate/email/email.ts"));
+
+
+/***/ }),
+
+/***/ "./validate/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./validate/email/index.ts"));
+__export(__webpack_require__("./validate/phone/index.ts"));
+
+
+/***/ }),
+
+/***/ "./validate/phone/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./validate/phone/phone.ts"));
+
+
+/***/ }),
+
+/***/ "./validate/phone/phone.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function phone(value) {
+    var valid = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/.test(value);
+    return valid || !String(value).length;
+}
+exports.phone = phone;
 
 
 /***/ }),
