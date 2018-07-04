@@ -18,6 +18,9 @@ import {
   isObject,
   isArrayLikeObject,
 } from 'lodash';
+import { of } from "rxjs/observable/of";
+import { delay } from 'rxjs/operators';
+import { QueueProcessor } from '../../../../src/util/queue-processor/queue-processor';
 
 @Component({
   selector: 'fsutil-example',
@@ -27,6 +30,12 @@ export class FsUtilExampleComponent {
 
   examples = [];
   pipes = [];
+  queue = new QueueProcessor();
+
+  public queueForm = {
+    name: '',
+    delay: 0
+  };
 
   constructor() {
     this.examples = [
@@ -95,4 +104,13 @@ export class FsUtilExampleComponent {
     this.pipes['isNotEmpty'] = '<span *ngIf="{ key: \'value\' }|fsUtilIsNotEmpty">Is Not Empty</span>';
   }
 
+
+  public addQueueOperation() {
+    this.queue.push(this.queueForm.name, of(1).pipe(
+      delay(this.queueForm.delay || 0)
+    )).subscribe(() => {
+      console.log('Operation is done');
+    });
+
+  }
 }
