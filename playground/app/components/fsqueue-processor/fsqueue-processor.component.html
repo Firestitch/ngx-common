@@ -1,0 +1,54 @@
+
+<table>
+  <tr>
+    <td><b>Pending: </b></td>
+    <td>{{queue.pending}}</td>
+  </tr>
+  <tr>
+    <td><b>Completed: </b></td>
+    <td>{{queue.completed}}</td>
+  </tr>
+  <tr>
+    <td><b>Errors: </b></td>
+    <td>{{queue.errors}}</td>
+  </tr>
+  <tr>
+    <td><b>Total: </b></td>
+    <td>{{queue.total}}</td>
+  </tr>
+  <tr>
+    <td><b>Status: </b></td>
+    <td>
+      <!-- {{queue.status}}
+
+          processing
+          idle
+      -->
+    </td>
+  </tr>
+  <tr>
+    <td><b>Pending Operations: </b></td>
+    <td>{{queue.inProgressOperations}}</td>
+  </tr>
+</table>
+
+<br><br>
+
+<form (fsForm)="addQueueOperation()">
+  <mat-form-field>
+    <input matInput name="delay"
+            type="number"
+            [(ngModel)]="queueForm.delay"
+            placeholder="Operation Delay"
+            required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="name"
+            [(ngModel)]="queueForm.name"
+            placeholder="Operation name">
+  </mat-form-field>
+  <button type="submit" mat-raised-button (click)="operationCount=3">Push</button>
+  <button type="submit" mat-raised-button (click)="operationCount=5">Push 5 Operations</button>
+  <button type="submit" mat-raised-button (click)="operationCount=5">Push 5 Operations</button>
+</form>

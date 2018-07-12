@@ -18,24 +18,14 @@ import {
   isObject,
   isArrayLikeObject,
 } from 'lodash';
-import { of } from "rxjs/observable/of";
-import { delay } from 'rxjs/operators';
-import { QueueProcessor } from '../../../../src/util/queue-processor/queue-processor';
 
 @Component({
-  selector: 'fsutil-example',
-  templateUrl: 'fsutil-example.component.html'
+  selector: 'fsutil-functions',
+  templateUrl: 'fsutil-functions.component.html'
 })
-export class FsUtilExampleComponent {
+export class FsUtilFunctionsComponent {
 
   examples = [];
-  pipes = [];
-  queue = new QueueProcessor();
-
-  public queueForm = {
-    name: '',
-    delay: 0
-  };
 
   constructor() {
     this.examples = [
@@ -99,18 +89,5 @@ export class FsUtilExampleComponent {
     this.examples.forEach((example) => {
       example.result = JSON.stringify(example.result);
     });
-
-    this.pipes['isEmpty'] = '<span *ngIf="{}|fsUtilIsEmpty">Is Empty</span>';
-    this.pipes['isNotEmpty'] = '<span *ngIf="{ key: \'value\' }|fsUtilIsNotEmpty">Is Not Empty</span>';
-  }
-
-
-  public addQueueOperation() {
-    this.queue.push(this.queueForm.name, of(1).pipe(
-      delay(this.queueForm.delay || 0)
-    )).subscribe(() => {
-      console.log('Operation is done');
-    });
-
   }
 }

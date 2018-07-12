@@ -12,8 +12,9 @@ export class QueueProcessor {
   private _currentOperation = null;
   private _inProgress = false;
   private _total = 0;
-  private _finished = 0;
+  private _completed = 0;
   private _errors = 0;
+  private _pending = 0;
 
   constructor() {}
 
@@ -21,8 +22,12 @@ export class QueueProcessor {
     return this._total;
   }
 
-  get finished() {
-    return this._finished;
+  get completed() {
+    return this._completed;
+  }
+  
+  get pending() {
+    return this._pending;
   }
 
   get errors() {
@@ -34,11 +39,11 @@ export class QueueProcessor {
   }
 
   get allDone() {
-    return !this.inProgress && this.errors === 0 && this.total === this.finished;
+    return !this.inProgress && this.errors === 0 && this.total === this.completed;
   }
 
   get allDoneIgnoreErrors() {
-    return !this.inProgress && this.total === (this.finished + this.errors);
+    return !this.inProgress && this.total === (this.completed + this.errors);
   }
 
   get inProgressOperations() {
@@ -53,8 +58,8 @@ export class QueueProcessor {
       }, [])
   }
 
-  public push(name, target) {
-    const operation = new Operation(name, target);
+  public push(target, name?) {
+    const operation = new Operation(target, name);
     this._queue.push(operation);
 
     this._total++;
@@ -66,8 +71,8 @@ export class QueueProcessor {
     return operation.ready$;
   }
 
-  public pushAsync(name, target) {
-    const operation = new Operation(name, target);
+  public pushAsync(target, name?) {
+    const operation = new Operation(target, name);
     this._asyncQueue.push(operation);
     this._total++;
 
@@ -78,7 +83,7 @@ export class QueueProcessor {
       operation.ready$.next(data);
       operation.ready$.complete();
 
-      this._finished++;
+      this._completed++;
     }, (error) => {
       const opIndex = this._asyncQueue.indexOf(operation);
       this._asyncQueue.splice(opIndex, 1);
@@ -96,7 +101,7 @@ export class QueueProcessor {
     this._asyncQueue = [];
     this._total = 0;
     this._errors = 0;
-    this._finished = 0;
+    this._completed = 0;
     this._inProgress = false;
   }
 
@@ -114,7 +119,7 @@ export class QueueProcessor {
         this._currentOperation.ready$.next(data);
         this._currentOperation.ready$.complete();
 
-        this._finished++;
+        this._completed++;
 
         this.startQueue();
       }, (error) => {

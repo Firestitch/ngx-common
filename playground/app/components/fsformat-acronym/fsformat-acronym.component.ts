@@ -1,17 +1,12 @@
 import { Component } from '@angular/core';
-import { number } from '../../../../src/format';
 import { acronym } from '../../../../src/format/acronym/acronym';
 
 @Component({
-  selector: 'fsformat-example',
-  templateUrl: 'fsformat-example.component.html'
+  selector: 'fsformat-acronym',
+  templateUrl: 'fsformat-acronym.component.html'
 })
-export class FsFormatExampleComponent {
+export class FsFormatAcronymComponent {
 
-  examples = [];
-  pipes = [];
-
-  // Acronym
   public acronymOriginalString = {
     ex1: 'X',
     ex2: 'Denver',
@@ -22,21 +17,6 @@ export class FsFormatExampleComponent {
   public acronymExamples = [];
 
   constructor() {
-
-    this.examples = [
-      {
-        name: 'Number',
-        code: `import { number } from '@firestitch/common/format';\nnumber(42397803.23987, 2)`,
-        result: number(42397803.23987, 2)
-      }
-    ];
-
-    this.examples.forEach((example) => {
-      example.result = JSON.stringify(example.result);
-    });
-
-    this.pipes['number'] = '{{42397803.23987|fsFormatNumber:2}}';
-
     this.acronymExamples = [
       {
         acronymOriginalString: this.acronymOriginalString.ex1,

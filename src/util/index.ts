@@ -3,7 +3,6 @@ export * from './debounce';
 export * from './guid';
 export * from './keys';
 export * from './length';
-export * from './queue-processor';
 export * from './resolve';
 export * from './stringify';
 export * from './uuid';

@@ -1,6 +1,7 @@
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
+import { guid } from '../util/guid';
 
 
 export class Operation {
@@ -9,8 +10,8 @@ export class Operation {
   public target: Observable<any>;
   public ready$ = new Subject();
 
-  constructor(name, target) {
-    this.name = name;
+  constructor(target, name?) {    
+    this.name = name ? name : guid();
     if (target instanceof Observable) {
       this.target = target;
     } else {
