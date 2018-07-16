@@ -11,3 +11,4 @@ export * from './isClass';
 export * from './isNumeric';
 export * from './isEmpty';
 export * from './throttle';
+export * from './queue';
