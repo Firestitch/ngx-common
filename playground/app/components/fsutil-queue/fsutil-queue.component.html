@@ -1,0 +1,55 @@
+
+<table>
+  <tr>
+    <td><b>Pending </b></td>
+    <td>{{queue.pending}}</td>
+  </tr>
+  <tr>
+    <td><b>Completed </b></td>
+    <td>{{queue.completed}}</td>
+  </tr>
+  <tr>
+    <td><b>Errors </b></td>
+    <td>{{queue.errors}}</td>
+  </tr>
+  <tr>
+    <td><b>Total </b></td>
+    <td>{{queue.total}}</td>
+  </tr>
+  <tr>
+    <td><b>State </b></td>
+    <td>
+      {{queue.state}}
+    </td>
+  </tr>
+  <tr>
+    <td><b>Pending Operations: </b></td>
+    <td>{{queue.pendingOperations}}</td>
+  </tr>
+</table>
+
+<br><br>
+
+<form>
+  <mat-form-field>
+    <input matInput name="delay"
+            type="number"
+            [(ngModel)]="queueForm.delay"
+            placeholder="Operation Delay"
+            required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput name="name"
+            [(ngModel)]="queueForm.name"
+            placeholder="Operation name">
+  </mat-form-field>
+  <br>
+  <div>
+    <button type="submit" mat-raised-button (click)="queueOperation(1, false)">Push</button>
+    <button type="submit" mat-raised-button (click)="queueOperation(5, false)">Push 5 Operations</button>
+    <button type="submit" mat-raised-button (click)="queueOperation(1, true);">Push Error Operation</button>
+    <button type="button" mat-raised-button (click)="clear();">Clear</button>
+    <button type="button" mat-raised-button (click)="isProcessing();">Is Processing</button>
+  </div>
+</form>

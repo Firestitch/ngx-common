@@ -75,6 +75,53 @@ return /******/ (function(modules) { // webpackBootstrap
 /************************************************************************/
 /******/ ({
 
+/***/ "./format/acronym/acronym.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+function acronym(str, length) {
+    if (length === void 0) { length = 2; }
+    var splittedString = str
+        .replace(/[^a-zA-Z0-9]+/g, ' ')
+        .split(' ');
+    var result = '';
+    for (var i = 0; i < length; i++) {
+        if (!splittedString[i]) {
+            if (splittedString.length === 1) {
+                for (var j = 1; j < length; j++) {
+                    if (!splittedString[i - 1][j]) {
+                        break;
+                    }
+                    result += splittedString[i - 1][j].toUpperCase();
+                }
+            }
+            break;
+        }
+        result += splittedString[i][0].toUpperCase();
+    }
+    return result;
+}
+exports.acronym = acronym;
+
+
+/***/ }),
+
+/***/ "./format/acronym/index.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+function __export(m) {
+    for (var p in m) if (!exports.hasOwnProperty(p)) exports[p] = m[p];
+}
+Object.defineProperty(exports, "__esModule", { value: true });
+__export(__webpack_require__("./format/acronym/acronym.ts"));
+
+
+/***/ }),
+
 /***/ "./format/index.ts":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -85,6 +132,7 @@ function __export(m) {
 }
 Object.defineProperty(exports, "__esModule", { value: true });
 __export(__webpack_require__("./format/number/index.ts"));
+__export(__webpack_require__("./format/acronym/index.ts"));
 
 
 /***/ }),

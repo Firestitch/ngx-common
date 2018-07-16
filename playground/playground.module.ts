@@ -12,7 +12,8 @@ import { FsArrayExampleComponent } from './app/components/fsarray-example/fsarra
 
 import {  FsUtilFunctionsComponent,
           FsUtilPipesComponent,
-          FsQueueProcessorComponent,
+          FsUtilQueueComponent,
+          FsUtilQueueSaveComponent,
           FsFormatFunctionsComponent,
           FsFormatPipesComponent,
           FsFormatAcronymComponent,
@@ -20,12 +21,13 @@ import {  FsUtilFunctionsComponent,
 
 import { FsExampleModule } from '@firestitch/example';
 import { FsMessageModule } from '@firestitch/message';
+import { ToastrModule } from 'ngx-toastr'
 import { FsFormModule } from '@firestitch/form';
 import * as hljs from 'highlight.js/lib/highlight';
 import * as hljsTypescript from 'highlight.js/lib/languages/typescript';
 import * as hljsJson from 'highlight.js/lib/languages/json';
 import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
-import { ToastrModule } from 'ngx-toastr'
+
 
 export function highlightJsFactory() {
   hljs.registerLanguage('ts', hljsTypescript);
@@ -56,7 +58,8 @@ export function highlightJsFactory() {
     FsArrayExampleComponent,
     FsUtilFunctionsComponent,
     FsUtilPipesComponent,
-    FsQueueProcessorComponent,
+    FsUtilQueueComponent,
+    FsUtilQueueSaveComponent,
     FsFormatFunctionsComponent,
     FsFormatPipesComponent,
     FsFormatAcronymComponent
