@@ -54,13 +54,13 @@ export class Queue {
   }
 
   public subscribe(fun, err?, complete?) {
-    return this._done.subscribe(fun, err, complete);
+    this._done.subscribe(fun, err, complete);
   }
-  
+
   public complete(fun, err?, complete?) {
-    
+
     Observable.create(observer => {
-            
+
       if(!this.isProcessing()) {
           observer.next();
           observer.complete();
