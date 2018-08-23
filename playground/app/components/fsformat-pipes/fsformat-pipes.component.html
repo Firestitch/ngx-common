@@ -11,4 +11,21 @@
     <td><div class="code-pipes hljs"><code mwlHighlightJs [source]="pipes.number" language="ts"></code></div></td>
     <td><div class="code-json hljs">{{42397803.23987|fsFormatNumber:2}}</div></td>
   </tr>
+  <tr>
+    <td>Currency</td>
+    <td>
+      <div class="code-pipes hljs">
+        <code mwlHighlightJs [source]="pipes.currency.simple" language="ts"></code>
+        <code mwlHighlightJs [source]="pipes.currency.eur" language="ts"></code>
+        <code mwlHighlightJs [source]="pipes.currency.precision" language="ts"></code>
+      </div>
+    </td>
+    <td>
+      <div class="code-json hljs">
+        {{42397803.23987|fsFormatCurrency}}
+        {{42397803.23987|fsFormatCurrency:0:'EUR'}}
+        {{42397803.23987|fsFormatCurrency:2:'EUR'}}
+      </div>
+    </td>
+  </tr>
 </table>
