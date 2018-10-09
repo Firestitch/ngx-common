@@ -28,4 +28,23 @@
       </div>
     </td>
   </tr>
+  <tr>
+    <td>Truncate</td>
+    <td>
+      <div class="code-pipes hljs">
+        <code mwlHighlightJs [source]="pipes.truncate.simple" language="ts"></code>
+        <code mwlHighlightJs [source]="pipes.truncate.limit" language="ts"></code>
+        <code mwlHighlightJs [source]="pipes.truncate.completeWord" language="ts"></code>
+        <code mwlHighlightJs [source]="pipes.truncate.elipsis" language="ts"></code>
+      </div>
+    </td>
+    <td>
+      <div class="code-json hljs">
+        {{ text | fsFormatTruncate }}
+        {{ text | fsFormatTruncate: 15 }}
+        {{ text | fsFormatTruncate: 15 : true }}
+        {{ text | fsFormatTruncate: 15 : true : '***' }}
+      </div>
+    </td>
+  </tr>
 </table>

@@ -7,7 +7,7 @@ import { FsUtil } from './services/fsutil.service';
 import { FsValidate } from './services/fsvaildate.service';
 import {  FsUtilGuidPipe, FsUtilStringifyPipe,
           FsUtilIsEmptyPipe, FsUtilIsNotEmptyPipe } from './pipes/fsutil.pipe';
-import { FsFormatNumberPipe, FsFormatCurrencyPipe } from './format';
+import { FsFormatNumberPipe, FsFormatCurrencyPipe, FsFormatTruncatePipe } from './format';
 
 
 @NgModule({
@@ -19,6 +19,7 @@ import { FsFormatNumberPipe, FsFormatCurrencyPipe } from './format';
     FsUtilStringifyPipe,
     FsFormatNumberPipe,
     FsFormatCurrencyPipe,
+    FsFormatTruncatePipe,
     FsUtilIsEmptyPipe,
     FsUtilIsNotEmptyPipe
   ],
@@ -30,7 +31,8 @@ import { FsFormatNumberPipe, FsFormatCurrencyPipe } from './format';
     FsUtilIsNotEmptyPipe,
     FsUtilStringifyPipe,
     FsFormatNumberPipe,
-    FsFormatCurrencyPipe
+    FsFormatCurrencyPipe,
+    FsFormatTruncatePipe
   ],
   providers: [
     FsArray,
