@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import { of } from "rxjs/observable/of";
-import { delay } from 'rxjs/operators';
+import { delay, map } from 'rxjs/operators';
 import { Queue } from '../../../../src/util/queue';
 import { FsMessage } from '@firestitch/message';
 
@@ -28,13 +28,18 @@ export class FsUtilQueueSaveComponent {
   }
 
   public uploadFile(error) {
-    this.queue.push(of(1).pipe(delay(3000))
-      .map((res) => {
-        if (error) {
-          this.fsMessage.error('Error uploading the file');
-          throw 'Error uploading the file';
-        }
-        return res;
-      }), '');
+    this.queue.push(
+      of(1).pipe(
+        delay(3000),
+        map((res) => {
+          if (error) {
+            this.fsMessage.error('Error uploading the file');
+            throw 'Error uploading the file';
+          }
+
+          return res;
+        })
+      )
+    );
   }
 }

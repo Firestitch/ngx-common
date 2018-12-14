@@ -5,29 +5,30 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app/app.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { FsCommonModule } from '../src';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppMaterialModule } from './app/material.module';
-import { FsArrayExampleComponent } from './app/components/fsarray-example/fsarray-example.component';
-
-import {  FsUtilFunctionsComponent,
-          FsUtilPipesComponent,
-          FsUtilQueueComponent,
-          FsUtilQueueSaveComponent,
-          FsFormatFunctionsComponent,
-          FsFormatPipesComponent,
-          FsFormatAcronymComponent,
-        } from './app/components';
 
 import { FsExampleModule } from '@firestitch/example';
 import { FsMessageModule } from '@firestitch/message';
+
 import { ToastrModule } from 'ngx-toastr'
-import { FsFormModule } from '@firestitch/form';
 import * as hljs from 'highlight.js/lib/highlight';
 import * as hljsTypescript from 'highlight.js/lib/languages/typescript';
 import * as hljsJson from 'highlight.js/lib/languages/json';
 import { HighlightJsModule, HIGHLIGHT_JS } from 'angular-highlight-js';
 
+import {
+  FsUtilFunctionsComponent,
+  FsUtilPipesComponent,
+  FsUtilQueueComponent,
+  FsUtilQueueSaveComponent,
+  FsFormatFunctionsComponent,
+  FsFormatPipesComponent,
+  FsFormatAcronymComponent,
+} from './app/components';
+
+import { FsCommonModule } from '../src';
+import { FsArrayExampleComponent } from './app/components/fsarray-example/fsarray-example.component';
 
 export function highlightJsFactory() {
   hljs.registerLanguage('ts', hljsTypescript);
@@ -43,7 +44,6 @@ export function highlightJsFactory() {
     AppMaterialModule,
     FormsModule,
     FsExampleModule,
-    FsFormModule,
     FsMessageModule.forRoot(),
     ToastrModule.forRoot({ preventDuplicates: true }),
     HighlightJsModule.forRoot({

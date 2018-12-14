@@ -1,8 +1,11 @@
 import {Component} from '@angular/core';
-import { of } from "rxjs/observable/of";
-import { delay } from 'rxjs/operators';
-import { Queue } from '../../../../src/util/queue';
 import { FsMessage } from '@firestitch/message';
+
+import { of } from 'rxjs';
+import { delay, map } from 'rxjs/operators';
+
+import { Queue } from '../../../../src/util/queue';
+
 
 @Component({
   selector: 'fsutil-queue',
@@ -13,7 +16,6 @@ export class FsUtilQueueComponent {
 
   // {  concurrent / consecutive }
   queue = new Queue();
-  operationCount = 0;
   public queueForm = {
     name: '',
     delay: 2000
@@ -26,13 +28,18 @@ export class FsUtilQueueComponent {
   public queueOperation(count, error) {
     const operations = [];
     for (let i = 0; i < count; i++) {
-      this.queue.push(of(1).pipe(delay(this.queueForm.delay || 0))
-      .map((res) => {
-        if (error) {
-          throw 'Error';
-        }
-        return res;
-      }), this.queueForm.name);
+      this.queue.push(
+        of(1)
+          .pipe(
+            delay(this.queueForm.delay || 0),
+            map((res) => {
+              if (error) {
+                throw 'Error';
+              }
+              return res;
+            })
+          )
+      );
     }
   }
 
