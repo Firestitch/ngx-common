@@ -1,6 +1,4 @@
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs';
+import { Observable, Subject, of } from 'rxjs';
 import { guid } from '../guid';
 
 

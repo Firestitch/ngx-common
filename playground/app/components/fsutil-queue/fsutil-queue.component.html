@@ -1,6 +1,10 @@
 
 <table>
   <tr>
+    <td><b>In Progress </b></td>
+    <td>{{queue.inProgress}}</td>
+  </tr>
+  <tr>
     <td><b>Pending </b></td>
     <td>{{queue.pending}}</td>
   </tr>
@@ -29,6 +33,17 @@
 </table>
 
 <br><br>
+
+<form>
+  <mat-form-field>
+    <input matInput name="limit"
+           type="number"
+           [(ngModel)]="queueLimit"
+           placeholder="Limit"
+           required>
+  </mat-form-field>
+  <button type="submit" mat-raised-button (click)="changeLimit()">Set</button>
+</form>
 
 <form>
   <mat-form-field>

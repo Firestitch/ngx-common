@@ -14,12 +14,12 @@ import { Queue } from '../../../../src/util/queue';
 })
 export class FsUtilQueueComponent {
 
-  // {  concurrent / consecutive }
-  queue = new Queue();
+  public queue = new Queue();
   public queueForm = {
     name: '',
     delay: 2000
   };
+  public queueLimit = Infinity;
 
   constructor(private fsMessage: FsMessage) {
     this.init();
@@ -55,6 +55,10 @@ export class FsUtilQueueComponent {
     this.queue.clear();
     this.init();
     this.fsMessage.info('The queue has been cleared');
+  }
+
+  public changeLimit() {
+    this.queue.setLimit(this.queueLimit | Infinity);
   }
 
   public init() {
