@@ -1,7 +1,7 @@
 {
   "name": "@firestitch/common",
   "description": "@firestitch/common",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/fs-common"
@@ -125,6 +125,5 @@
     "zone.js": ">=0.8.4",
     "rxjs-compat": "^6.3.3"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
