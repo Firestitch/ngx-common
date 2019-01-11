@@ -43,7 +43,7 @@ export function highlightJsFactory() {
     BrowserAnimationsModule,
     AppMaterialModule,
     FormsModule,
-    FsExampleModule.forRoot({ iframeObserveBody: true }),
+    FsExampleModule.forRoot(),
     FsMessageModule.forRoot(),
     ToastrModule.forRoot({ preventDuplicates: true }),
     HighlightJsModule.forRoot({

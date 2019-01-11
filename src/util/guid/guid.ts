@@ -1,8 +1,14 @@
-export function guid(pattern?: string): string {
+export function guid(pattern?: string, options: any={}): string {
   pattern = pattern || 'xxxxxx';
-  return pattern.replace(/[xy]/g, function(c) {
-    const r = Math.random() * 16 | 0;
-    const v = c == 'x' ? r : (r & 0x3 | 0x8);
-    return v.toString(16);
+  let s = '0123456789abcdefghijklmnopqrstuvwxyz';
+
+  if (options.uppercase===true) {
+    s = s.concat('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
+  }
+
+  const chars = s.match(/(.{1,1})/g);
+  return pattern.replace(/[x]/g, function(c) {
+    const i = (Math.random() * chars.length) | 0;
+    return chars[i];
   });
 }
