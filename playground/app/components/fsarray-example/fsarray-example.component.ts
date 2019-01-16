@@ -3,6 +3,7 @@ import {
   index,
   indexOf,
   filter,
+  find,
   sort,
   rsort,
   remove,
@@ -39,6 +40,11 @@ export class FsArrayExampleComponent {
         name: 'Filtered By Property',
         code: `import { filter } from '@firestitch/common/array';\nfilter(array,{ name: 'Will' })`,
         result: filter(array.slice(), {name: 'Will'})
+      },
+      {
+        name: 'Find By Property',
+        code: `import { find } from '@firestitch/common/array';\nfind(array,{ name: 'Will' })`,
+        result: find(array.slice(), {name: 'Will'})
       },
       {
         name: 'Filtered By Function',

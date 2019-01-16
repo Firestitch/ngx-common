@@ -11,3 +11,4 @@ export * from './nameValue';
 export * from './remove';
 export * from './rsort';
 export * from './sort';
+export * from './find';
