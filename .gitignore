@@ -33,16 +33,17 @@ dist/*
 
 # Playground tmp files
 .playground
+src/package.json
 /.tmp
 /build
 /dist
 /node_modules
 /.playground
 /dll
-/package-lock.json
 /package
 /demo
 /*.code-workspace
 /package
 /demo
 /package
+/docs
