@@ -1,1 +1,1 @@
-export * from './fsutil.pipe';
+export * from './util.pipe';

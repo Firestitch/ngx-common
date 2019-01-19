@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { FsUtil } from './fsutil.service';
+import { FsUtil } from './util.service';
 
 @Injectable()
 export class FsValidate {

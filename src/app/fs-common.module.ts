@@ -1,16 +1,16 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { FsArray } from './services/fsarray.service';
-import { FsMath } from './services/fsmath.service';
-import { FsUtil } from './services/fsutil.service';
-import { FsValidate } from './services/fsvaildate.service';
+import { FsArray } from './services/array.service';
+import { FsMath } from './services/math.service';
+import { FsUtil } from './services/util.service';
+import { FsValidate } from './services/vaildate.service';
 import {
   FsUtilGuidPipe,
   FsUtilStringifyPipe,
   FsUtilIsEmptyPipe,
   FsUtilIsNotEmptyPipe,
-} from './pipes/fsutil.pipe';
+} from './pipes/util.pipe';
 import { FsFormatNumberPipe } from './pipes/number.pipe';
 import { FsFormatCurrencyPipe } from './pipes/currency.pipe';
 import { FsFormatTruncatePipe} from './pipes/truncate.pipe';
