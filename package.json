@@ -1,5 +1,6 @@
 {
   "name": "@firestitch/common",
+  "title": "Common",
   "description": "@firestitch/common",
   "version": "0.5.1",
   "repository": {
@@ -43,9 +44,8 @@
     "@angular/platform-browser": "^7.2.1",
     "@angular/platform-browser-dynamic": "^7.2.1",
     "@compodoc/compodoc": "^1.1.7",
-    "@firestitch/example": "^0.5.2",
+    "@firestitch/example": "^0.6.0",
     "@firestitch/form": "^1.1.7",
-    "@firestitch/iframe": "^0.2.0",
     "@firestitch/message": "^0.2.0",
     "angular-highlight-js": "^2.0.1",
     "codelyzer": "^4.5.0",
