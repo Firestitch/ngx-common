@@ -67,7 +67,7 @@
     "node": ">=6.0.0"
   },
   "peerDependencies": {
-    "rxjs": ">=6.3.0"
-  },
-  "dependencies": {}
+    "rxjs": ">=6.3.0",
+    "lodash-es": ">=4.17.11"
+  }
 }
