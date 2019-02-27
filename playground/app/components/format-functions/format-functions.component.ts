@@ -14,7 +14,7 @@ export class FsFormatFunctionsComponent {
     this.examples = [
       {
         name: 'Number',
-        code: `import { number } from '@firestitch/common/format';\nnumber(42397803.23987, 2)`,
+        code: `import { number } from '@firestitch/common';\nnumber(42397803.23987, 2)`,
         result: number(42397803.23987, 2)
       }
     ];

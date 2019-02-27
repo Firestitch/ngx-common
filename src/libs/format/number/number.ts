@@ -1,3 +1,3 @@
 export function number(value, decimals?) {
-  return value.toLocaleString(undefined, {maximumFractionDigits: decimals});
+  return Number(value || 0).toLocaleString(undefined, { maximumFractionDigits: decimals });
 }

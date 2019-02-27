@@ -1,8 +1,16 @@
-export function guid(pattern?: string, options: any={}): string {
+export function guid(pattern?: string, options: any = { case: 'lower', numbers: true }): string {
   pattern = pattern || 'xxxxxx';
-  let s = '0123456789abcdefghijklmnopqrstuvwxyz';
+  let s = '';
 
-  if (options.uppercase===true) {
+  if (options.numbers !== false) {
+    s = '0123456789';
+  }
+
+  if (!options.case || options.case === 'lower' || options.case === 'mixed') {
+    s = s.concat('abcdefghijklmnopqrstuvwxyz');
+  }
+
+  if (options.case === 'upper' || options.case === 'mixed') {
     s = s.concat('ABCDEFGHIJKLMNOPQRSTUVWXYZ');
   }
 
