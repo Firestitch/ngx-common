@@ -16,15 +16,27 @@
     <td>
       <div class="code-pipes hljs">
         <code mwlHighlightJs [source]="pipes.currency.simple" language="ts"></code>
+        <br>
+        <code mwlHighlightJs [source]="pipes.currency.decimals" language="ts"></code>
+        <br>
+        <code mwlHighlightJs [source]="pipes.currency.decimals4" language="ts"></code>
+        <br>
         <code mwlHighlightJs [source]="pipes.currency.eur" language="ts"></code>
+        <br>
         <code mwlHighlightJs [source]="pipes.currency.precision" language="ts"></code>
       </div>
     </td>
     <td>
       <div class="code-json hljs">
-        {{42397803.23987|fsFormatCurrency}}
-        {{42397803.23987|fsFormatCurrency:2:'EUR'}}
-        {{42397803.23987|fsFormatCurrency:0:'EUR'}}
+        {{ 42397803.23987 | fsFormatCurrency }}
+        <br>
+        {{ 42397803.23987 | fsFormatCurrency:2 }}
+        <br>
+        {{ 42397803.23987 | fsFormatCurrency:[2,4] }}
+        <br>
+        {{ 42397803.23987 | fsFormatCurrency:2:'EUR' }}
+        <br>
+        {{ 42397803.23987 | fsFormatCurrency:0:'EUR' }}
       </div>
     </td>
   </tr>
@@ -33,16 +45,22 @@
     <td>
       <div class="code-pipes hljs">
         <code mwlHighlightJs [source]="pipes.truncate.simple" language="ts"></code>
+        <br>
         <code mwlHighlightJs [source]="pipes.truncate.limit" language="ts"></code>
+        <br>
         <code mwlHighlightJs [source]="pipes.truncate.completeWord" language="ts"></code>
+        <br>
         <code mwlHighlightJs [source]="pipes.truncate.elipsis" language="ts"></code>
       </div>
     </td>
     <td>
       <div class="code-json hljs">
         {{ text | fsFormatTruncate }}
+        <br>
         {{ text | fsFormatTruncate: 15 }}
+        <br>
         {{ text | fsFormatTruncate: 15 : true }}
+        <br>
         {{ text | fsFormatTruncate: 15 : true : '***' }}
       </div>
     </td>

@@ -14,6 +14,8 @@ export class FsFormatPipesComponent {
     this.pipes.number = '{{42397803.23987|fsFormatNumber:2}}';
     this.pipes.currency = {
       simple: `{{42397803.23987|fsFormatCurrency}}`,
+      decimals: `{{42397803.23987|fsFormatCurrency:2}}`,
+      decimals4: `{{42397803.23987|fsFormatCurrency:[2,4]}}`,
       eur: `{{42397803.23987|fsFormatCurrency:2:'EUR'}}`,
       precision: `{{42397803.23987|fsFormatCurrency:0:'EUR'}}`,
     };
