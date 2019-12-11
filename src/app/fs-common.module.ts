@@ -14,6 +14,8 @@ import {
 import { FsFormatNumberPipe } from './pipes/number.pipe';
 import { FsFormatCurrencyPipe } from './pipes/currency.pipe';
 import { FsFormatTruncatePipe} from './pipes/truncate.pipe';
+import { FsStopPropagationDirective } from './directives/stop-propagation.directive';
+import { FsPreventDefaultDirective } from './directives/prevent-default.directive';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { FsFormatTruncatePipe} from './pipes/truncate.pipe';
     CommonModule,
   ],
   exports: [
+    FsStopPropagationDirective,
+    FsPreventDefaultDirective,
     FsUtilGuidPipe,
     FsUtilStringifyPipe,
     FsFormatNumberPipe,
@@ -32,6 +36,8 @@ import { FsFormatTruncatePipe} from './pipes/truncate.pipe';
   entryComponents: [
   ],
   declarations: [
+    FsStopPropagationDirective,
+    FsPreventDefaultDirective,
     FsUtilGuidPipe,
     FsUtilIsEmptyPipe,
     FsUtilIsNotEmptyPipe,
