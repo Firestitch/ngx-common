@@ -166,7 +166,7 @@ export class Queue {
             this._done.next();
           } else {
             if (this._queue.length) {
-              const queueItem = this._queue.pop();
+              const queueItem = this._queue.shift();
               this._processOperation(queueItem);
             }
           }
