@@ -12,6 +12,11 @@ export class FsFormatPipesComponent {
 
   constructor() {
     this.pipes.number = '{{42397803.23987|fsFormatNumber:2}}';
+    this.pipes.bytes = [
+      '{{423978|fsFormatBytes}}',
+      '{{67654543|fsFormatBytes}}',
+      '{{8934734764|fsFormatBytes}}',
+    ];
     this.pipes.currency = {
       simple: `{{42397803.23987|fsFormatCurrency}}`,
       decimals: `{{42397803.23987|fsFormatCurrency:2}}`,

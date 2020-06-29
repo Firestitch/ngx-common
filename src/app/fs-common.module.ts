@@ -14,6 +14,7 @@ import {
 import { FsFormatNumberPipe } from './pipes/number.pipe';
 import { FsFormatCurrencyPipe } from './pipes/currency.pipe';
 import { FsFormatTruncatePipe} from './pipes/truncate.pipe';
+import { FsFormatBytesPipe } from './pipes/bytes.pipe';
 import { FsStopPropagationDirective } from './directives/stop-propagation.directive';
 import { FsPreventDefaultDirective } from './directives/prevent-default.directive';
 
@@ -31,9 +32,8 @@ import { FsPreventDefaultDirective } from './directives/prevent-default.directiv
     FsFormatCurrencyPipe,
     FsFormatTruncatePipe,
     FsUtilIsEmptyPipe,
-    FsUtilIsNotEmptyPipe
-  ],
-  entryComponents: [
+    FsUtilIsNotEmptyPipe,
+    FsFormatBytesPipe,
   ],
   declarations: [
     FsStopPropagationDirective,
@@ -44,14 +44,15 @@ import { FsPreventDefaultDirective } from './directives/prevent-default.directiv
     FsUtilStringifyPipe,
     FsFormatNumberPipe,
     FsFormatCurrencyPipe,
-    FsFormatTruncatePipe
+    FsFormatTruncatePipe,
+    FsFormatBytesPipe,
   ],
   providers: [
     FsArray,
     FsMath,
     FsUtil,
-    FsValidate
-  ]
+    FsValidate,
+  ],
 })
 export class FsCommonModule {
   static forRoot(): ModuleWithProviders {

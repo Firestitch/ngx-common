@@ -65,4 +65,25 @@
       </div>
     </td>
   </tr>
+  <tr>
+    <td>Bytes</td>
+    <td>
+      <div class="code-pipes hljs">
+        <code mwlHighlightJs [source]="pipes.bytes[0]" language="ts"></code>
+        <br>
+        <code mwlHighlightJs [source]="pipes.bytes[1]" language="ts"></code>
+        <br>
+        <code mwlHighlightJs [source]="pipes.bytes[2]" language="ts"></code>
+      </div>
+    </td>
+    <td>
+      <div class="code-json hljs">
+        {{233|fsFormatBytes}}
+        <br>
+        {{65443|fsFormatBytes}}
+        <br>
+        {{89347764|fsFormatBytes}}
+      </div>
+    </td>
+  </tr>
 </table>
