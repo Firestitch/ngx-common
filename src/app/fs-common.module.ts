@@ -17,6 +17,7 @@ import { FsFormatTruncatePipe} from './pipes/truncate.pipe';
 import { FsFormatBytesPipe } from './pipes/bytes.pipe';
 import { FsStopPropagationDirective } from './directives/stop-propagation.directive';
 import { FsPreventDefaultDirective } from './directives/prevent-default.directive';
+import { FsAutofocusDirective } from './directives/autofocus.directive';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { FsPreventDefaultDirective } from './directives/prevent-default.directiv
   exports: [
     FsStopPropagationDirective,
     FsPreventDefaultDirective,
+    FsAutofocusDirective,
     FsUtilGuidPipe,
     FsUtilStringifyPipe,
     FsFormatNumberPipe,
@@ -38,6 +40,7 @@ import { FsPreventDefaultDirective } from './directives/prevent-default.directiv
   declarations: [
     FsStopPropagationDirective,
     FsPreventDefaultDirective,
+    FsAutofocusDirective,
     FsUtilGuidPipe,
     FsUtilIsEmptyPipe,
     FsUtilIsNotEmptyPipe,
