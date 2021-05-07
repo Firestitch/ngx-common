@@ -50,12 +50,6 @@ import { FsAutofocusDirective } from './directives/autofocus.directive';
     FsFormatTruncatePipe,
     FsFormatBytesPipe,
   ],
-  providers: [
-    FsArray,
-    FsMath,
-    FsUtil,
-    FsValidate,
-  ],
 })
 export class FsCommonModule {
   static forRoot(): ModuleWithProviders {
