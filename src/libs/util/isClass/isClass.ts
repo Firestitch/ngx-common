@@ -1,10 +1,8 @@
-import { isObject, isString } from 'util';
-
 export function isClass(value, cls) {
 
-  if (isObject(value)) {
+  if (typeof value === 'object') {
 
-    if (isString(cls)) {
+    if (typeof cls === 'string') {
 
       if (value.constructor) {
         if (value.constructor.name === cls) {
