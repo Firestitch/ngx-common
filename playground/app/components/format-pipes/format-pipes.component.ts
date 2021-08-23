@@ -16,6 +16,7 @@ export class FsFormatPipesComponent {
       '{{423978|fsFormatBytes}}',
       '{{67654543|fsFormatBytes}}',
       '{{8934734764|fsFormatBytes}}',
+      '{{(400 * 1024 * 1024)|fsFormatBytes}}',
     ];
     this.pipes.currency = {
       simple: `{{42397803.23987|fsFormatCurrency}}`,
