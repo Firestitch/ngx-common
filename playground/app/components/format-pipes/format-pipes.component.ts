@@ -12,6 +12,14 @@ export class FsFormatPipesComponent {
 
   constructor() {
     this.pipes.number = '{{42397803.23987|fsFormatNumber:2}}';
+    this.pipes.ordinalNumber = [
+      '{{1|fsFormatOrdinalNumber}}',
+      '{{2|fsFormatOrdinalNumber}}',
+      '{{3|fsFormatOrdinalNumber}}',
+      '{{4|fsFormatOrdinalNumber}}',
+      '{{11|fsFormatOrdinalNumber}}',
+      '{{21|fsFormatOrdinalNumber}}',
+    ];
     this.pipes.bytes = [
       '{{423978|fsFormatBytes}}',
       '{{67654543|fsFormatBytes}}',

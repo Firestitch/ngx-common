@@ -12,6 +12,39 @@
     <td><div class="code-json hljs">{{42397803.23987|fsFormatNumber:2}}</div></td>
   </tr>
   <tr>
+    <td>Ordinal Number</td>
+    <td>
+      <div class="code-pipes hljs">
+        <code mwlHighlightJs [source]="pipes.ordinalNumber[0]" language="ts"></code>
+        <br>
+        <code mwlHighlightJs [source]="pipes.ordinalNumber[1]" language="ts"></code>
+        <br>
+        <code mwlHighlightJs [source]="pipes.ordinalNumber[2]" language="ts"></code>
+        <br>
+        <code mwlHighlightJs [source]="pipes.ordinalNumber[3]" language="ts"></code>
+        <br>
+        <code mwlHighlightJs [source]="pipes.ordinalNumber[4]" language="ts"></code>
+        <br>
+        <code mwlHighlightJs [source]="pipes.ordinalNumber[5]" language="ts"></code>
+      </div>
+    </td>
+    <td>
+      <div class="code-json hljs">
+        {{1|fsFormatOrdinalNumber}}
+        <br>
+        {{2|fsFormatOrdinalNumber}}
+        <br>
+        {{3|fsFormatOrdinalNumber}}
+        <br>
+        {{4|fsFormatOrdinalNumber}}
+        <br>
+        {{11|fsFormatOrdinalNumber}}
+        <br>
+        {{21|fsFormatOrdinalNumber}}
+      </div>
+    </td>
+  </tr>
+  <tr>
     <td>Currency</td>
     <td>
       <div class="code-pipes hljs">

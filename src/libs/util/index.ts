@@ -14,3 +14,4 @@ export * from './throttle';
 export * from './queue';
 export { getNormalizedPath } from './get-normalized-path';
 export { removeQueryParams } from './remove-query-params';
+export { ordinalNumber } from './ordinal-number/ordinal-number';
