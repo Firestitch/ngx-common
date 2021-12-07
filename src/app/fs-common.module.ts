@@ -55,7 +55,7 @@ import { FsFormatOrdinalNumberPipe } from './pipes/ordinal-number.pipe';
   ],
 })
 export class FsCommonModule {
-  static forRoot(): ModuleWithProviders {
+  static forRoot(): ModuleWithProviders<FsCommonModule> {
     return {
       ngModule: FsCommonModule,
       providers: [
