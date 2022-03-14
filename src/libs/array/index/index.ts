@@ -1,8 +1,8 @@
-export function index(array, property) {
+export function index(array, name, value = null) {
   const list = {};
   
-  array.forEach(function (item, idx) {
-    list[item[property]] = item;
+  array.forEach(function (item) {
+    list[item[name]] = value ? item[value] : item;
   });
   
   return list;
