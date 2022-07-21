@@ -28,3 +28,4 @@ export { FsStopPropagationDirective } from './app/directives/stop-propagation.di
 export { FsPreventDefaultDirective } from './app/directives/prevent-default.directive';
 export { FsAutofocusDirective } from './app/directives/autofocus.directive';
 export { FsFormatOrdinalNumberPipe } from './app/pipes/ordinal-number.pipe';
+export { keyboardShortcut } from './libs/rxjs/keyboard-shortcut';
