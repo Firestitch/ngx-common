@@ -2,22 +2,13 @@ import {Component} from '@angular/core';
 import {
   guid,
   uuid,
-  boolean,
   length,
   isEmpty,
   isNumeric,
-  isClass
+  isClass,
+  round,
+  clone
 } from '@firestitch/common';
-
-import {
-  toInteger,
-  toFinite,
-  toString,
-  isInteger,
-  isArray,
-  isObject,
-  isArrayLikeObject,
-} from 'lodash-es';
 
 @Component({
   selector: 'fs-util-functions',
@@ -60,11 +51,6 @@ export class FsUtilFunctionsComponent {
         result: isClass(new Date(),'Date')
       },
       {
-        name: 'Boolean',
-        code: `import { boolean } from '@firestitch/common';\nboolean('test')`,
-        result: boolean('test')
-      },
-      {
         name: 'Length for Array or Object keys',
         code: `import { length } from '@firestitch/common';\nlength({a: 1, b: 2})`,
         result: length({a: 1, b: 2})
@@ -88,7 +74,17 @@ export class FsUtilFunctionsComponent {
       {
         name: 'Get value from object or default',
         code: `import { value } from '@firestitch/common';\nvalue(object, key, def)`
-      }
+      },
+      {
+        name: 'Round',
+        code: `import { round } from '@firestitch/round';\nround(100.568,2)`,
+        result: round(100.568, 2),
+      },
+      {
+        name: 'Clone',
+        code: `import { clone } from '@firestitch/clone';\nclone({ date: new Date() })`,
+        result: clone({ date: new Date() }),
+      },
     ];
 
     this.examples.forEach((example) => {

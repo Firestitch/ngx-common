@@ -30,46 +30,9 @@ export class FsArrayExampleComponent {
         result: index(array.slice(), 'id')
       },
       {
-        name: 'IndexOf Name==Tom (Property)',
-        code: `import { indexOf } from '@firestitch/common';\nindexOf(array,{ name: 'Tom'})`,
-        result: indexOf(array.slice(), function (value) {
-          return value.name == 'Tom';
-        })
-      },
-      {
-        name: 'Filtered By Property',
-        code: `import { filter } from '@firestitch/common';\nfilter(array,{ name: 'Will' })`,
-        result: filter(array.slice(), {name: 'Will'})
-      },
-      {
-        name: 'Find By Property',
-        code: `import { find } from '@firestitch/common';\nfind(array,{ name: 'Will' })`,
-        result: find(array.slice(), {name: 'Will'})
-      },
-      {
-        name: 'Filtered By Function',
-        code: `import { filter } from '@firestitch/common';\nfilter(array,function(value) { return value.name=='Will'; })`,
-        result: filter(array.slice(), function (value) {
-          return value.name == 'Will';
-        })
-      },
-      {
         name: 'Sort By Property',
         code: `import { sort } from '@firestitch/common';\nsort(array,'name')`,
         result: sort(array.slice(), 'name')
-      },
-      {
-        name: 'Sort By Function',
-        code: `import { sort } from '@firestitch/common';\nsort(array,function(a,b) { if(a.name>b.id) { return 1; } if(a.name<b.id) { return -1; } return 0; })`,
-        result: sort(array.slice(), function (a, b) {
-          if (a.name > b.id) {
-            return 1;
-          }
-          if (a.name < b.id) {
-            return -1;
-          }
-          return 0;
-        })
       },
       {
         name: 'Reverse Sort',

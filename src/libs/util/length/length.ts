@@ -1,12 +1,10 @@
-import { isObject, isArray } from 'lodash-es'
-
 export function length(object) {
-  if (isObject(object)) {
-    return Object.keys(object).length;
+  if (Array.isArray(object)) {
+    return object.length;
   }
 
-  if (isArray(object)) {
-    return object.length;
+  if (object instanceof Object) {
+    return Object.keys(object).length;
   }
 
   return 0;
