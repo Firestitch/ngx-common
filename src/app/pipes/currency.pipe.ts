@@ -9,7 +9,7 @@ export class FsFormatCurrencyPipe implements PipeTransform {
 
   constructor(@Inject(LOCALE_ID) public locale: string) {  }
 
-  transform(amount, precision?, currencyCode?): string {
+  transform(amount, precision = 2, currencyCode?): string {
     return currency(amount, precision, currencyCode);
   }
 
