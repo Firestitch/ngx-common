@@ -14,11 +14,11 @@ import {
 import { FsFormatNumberPipe } from './pipes/number.pipe';
 import { FsFormatCurrencyPipe } from './pipes/currency.pipe';
 import { FsFormatTruncatePipe} from './pipes/truncate.pipe';
-import { FsFormatBytesPipe } from './pipes/bytes.pipe';
 import { FsStopPropagationDirective } from './directives/stop-propagation.directive';
 import { FsPreventDefaultDirective } from './directives/prevent-default.directive';
 import { FsAutofocusDirective } from './directives/autofocus.directive';
 import { FsFormatOrdinalNumberPipe } from './pipes/ordinal-number.pipe';
+import { FsFormatBytesPipe } from './pipes';
 
 
 @NgModule({

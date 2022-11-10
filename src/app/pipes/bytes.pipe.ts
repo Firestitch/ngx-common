@@ -6,7 +6,7 @@ import { bytes } from '../../libs/format/bytes/bytes';
 })
 export class FsFormatBytesPipe implements PipeTransform {
 
-  transform(value: number): string {
-    return bytes(value);
+  transform(value: number, decimals?, unit?: 'KB' | 'MB' | 'GB' | 'TB' | 'PB'): string {
+    return bytes(value, decimals, unit);
   }
 }

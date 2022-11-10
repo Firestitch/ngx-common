@@ -20,12 +20,16 @@ export class FsFormatPipesComponent {
       '{{11|fsFormatOrdinalNumber}}',
       '{{21|fsFormatOrdinalNumber}}',
     ];
+
     this.pipes.bytes = [
-      '{{423978|fsFormatBytes}}',
-      '{{67654543|fsFormatBytes}}',
-      '{{8934734764|fsFormatBytes}}',
-      '{{(400 * 1024 * 1024)|fsFormatBytes}}',
+      '{{233|fsFormatBytes}}',
+      '{{65.443 * 1024|fsFormatBytes}}',
+      '{{85.23 * 1024 * 1024|fsFormatBytes:0}}',
+      '{{402.54 * 1024 * 1024 * 1024|fsFormatBytes}}',
+      '{{825.23 * 1024 * 1024|fsFormatBytes:0:\'MB\'}}',
+      '{{3443 * 1024 * 1024|fsFormatBytes:null:\'GB\'}}',
     ];
+
     this.pipes.currency = {
       simple: `{{42397803.23987|fsFormatCurrency}}`,
       decimals: `{{42397803.23987|fsFormatCurrency:2}}`,
@@ -33,6 +37,7 @@ export class FsFormatPipesComponent {
       eur: `{{42397803.23987|fsFormatCurrency:2:'EUR'}}`,
       precision: `{{42397803.23987|fsFormatCurrency:0:'EUR'}}`,
     };
+
     this.pipes.truncate = {
       simple: `{{ '${this.text}' | fsFormatTruncate }}`,
       limit: `{{ '${this.text}' | fsFormatTruncate: 15 }}`,

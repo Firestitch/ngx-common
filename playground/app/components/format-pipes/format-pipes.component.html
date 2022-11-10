@@ -109,17 +109,25 @@
         <code mwlHighlightJs [source]="pipes.bytes[2]" language="ts"></code>
         <br>
         <code mwlHighlightJs [source]="pipes.bytes[3]" language="ts"></code>
+        <br>
+        <code mwlHighlightJs [source]="pipes.bytes[4]" language="ts"></code>
+        <br>
+        <code mwlHighlightJs [source]="pipes.bytes[5]" language="ts"></code>
       </div>
     </td>
     <td>
       <div class="code-json hljs">
         {{233|fsFormatBytes}}
         <br>
-        {{65443|fsFormatBytes}}
+        {{65.443 * 1024|fsFormatBytes}}
         <br>
-        {{89347764|fsFormatBytes}}
+        {{85.23 * 1024 * 1024|fsFormatBytes}}
         <br>
-        {{(400 * 1024 * 1024)|fsFormatBytes}}
+        {{402.54 * 1024 * 1024 * 1024|fsFormatBytes}}
+        <br>
+        {{825.23 * 1024 * 1024|fsFormatBytes:0:'MB'}}
+        <br>
+        {{3443 * 1024 * 1024|fsFormatBytes:null:'GB'}}
       </div>
     </td>
   </tr>
