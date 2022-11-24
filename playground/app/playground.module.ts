@@ -24,7 +24,8 @@ import {
   FsUtilFunctionsComponent,
   FsUtilPipesComponent,
   FsUtilQueueComponent,
-  FsUtilQueueSaveComponent
+  FsUtilQueueSaveComponent,
+  AutofocusComponent,
 } from './components';
 
 import { FsCommonModule } from '@firestitch/common';
@@ -51,7 +52,6 @@ export function highlightJsFactory() {
       useFactory: highlightJsFactory
     })
   ],
-  entryComponents: [],
   declarations: [
     AppComponent,
     FsArrayExampleComponent,
@@ -61,9 +61,9 @@ export function highlightJsFactory() {
     FsUtilQueueSaveComponent,
     FsFormatFunctionsComponent,
     FsFormatPipesComponent,
-    FsFormatAcronymComponent
+    FsFormatAcronymComponent,
+    AutofocusComponent,
   ],
-  providers: [],
 })
 export class PlaygroundModule {
 }

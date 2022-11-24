@@ -1,0 +1,17 @@
+<mat-form-field>
+  <mat-label>Autofocused Input</mat-label>
+  <input
+    fsAutofocus
+    name="input"
+    matInput>
+</mat-form-field>
+
+<br><br>
+
+<mat-form-field>
+  <mat-label>Not Autofocused Input</mat-label>
+  <input
+    [fsAutofocus]="false" 
+    name="input"
+    matInput>
+</mat-form-field>

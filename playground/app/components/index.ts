@@ -6,4 +6,5 @@ export * from './format-functions';
 export * from './format-pipes';
 export * from './format-acronym';
 export * from './array-example';
+export * from './autofocus';
 

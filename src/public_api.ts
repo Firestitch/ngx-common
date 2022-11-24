@@ -20,6 +20,7 @@ export {
   FsUtilIsEmptyPipe,
   FsUtilIsNotEmptyPipe,
 } from './app/pipes/util.pipe';
+
 export { FsFormatNumberPipe } from './app/pipes/number.pipe';
 export { FsFormatCurrencyPipe } from './app/pipes/currency.pipe';
 export { FsFormatTruncatePipe} from './app/pipes/truncate.pipe';
