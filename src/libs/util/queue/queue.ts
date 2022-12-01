@@ -1,59 +1,82 @@
-import { Observable, Subject } from 'rxjs';
+import { Observable, of, Subject } from 'rxjs';
+import { delay, finalize, map, take, takeUntil } from 'rxjs/operators';
+
 import { Operation } from './operation';
+import { QueueStats } from './queue-stats';
 import { QueueState } from './queue.enum';
-import { delay, takeUntil } from 'rxjs/operators';
+
 
 export class Queue {
 
-  private _done = new Subject();
+  private _queueStats: QueueStats = {
+    completed: 0,
+    total: 0,
+    errors: [],
+  };
 
+  private _doneQueueStats: QueueStats = {
+    completed: 0,
+    total: 0,
+    errors: [],
+  };
+
+  private _completeQueueStats: QueueStats = {
+    completed: 0,
+    total: 0,
+    errors: [],
+  };
+
+  private _done = new Subject<QueueStats>();
   private _queue: Operation[] = [];
   private _inProgress: Operation[] = [];
-
-  private _total = 0;
-  private _completed = 0;
-  private _errors = 0;
-
   private _state: QueueState = QueueState.Idle;
-
   private _destroy$ = new Subject<void>();
-
-  constructor(private _limit = Infinity) {}
-
-  get total() {
-    return this._total;
+  
+  constructor(
+    private _limit = Infinity,
+    //private _targets?: Observable<any>[],
+  ) {
+    // if(_targets) {
+    //   _targets.forEach((target) => {
+    //     this.push(target);
+    //   }); 
+    // }
   }
 
-  get completed() {
-    return this._completed;
+  public get total() {
+    return this._queueStats.total;
   }
 
-  get pending() {
+  public get completed() {
+    return this._queueStats.completed;
+  }
+
+  public get pending() {
     return this._queue.length;
   }
 
-  get inProgress() {
+  public get inProgress() {
     return this._inProgress.length;
   }
 
-  get errors() {
-    return this._errors;
+  public get errors() {
+    return this._queueStats.errors;
   }
 
-  get state() {
+  public get state() {
     return this._state;
   }
 
-  get empty() {
+  public get empty() {
     return !this._queue.length && !this._inProgress.length
   }
 
-  get pendingOperations(): string[] {
+  public get pendingOperations(): string[] {
     return this._queue
       .map((operation) => operation.name);
   }
 
-  get inProgressOperations(): string[] {
+  public get inProgressOperations(): string[] {
     return this._inProgress
       .map((operation) => operation.name);
   }
@@ -70,38 +93,43 @@ export class Queue {
     this._limit = value;
   }
 
-  public subscribe(fun, err?, complete?) {
-    this._done
-      .pipe(
-        takeUntil(this._destroy$),
-      )
+  /**
+   * @depreated
+   */
+  public subscribe(fun, err?, complete?): void {
+    this.observe$
       .subscribe(fun, err, complete);
   }
 
-  public complete(fun, err?, complete?) {
-
-    Observable.create(observer => {
-
-      if (!this.isProcessing()) {
-          observer.next();
-          observer.complete();
-          return;
-      }
-
-      this.subscribe(() => {
-        observer.next();
-        observer.complete();
-      }, (error) => {
-        observer.error(error);
-        this.clear();
-      });
-    }).subscribe(fun, err, complete);
+  public get observe$(): Observable<QueueStats> {
+    return this._done
+      .pipe(
+        takeUntil(this._destroy$),
+      );
   }
 
-  public push(target, name?) {
+  public get complete$(): Observable<QueueStats> {
+    if (!this.isProcessing()) {
+      return of({ total: 0, completed: 0, errors: [] });
+    }
+
+    return this.observe$
+      .pipe(
+        take(1),
+        map(() => (this._completeQueueStats)),
+      );
+  }
+
+  public complete(fun, err?, complete?): void {
+    this.complete$.subscribe(fun, err, complete);
+  }
+
+  public push(target: Observable<any>, name?: string) {
     const operation = new Operation(target, name);
 
-    this._total++;
+    this._queueStats.total++;
+    this._doneQueueStats.total++;
+    this._completeQueueStats.total++;
     this._state = QueueState.Processing;
 
     if (this._inProgress.length < this._limit) {
@@ -113,64 +141,70 @@ export class Queue {
     return operation.ready$;
   }
 
-  public clear() {
+  public clear(): void {
     this._queue = [];
-    this._total = 0;
-    this._errors = 0;
-    this._completed = 0;
-    this._state = QueueState.Idle;
-    this._done = new Subject();
+    this._state = QueueState.Idle;       
+    this._queueStats = {
+      total: 0,
+      errors: [],
+      completed: 0,
+    };
+    this._clearDoneQueueStats();
   }
 
-  public destroy() {
-    this.clear();
+  public destroy(): void {    
     this._done.complete();
+    this.clear();
   }
 
-  private _processOperation(operation: Operation) {
+  private _processOperation(operation: Operation): void {
     this._inProgress.push(operation);
 
     operation.target
       .pipe(
         delay(200), // Hack to prevent extra quick proccess execution
-        takeUntil(this._destroy$),
-      ).subscribe({
-        next: (data) => {
-          operation.ready$.next(data);
-        },
-
-        error: (error) => {
+        finalize(() => {
           const opIndex = this._inProgress.indexOf(operation);
           this._inProgress.splice(opIndex, 1);
-
-          this._errors++;
-
-          operation.ready$.error(error);
-
+          
           if (this.empty) {
             this._state = QueueState.Idle;
-            this._done.error(error);
-          }
-        },
-
-        complete: () => {
-          const opIndex = this._inProgress.indexOf(operation);
-          this._inProgress.splice(opIndex, 1);
-
-          this._completed++;
-
-          operation.ready$.complete();
-
-          if (this.empty) {
-            this._state = QueueState.Idle;
-            this._done.next();
+            this._done.next(this._doneQueueStats);
+            this._clearDoneQueueStats();
           } else {
             if (this._queue.length) {
               const queueItem = this._queue.shift();
               this._processOperation(queueItem);
             }
           }
+        }),
+        takeUntil(this._destroy$),
+      ).subscribe({
+        next: (data) => {
+          operation.ready$.next(data);
+        },
+        error: (error) => {
+          this._queueStats.errors.push(error);
+          this._doneQueueStats.errors.push(error);
+          this._completeQueueStats.errors.push(error);
+
+          operation.ready$.error(error);
+        },
+        complete: () => {
+          this._queueStats.completed++;
+          this._doneQueueStats.completed++;
+          this._completeQueueStats.completed++;
+
+          operation.ready$.complete();
         }
       });
+  }
+
+  private _clearDoneQueueStats(): void {
+    this._doneQueueStats = {
+      total: 0,
+      errors: [],
+      completed: 0,
+    };
   }
 }

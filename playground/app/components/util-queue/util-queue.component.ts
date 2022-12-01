@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import { FsMessage } from '@firestitch/message';
 
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 
-import { Queue } from '@firestitch/common';
+import { Queue, QueueStats } from '@firestitch/common';
 
 
 @Component({
@@ -14,14 +14,34 @@ import { Queue } from '@firestitch/common';
 })
 export class FsUtilQueueComponent {
 
-  public queue = new Queue();
+  public queue: Queue;
   public queueForm = {
     name: '',
-    delay: 2000
+    delay: 500
   };
   public queueLimit = Infinity;
 
-  constructor(private fsMessage: FsMessage) {
+  constructor(
+    private _message: FsMessage
+  ) {
+    const targets = [
+      // throwError('There was an error').pipe(delay(100)),
+      // throwError('There was an error').pipe(delay(100)),
+      // throwError('There was an error').pipe(delay(100)),
+      // throwError('There was an error').pipe(delay(100)),
+      // of(true).pipe(delay(2000)),
+      // of(true).pipe(delay(2000)),
+      // of(true).pipe(delay(2000)),
+      // throwError('There was an error'),
+      // of(true).pipe(delay(2000)),
+    ];
+    
+    this.queue = new Queue(5);
+    this.queue.complete$
+      .subscribe((queueStats: QueueStats) => {
+        console.log('Complete', queueStats);
+      });
+
     this.init();
   }
 
@@ -45,16 +65,15 @@ export class FsUtilQueueComponent {
 
   public isProcessing() {
     if (this.queue.isProcessing()) {
-      this.fsMessage.info('The queue IS processing');
+      this._message.info('The queue IS processing');
     } else {
-      this.fsMessage.info('The queue IS NOT processing');
+      this._message.info('The queue IS NOT processing');
     }
   }
 
   public clear() {
     this.queue.clear();
-    this.init();
-    this.fsMessage.info('The queue has been cleared');
+    this._message.info('The queue has been cleared');
   }
 
   public changeLimit() {
@@ -62,14 +81,10 @@ export class FsUtilQueueComponent {
   }
 
   public init() {
-    this.queue.subscribe(() => {
-      this.fsMessage.success('All operations completed successfully');
-      console.log('Next');
-    }, (err) => {
-      this.fsMessage.error('There was an error: ' + err);
-      console.log('Error: ' + err);
-    }, () => {
-      console.log('Complete');
-    });
+    this.queue.observe$
+      .subscribe((queueState: QueueStats) => {
+        this._message.success('All operations completed successfully');
+        console.log('Observe', queueState);
+      });
   }
 }

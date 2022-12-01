@@ -8,7 +8,7 @@ export class Operation {
   public target: Observable<any>;
   public ready$ = new Subject();
 
-  constructor(target, name?) {
+  constructor(target: Observable<any>, name?: string) {
     this.name = name ? name : guid();
 
     if (target instanceof Observable) {

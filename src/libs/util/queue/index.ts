@@ -1,2 +1,3 @@
 export * from './queue';
-export { QueueState } from './queue.enum';
+export * from './queue.enum';
+export * from './queue-stats';
