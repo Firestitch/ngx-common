@@ -7,7 +7,8 @@ import {
   isNumeric,
   isClass,
   round,
-  clone
+  clone,
+  toString
 } from '@firestitch/common';
 
 @Component({
@@ -77,13 +78,18 @@ export class FsUtilFunctionsComponent {
       },
       {
         name: 'Round',
-        code: `import { round } from '@firestitch/round';\nround(100.568,2)`,
+        code: `import { round } from '@firestitch/common';\nround(100.568,2)`,
         result: round(100.568, 2),
       },
       {
         name: 'Clone',
-        code: `import { clone } from '@firestitch/clone';\nclone({ date: new Date() })`,
+        code: `import { clone } from '@firestitch/common';\nclone({ date: new Date() })`,
         result: clone({ date: new Date() }),
+      },
+      {
+        name: 'To String',
+        code: `import { toString } from '@firestitch/common';\ntoString(1234)`,
+        result: toString(1234),
       },
     ];
 

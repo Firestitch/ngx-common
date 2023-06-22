@@ -2,7 +2,7 @@
   "name": "@firestitch/common",
   "title": "Common",
   "description": "@firestitch/common",
-  "version": "12.5.2",
+  "version": "12.5.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/Firestitch/ngx-common"
