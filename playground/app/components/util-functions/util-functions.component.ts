@@ -8,7 +8,8 @@ import {
   isClass,
   round,
   clone,
-  toString
+  toString,
+  isObject
 } from '@firestitch/common';
 
 @Component({
@@ -50,6 +51,11 @@ export class FsUtilFunctionsComponent {
         name: 'Is Class',
         code: `import { isClass } from '@firestitch/common';\nisClass(new Date(),'Date')`,
         result: isClass(new Date(),'Date')
+      },
+      {
+        name: 'Is Object',
+        code: `import { isObject } from '@firestitch/common';\isObject('{}')`,
+        result: isObject({})
       },
       {
         name: 'Length for Array or Object keys',
