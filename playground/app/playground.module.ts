@@ -1,22 +1,24 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { AppComponent } from './app.component';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AppComponent } from './app.component';
 
 import { FsExampleModule } from '@firestitch/example';
 import { FsMessageModule } from '@firestitch/message';
 
 import { ToastrModule } from 'ngx-toastr';
 
-import * as hljs from 'highlight.js/lib/highlight';
-import * as hljsTypescript from 'highlight.js/lib/languages/typescript';
-import * as hljsJson from 'highlight.js/lib/languages/json';
-import { HIGHLIGHT_JS, HighlightJsModule } from 'angular-highlight-js';
+// import * as hljs from 'highlight.js/lib/highlight';
+// import * as hljsJson from 'highlight.js/lib/languages/json';
+// import * as hljsTypescript from 'highlight.js/lib/languages/typescript';
 
 import { AppMaterialModule } from './material.module';
 
+import { HIGHLIGHT_OPTIONS, HighlightModule } from 'ngx-highlightjs';
+
 import {
+  AutofocusComponent,
   FsArrayExampleComponent,
   FsFormatAcronymComponent,
   FsFormatFunctionsComponent,
@@ -25,16 +27,15 @@ import {
   FsUtilPipesComponent,
   FsUtilQueueComponent,
   FsUtilQueueSaveComponent,
-  AutofocusComponent,
 } from './components';
 
 import { FsCommonModule } from '@firestitch/common';
 
-export function highlightJsFactory() {
-  hljs.registerLanguage('ts', hljsTypescript);
-  hljs.registerLanguage('json', hljsJson);
-  return hljs;
-}
+// export function highlightJsFactory() {
+//   hljs.registerLanguage('ts', hljsTypescript);
+//   hljs.registerLanguage('json', hljsJson);
+//   return hljs;
+// }
 
 @NgModule({
   bootstrap: [AppComponent],
@@ -47,10 +48,11 @@ export function highlightJsFactory() {
     FsExampleModule.forRoot(),
     FsMessageModule.forRoot(),
     ToastrModule.forRoot({ preventDuplicates: true }),
-    HighlightJsModule.forRoot({
-      provide: HIGHLIGHT_JS,
-      useFactory: highlightJsFactory
-    })
+    HighlightModule,
+    // HighlightJsModule.forRoot({
+    //   provide: HIGHLIGHT_JS,
+    //   useFactory: highlightJsFactory
+    // })
   ],
   declarations: [
     AppComponent,
@@ -64,6 +66,15 @@ export function highlightJsFactory() {
     FsFormatAcronymComponent,
     AutofocusComponent,
   ],
+  providers: [
+    {
+      provide: HIGHLIGHT_OPTIONS,
+      useValue: {
+        fullLibraryLoader: () => import('highlight.js'),
+        themePath: 'path-to-theme.css' // Optional, and useful if you want to change the theme dynamically
+      }
+    }
+  ]
 })
 export class PlaygroundModule {
 }

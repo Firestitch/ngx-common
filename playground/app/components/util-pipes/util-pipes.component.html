@@ -8,12 +8,12 @@
   </thead>
   <tr>
     <td>IsEmpty</td>
-    <td><div class="code-pipes hljs"><code mwlHighlightJs [source]="pipes.isEmpty" language="ts"></code></div></td>
+    <td><div class="code-pipes hljs"><code [highlight]="pipes.isEmpty" [languages]="['typescript']"></code></div></td>
     <td><div class="code-json hljs"><span *ngIf="{}|fsUtilIsEmpty">Is Empty</span></div></td>
   </tr>
   <tr>
     <td>IsEmpty</td>
-    <td><div class="code-pipes hljs"><code mwlHighlightJs [source]="pipes.isNotEmpty" language="ts"></code></div></td>
+    <td><div class="code-pipes hljs"><code [highlight]="pipes.isNotEmpty" [languages]="['typescript']"></code></div></td>
     <td><div class="code-json hljs"><span *ngIf="{ key: 'value' }|fsUtilIsNotEmpty">Is Not Empty</span></div></td>
   </tr>
 </table>

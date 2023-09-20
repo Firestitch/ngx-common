@@ -10,7 +10,7 @@
   </thead>
   <tr *ngFor="let example of acronymExamples">
     <td>{{example.acronymOriginalString}}</td>
-    <td><div class="code-ts hljs"><code mwlHighlightJs [source]="example.code" language="ts"></code></div></td>
+    <td><div class="code-ts hljs"><code [highlight]="example.code" [languages]="['typescript']"></code></div></td>
     <td><div class="code-json hljs">{{example.result1}}</div></td>
     <td><div class="code-json hljs">{{example.result2}}</div></td>
     <td><div class="code-json hljs">{{example.result3}}</div></td>

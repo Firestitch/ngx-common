@@ -8,8 +8,8 @@
   </thead>
   <tr *ngFor="let example of examples">
     <td>{{example.name}}</td>
-    <td><div class="code-ts hljs"><code mwlHighlightJs [source]="example.code" language="ts"></code></div></td>
-    <td><div class="code-json hljs"><code mwlHighlightJs [source]="example.result" language="json"></code></div></td>
+    <td><div class="code-ts hljs"><code [highlight]="example.code" [languages]="['typescript']"></code></div></td>
+    <td><div class="code-json hljs"><code [highlight]="example.result" [languages]="['json']"></code></div></td>
   </tr>
 </table>
 

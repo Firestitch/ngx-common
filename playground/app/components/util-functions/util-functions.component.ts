@@ -58,6 +58,11 @@ export class FsUtilFunctionsComponent {
         result: isObject({})
       },
       {
+        name: 'Is Object (Array)',
+        code: `import { isObject } from '@firestitch/common';\isObject('[]')`,
+        result: isObject([])
+      },
+      {
         name: 'Length for Array or Object keys',
         code: `import { length } from '@firestitch/common';\nlength({a: 1, b: 2})`,
         result: length({a: 1, b: 2})
