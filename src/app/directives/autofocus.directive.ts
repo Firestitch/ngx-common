@@ -16,18 +16,18 @@ export class FsAutofocusDirective implements AfterViewInit {
   ) { }
 
   public ngAfterViewInit(): void {
-    if (this.fsAutofocus !== false) {
-      setTimeout(() => {
-        this.focus();
-      }, 100);
+    if (this.fsAutofocus || this.fsAutofocus === undefined) {
+      this.focus();
     }
   }
 
   public focus(): void {
-    if(this._matInput) {
-      this._matInput.focus();
-    } else if(this._el.nativeElement.focus) {
-      this._el.nativeElement.focus();
-    }
+    setTimeout(() => {
+      if (this._matInput) {
+        this._matInput.focus();
+      } else if (this._el.nativeElement.focus) {
+        this._el.nativeElement.focus();
+      }
+    }, 50);
   }
 }
