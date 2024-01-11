@@ -1,15 +1,20 @@
-import { Pipe, PipeTransform, LOCALE_ID, Inject } from '@angular/core';
+import { Inject, LOCALE_ID, Pipe, PipeTransform } from '@angular/core';
+
 import { currency } from '../../libs/format/currency/currency';
 
 
 @Pipe({
-  name: 'fsFormatCurrency'
+  name: 'fsFormatCurrency',
 })
 export class FsFormatCurrencyPipe implements PipeTransform {
 
   constructor(@Inject(LOCALE_ID) public locale: string) {  }
 
-  transform(amount, precision = 2, currencyCode?): string {
+  public transform(
+    amount,
+    precision: [number, number] | number = 2,
+    currencyCode?: string,
+  ): string {
     return currency(amount, precision, currencyCode);
   }
 
