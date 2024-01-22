@@ -1,0 +1,9 @@
+<mat-form-field>
+  <mat-label>Model Change Debounce</mat-label>
+  <input
+    [(ngModel)]="value"
+    [fsModelChangeOptions]="{ debounce: 300 }"
+    (fsModelChange)="change($event)"
+    name="input"
+    matInput>
+</mat-form-field>

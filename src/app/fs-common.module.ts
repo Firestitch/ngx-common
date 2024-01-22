@@ -1,24 +1,25 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ModuleWithProviders, NgModule } from '@angular/core';
 
+import { FsModelChangeDirective } from './directives';
+import { FsAutofocusDirective } from './directives/autofocus.directive';
+import { FsPreventDefaultDirective } from './directives/prevent-default.directive';
+import { FsStopPropagationDirective } from './directives/stop-propagation.directive';
+import { FsFormatBytesPipe } from './pipes';
+import { FsFormatCurrencyPipe } from './pipes/currency.pipe';
+import { FsFormatNumberPipe } from './pipes/number.pipe';
+import { FsFormatOrdinalNumberPipe } from './pipes/ordinal-number.pipe';
+import { FsFormatTruncatePipe } from './pipes/truncate.pipe';
+import {
+  FsUtilGuidPipe,
+  FsUtilIsEmptyPipe,
+  FsUtilIsNotEmptyPipe,
+  FsUtilStringifyPipe,
+} from './pipes/util.pipe';
 import { FsArray } from './services/array.service';
 import { FsMath } from './services/math.service';
 import { FsUtil } from './services/util.service';
 import { FsValidate } from './services/vaildate.service';
-import {
-  FsUtilGuidPipe,
-  FsUtilStringifyPipe,
-  FsUtilIsEmptyPipe,
-  FsUtilIsNotEmptyPipe,
-} from './pipes/util.pipe';
-import { FsFormatNumberPipe } from './pipes/number.pipe';
-import { FsFormatCurrencyPipe } from './pipes/currency.pipe';
-import { FsFormatTruncatePipe} from './pipes/truncate.pipe';
-import { FsStopPropagationDirective } from './directives/stop-propagation.directive';
-import { FsPreventDefaultDirective } from './directives/prevent-default.directive';
-import { FsAutofocusDirective } from './directives/autofocus.directive';
-import { FsFormatOrdinalNumberPipe } from './pipes/ordinal-number.pipe';
-import { FsFormatBytesPipe } from './pipes';
 
 
 @NgModule({
@@ -38,6 +39,7 @@ import { FsFormatBytesPipe } from './pipes';
     FsFormatTruncatePipe,
     FsFormatBytesPipe,
     FsFormatOrdinalNumberPipe,
+    FsModelChangeDirective,
   ],
   exports: [
     FsStopPropagationDirective,
@@ -51,19 +53,20 @@ import { FsFormatBytesPipe } from './pipes';
     FsUtilIsEmptyPipe,
     FsUtilIsNotEmptyPipe,
     FsFormatBytesPipe,
+    FsModelChangeDirective,
     FsFormatOrdinalNumberPipe,
   ],
 })
 export class FsCommonModule {
-  static forRoot(): ModuleWithProviders<FsCommonModule> {
+  public static forRoot(): ModuleWithProviders<FsCommonModule> {
     return {
       ngModule: FsCommonModule,
       providers: [
         FsArray,
         FsMath,
         FsUtil,
-        FsValidate
-      ]
+        FsValidate,
+      ],
     };
   }
 }

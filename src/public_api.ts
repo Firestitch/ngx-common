@@ -11,18 +11,15 @@ export * from './libs';
 
 
 export {
-  FsUtilGuidPipe,
-  FsUtilStringifyPipe,
-  FsUtilIsEmptyPipe,
-  FsUtilIsNotEmptyPipe,
+  FsUtilGuidPipe, FsUtilIsEmptyPipe,
+  FsUtilIsNotEmptyPipe, FsUtilStringifyPipe,
 } from './app/pipes/util.pipe';
 
-export { FsFormatNumberPipe } from './app/pipes/number.pipe';
-export { FsFormatCurrencyPipe } from './app/pipes/currency.pipe';
-export { FsFormatTruncatePipe} from './app/pipes/truncate.pipe';
+export * from './app/directives';
 export { FsFormatBytesPipe } from './app/pipes/bytes.pipe';
-export { FsStopPropagationDirective } from './app/directives/stop-propagation.directive';
-export { FsPreventDefaultDirective } from './app/directives/prevent-default.directive';
-export { FsAutofocusDirective } from './app/directives/autofocus.directive';
+export { FsFormatCurrencyPipe } from './app/pipes/currency.pipe';
+export { FsFormatNumberPipe } from './app/pipes/number.pipe';
 export { FsFormatOrdinalNumberPipe } from './app/pipes/ordinal-number.pipe';
+export { FsFormatTruncatePipe } from './app/pipes/truncate.pipe';
 export { keyboardShortcut } from './libs/rxjs/keyboard-shortcut';
+
