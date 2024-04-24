@@ -1,5 +1,6 @@
 export function isEmpty(value, options?) {
   options = options || {};
+
   return value === undefined ||
     value === null ||
     value === false ||

@@ -4,6 +4,7 @@ export * from './format-acronym';
 export * from './format-functions';
 export * from './format-pipes';
 export * from './model-change';
+export * from './resource-loader';
 export * from './util-functions';
 export * from './util-pipes';
 export * from './util-queue';

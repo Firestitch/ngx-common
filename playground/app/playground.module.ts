@@ -28,6 +28,7 @@ import {
   FsUtilQueueComponent,
   FsUtilQueueSaveComponent,
   ModelChangeComponent,
+  ResourceLoaderComponent,
 } from './components';
 import { AppMaterialModule } from './material.module';
 
@@ -63,6 +64,7 @@ import { AppMaterialModule } from './material.module';
     FsFormatAcronymComponent,
     AutofocusComponent,
     ModelChangeComponent,
+    ResourceLoaderComponent,
   ],
   providers: [
     {

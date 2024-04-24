@@ -1,7 +1,6 @@
 import { combineLatest, Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
-
 export const fsSourceLoader = (function() {
 
   let _document: Document;
@@ -48,7 +47,7 @@ export const fsSourceLoader = (function() {
         const resourcesList = _sources.get(name);
 
         path.forEach((p) => {
-          resourcesList.add(p)
+          resourcesList.add(p);
         });
       });
   }
@@ -131,7 +130,7 @@ export const fsSourceLoader = (function() {
 
         script.onerror = (err) => {
           obs.error(err);
-        }
+        };
       }).pipe(
         shareReplay(1),
       );
@@ -159,7 +158,7 @@ export const fsSourceLoader = (function() {
 
         style.onerror = (err) => {
           obs.error(err);
-        }
+        };
       });
 
       _loadedResources.set(stylePath, obs$);
@@ -181,5 +180,15 @@ export const fsSourceLoader = (function() {
     registerResources,
     loadResource,
     loadResources,
+    loadJs: _loadJs,
+    loadStyles: _loadStyles,
   };
 })();
+
+export function loadStyles(path): Observable<any> {
+  return fsSourceLoader.loadStyles(path);
+};
+
+export function loadJs(path): Observable<any> {
+  return fsSourceLoader.loadJs(path);
+};

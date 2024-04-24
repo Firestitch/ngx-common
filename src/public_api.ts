@@ -12,7 +12,7 @@ export * from './libs';
 
 export {
   FsUtilGuidPipe, FsUtilIsEmptyPipe,
-  FsUtilIsNotEmptyPipe, FsUtilStringifyPipe,
+  FsUtilIsNotEmptyPipe, FsUtilStringifyPipe
 } from './app/pipes/util.pipe';
 
 export * from './app/directives';

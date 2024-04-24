@@ -8,6 +8,7 @@ import {
   isNumeric,
   isObject,
   length,
+  loadJs,
   round,
   toString,
   uuid,
@@ -102,6 +103,15 @@ export class FsUtilFunctionsComponent {
         name: 'To String',
         code: 'import { toString } from \'@firestitch/common\';\ntoString(1234)',
         result: toString(1234),
+      },
+      {
+        name: 'Load Js',
+        code: `import { loadJs } from \'@firestitch/common\';\ntoloadJs('https://connect.facebook.net/en_US/fbevents.js').subscribe()`,
+        result: (() => {
+          loadJs('https://connect.facebook.net/en_US/fbevents.js').subscribe();
+
+          return null;
+        })(),
       },
     ];
 
