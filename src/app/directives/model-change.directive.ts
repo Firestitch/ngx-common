@@ -23,7 +23,7 @@ export class FsModelChangeDirective implements OnInit, OnDestroy {
   public ngOnInit(): void {
     this._ngModel.update
       .pipe(
-        debounceTime(this.fsModelChangeOptions.debounce),
+        debounceTime(this.fsModelChangeOptions?.debounce || 500),
         takeUntil(this._destroy$),
       )
       .subscribe((value) => {
