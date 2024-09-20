@@ -4,11 +4,13 @@ import { MatInput } from '@angular/material/input';
 
 
 @Directive({
-  selector: '[fsAutofocus],[autofocus]',
+  selector: '[fsAutofocus],[fsAutoFocus],[autofocus]',
 })
-export class FsAutofocusDirective implements AfterViewInit {
+export class FsAutoFocusDirective implements AfterViewInit {
 
   @Input() public fsAutofocus = true;
+  @Input() public fsAutoFocus = true;
+  @Input() public autofocus = true;
 
   constructor(
     @Optional() @Host() private _matInput: MatInput,
@@ -16,7 +18,11 @@ export class FsAutofocusDirective implements AfterViewInit {
   ) { }
 
   public ngAfterViewInit(): void {
-    if (this.fsAutofocus || this.fsAutofocus === undefined) {
+    if (
+      (this.fsAutofocus ?? true) === true && 
+      (this.fsAutofocus ?? true) === true && 
+      (this.autofocus ?? true) === true
+    ) {
       this.focus();
     }
   }

@@ -7,6 +7,7 @@ export { FsMath } from './app/services/math.service';
 export { FsUtil } from './app/services/util.service';
 export { FsValidate } from './app/services/vaildate.service';
 
+export * from './app/directives';
 export * from './libs';
 
 

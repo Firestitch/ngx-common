@@ -1,8 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 
-import { FsModelChangeDirective } from './directives';
-import { FsAutofocusDirective } from './directives/autofocus.directive';
+import { FsAutoFocusDirective, FsAutoSelectDirective, FsModelChangeDirective } from './directives';
 import { FsPreventDefaultDirective } from './directives/prevent-default.directive';
 import { FsStopPropagationDirective } from './directives/stop-propagation.directive';
 import { FsFormatBytesPipe } from './pipes';
@@ -29,7 +28,8 @@ import { FsValidate } from './services/vaildate.service';
   declarations: [
     FsStopPropagationDirective,
     FsPreventDefaultDirective,
-    FsAutofocusDirective,
+    FsAutoFocusDirective,
+    FsAutoSelectDirective,
     FsUtilGuidPipe,
     FsUtilIsEmptyPipe,
     FsUtilIsNotEmptyPipe,
@@ -44,7 +44,8 @@ import { FsValidate } from './services/vaildate.service';
   exports: [
     FsStopPropagationDirective,
     FsPreventDefaultDirective,
-    FsAutofocusDirective,
+    FsAutoFocusDirective,
+    FsAutoSelectDirective,
     FsUtilGuidPipe,
     FsUtilStringifyPipe,
     FsFormatNumberPipe,
