@@ -1,3 +1,6 @@
+@use '@firestitch/style/styles.scss' as fs-style;
+
 @import "@firestitch/component-tools/assets/playground.scss";
 @import '@firestitch/message/styles.scss';
-@import '~highlight.js/styles/github.css';
+
+@include fs-style.core();

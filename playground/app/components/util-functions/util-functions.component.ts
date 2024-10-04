@@ -20,7 +20,7 @@ import {
 })
 export class FsUtilFunctionsComponent {
 
-  examples = [];
+  public examples = [];
 
   constructor() {
     this.examples = [
@@ -106,7 +106,7 @@ export class FsUtilFunctionsComponent {
       },
       {
         name: 'Load Js',
-        code: `import { loadJs } from \'@firestitch/common\';\ntoloadJs('https://connect.facebook.net/en_US/fbevents.js').subscribe()`,
+        code: 'import { loadJs } from \'@firestitch/common\';\ntoloadJs(\'https://connect.facebook.net/en_US/fbevents.js\').subscribe()',
         result: (() => {
           loadJs('https://connect.facebook.net/en_US/fbevents.js').subscribe();
 
