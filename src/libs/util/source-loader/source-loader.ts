@@ -124,7 +124,7 @@ export const fsSourceLoader = (function() {
         _headElement.appendChild(script);
 
         script.onload = () => {
-          obs.next();
+          obs.next(null);
           obs.complete();
         };
 
@@ -152,7 +152,7 @@ export const fsSourceLoader = (function() {
         _headElement.appendChild(style);
 
         style.onload = () => {
-          obs.next();
+          obs.next(null);
           obs.complete();
         };
 
