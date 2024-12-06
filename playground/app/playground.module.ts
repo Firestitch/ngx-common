@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { RouterModule } from '@angular/router';
 
 import { FsCommonModule } from '@firestitch/common';
 import { FsExampleModule } from '@firestitch/example';
@@ -26,12 +27,6 @@ import { HighlightDirective } from './directives/highlight.directive';
 import { AppMaterialModule } from './material.module';
 
 
-// export function highlightJsFactory() {
-//   hljs.registerLanguage('ts', hljsTypescript);
-//   hljs.registerLanguage('json', hljsJson);
-//   return hljs;
-// }
-
 @NgModule({
   bootstrap: [AppComponent],
   imports: [
@@ -42,6 +37,7 @@ import { AppMaterialModule } from './material.module';
     FormsModule,
     FsExampleModule.forRoot(),
     FsMessageModule.forRoot(),
+    RouterModule.forRoot([]),
   ],
   declarations: [
     AppComponent,
