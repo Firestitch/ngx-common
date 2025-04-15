@@ -1,5 +1,4 @@
-import { combineLatest, Observable } from 'rxjs';
-import { shareReplay } from 'rxjs/operators';
+import { combineLatest, Observable, shareReplay } from 'rxjs';
 
 export const fsSourceLoader = (function() {
 
@@ -117,7 +116,10 @@ export const fsSourceLoader = (function() {
 
   function _loadJs(scriptPath: string): Observable<unknown> {
     if (_loadedResources.has(scriptPath)) {
-      return _loadedResources.get(scriptPath);
+      return _loadedResources.get(scriptPath)
+        .pipe(
+          shareReplay({ bufferSize: 1, refCount: true }),
+        );
     }
 
     const obs$ = new Observable((obs) => {
@@ -135,10 +137,7 @@ export const fsSourceLoader = (function() {
       };
         
       _headElement.appendChild(script);
-    })
-      .pipe(
-        shareReplay({ bufferSize: 1, refCount: true }),
-      );
+    });
 
     _loadedResources.set(scriptPath, obs$);
 
