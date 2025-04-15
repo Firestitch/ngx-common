@@ -116,31 +116,33 @@ export const fsSourceLoader = (function() {
   }
 
   function _loadJs(scriptPath: string): Observable<unknown> {
-    if (!_loadedResources.has(scriptPath)) {
-      const obs$ = new Observable((obs) => {
-        const script = document.createElement('script');
-        script.src = scriptPath;
-        script.async = true;
-
-        script.onload = () => {
-          obs.next(null);
-          obs.complete();
-        };
-
-        script.onerror = (err) => {
-          obs.error(err);
-        };
-        
-        _headElement.appendChild(script);
-      })
-        .pipe(
-          shareReplay(1),
-        );
-
-      _loadedResources.set(scriptPath, obs$);
+    if (_loadedResources.has(scriptPath)) {
+      return _loadedResources.get(scriptPath);
     }
 
-    return _loadedResources.get(scriptPath);
+    const obs$ = new Observable((obs) => {
+      const script = document.createElement('script');
+      script.src = scriptPath;
+      script.async = true;
+
+      script.onload = () => {
+        obs.next(null);
+        obs.complete();
+      };
+
+      script.onerror = (err) => {
+        obs.error(err);
+      };
+        
+      _headElement.appendChild(script);
+    })
+      .pipe(
+        shareReplay({ bufferSize: 1, refCount: true }),
+      );
+
+    _loadedResources.set(scriptPath, obs$);
+
+    return obs$;
   }
 
   function _loadStyles(stylePath: string): Observable<unknown> {
