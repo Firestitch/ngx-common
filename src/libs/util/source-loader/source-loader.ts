@@ -120,6 +120,7 @@ export const fsSourceLoader = (function() {
       const obs$ = new Observable((obs) => {
         const script = document.createElement('script');
         script.src = scriptPath;
+        script.async = true;
 
         script.onload = () => {
           obs.next(null);
