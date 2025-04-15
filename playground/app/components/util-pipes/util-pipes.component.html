@@ -1,19 +1,55 @@
 <table class="table three-col-example">
   <thead>
-  <tr>
-    <th>Description</th>
-    <th>Code</th>
-    <th>Result</th>
-  </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <th>
+        Code
+      </th>
+      <th>
+        Result
+      </th>
+    </tr>
   </thead>
   <tr>
-    <td>IsEmpty</td>
-    <td><div class="code-pipes hljs"><code [highlight]="pipes.isEmpty" [languages]="['typescript']"></code></div></td>
-    <td><div class="code-json hljs"><span *ngIf="{}|fsUtilIsEmpty">Is Empty</span></div></td>
+    <td>
+      IsEmpty
+    </td>
+    <td>
+      <div class="code-pipes hljs">
+        <code
+          [highlight]="pipes.isEmpty"
+          [languages]="['typescript']">
+        </code>
+      </div>
+    </td>
+    <td>
+      <div class="code-json hljs">
+        <span *ngIf="{}|fsUtilIsEmpty">
+          Is Empty
+        </span>
+      </div>
+    </td>
   </tr>
   <tr>
-    <td>IsEmpty</td>
-    <td><div class="code-pipes hljs"><code [highlight]="pipes.isNotEmpty" [languages]="['typescript']"></code></div></td>
-    <td><div class="code-json hljs"><span *ngIf="{ key: 'value' }|fsUtilIsNotEmpty">Is Not Empty</span></div></td>
+    <td>
+      IsEmpty
+    </td>
+    <td>
+      <div class="code-pipes hljs">
+        <code
+          [highlight]="pipes.isNotEmpty"
+          [languages]="['typescript']">
+        </code>
+      </div>
+    </td>
+    <td>
+      <div class="code-json hljs">
+        <span *ngIf="{ key: 'value' }|fsUtilIsNotEmpty">
+          Is Not Empty
+        </span>
+      </div>
+    </td>
   </tr>
 </table>

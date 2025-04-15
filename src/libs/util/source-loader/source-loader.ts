@@ -121,8 +121,6 @@ export const fsSourceLoader = (function() {
         const script = document.createElement('script');
         script.src = scriptPath;
 
-        _headElement.appendChild(script);
-
         script.onload = () => {
           obs.next(null);
           obs.complete();
@@ -131,9 +129,12 @@ export const fsSourceLoader = (function() {
         script.onerror = (err) => {
           obs.error(err);
         };
-      }).pipe(
-        shareReplay(1),
-      );
+        
+        _headElement.appendChild(script);
+      })
+        .pipe(
+          shareReplay(1),
+        );
 
       _loadedResources.set(scriptPath, obs$);
     }
@@ -187,8 +188,8 @@ export const fsSourceLoader = (function() {
 
 export function loadStyles(path): Observable<any> {
   return fsSourceLoader.loadStyles(path);
-};
+}
 
 export function loadJs(path): Observable<any> {
   return fsSourceLoader.loadJs(path);
-};
+}
