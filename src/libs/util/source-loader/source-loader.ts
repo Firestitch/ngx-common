@@ -123,7 +123,6 @@ export const fsSourceLoader = (function() {
       const script = document.createElement('script');
       script.src = scriptPath;
       script.type = 'text/javascript'; 
-      script.async = true;
 
       script.onload = () => {
         obs.next(null);
