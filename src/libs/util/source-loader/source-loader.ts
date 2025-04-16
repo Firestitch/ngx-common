@@ -123,16 +123,20 @@ export const fsSourceLoader = (function() {
       const script = document.createElement('script');
       script.src = scriptPath;
       script.type = 'text/javascript'; 
-
-      script.onload = () => {
+      script.addEventListener('load', () => {
+        console.log('onload', scriptPath);
         obs.next(null);
         obs.complete();
-      };
-
-      script.onerror = (err) => {
+      });
+      script.addEventListener('error', (err) => {
+        console.log('onerror', scriptPath);
         obs.error(err);
-      };
-        
+      });
+      script.addEventListener('onreadystatechange', (err) => {
+        console.log('onreadystatechange', err);
+        obs.error(err);
+      });
+
       _headElement.appendChild(script);
     })
       .pipe(
