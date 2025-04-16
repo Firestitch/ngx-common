@@ -116,15 +116,13 @@ export const fsSourceLoader = (function() {
 
   function _loadJs(scriptPath: string): Observable<unknown> {
     if (_loadedResources.has(scriptPath)) {
-      return _loadedResources.get(scriptPath)
-        .pipe(
-          shareReplay({ bufferSize: 1, refCount: true }),
-        );
+      return _loadedResources.get(scriptPath);
     }
 
     const obs$ = new Observable((obs) => {
       const script = document.createElement('script');
       script.src = scriptPath;
+      script.type = 'text/javascript'; 
       script.async = true;
 
       script.onload = () => {
@@ -137,7 +135,10 @@ export const fsSourceLoader = (function() {
       };
         
       _headElement.appendChild(script);
-    });
+    })
+      .pipe(
+        shareReplay({ bufferSize: 1, refCount: true }),
+      );
 
     _loadedResources.set(scriptPath, obs$);
 
