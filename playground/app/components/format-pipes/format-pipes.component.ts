@@ -1,14 +1,15 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'fs-format-pipes',
-  templateUrl: 'format-pipes.component.html'
+  templateUrl: './format-pipes.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class FsFormatPipesComponent {
 
-  pipes: any = {};
+  public pipes: any = {};
 
-  text = `Lorem ipsum lorem`;
+  public text = 'Lorem ipsum lorem';
 
   constructor() {
     this.pipes.number = '{{42397803.23987|fsFormatNumber:2}}';
@@ -31,11 +32,12 @@ export class FsFormatPipesComponent {
     ];
 
     this.pipes.currency = {
-      simple: `{{42397803.23987|fsFormatCurrency}}`,
-      decimals: `{{42397803.23987|fsFormatCurrency:0}}`,
-      decimals4: `{{42397803.23987|fsFormatCurrency:2:4}}`,
-      eur: `{{42397803.23987|fsFormatCurrency:2:'EUR'}}`,
-      precision: `{{42397803.23987|fsFormatCurrency:0:'EUR'}}`,
+      simple: '{{42397803.23987|fsFormatCurrency}}',
+      decimals: '{{42397803.23987|fsFormatCurrency:0}}',
+      decimals4: '{{42397803.23987|fsFormatCurrency:2:4}}',
+      eur: '{{42397803.23987|fsFormatCurrency:2:\'EUR\'}}',
+      precision: '{{42397803.23987|fsFormatCurrency:0:\'EUR\'}}',
+      cad: '{{42397803.23987|fsFormatCurrency:0:\'CAD\'}}',
     };
 
     this.pipes.truncate = {

@@ -1,62 +1,123 @@
 <table class="table three-col-example">
   <thead>
-  <tr>
-    <th>Description</th>
-    <th>Code</th>
-    <th>Result</th>
-  </tr>
+    <tr>
+      <th>
+        Description
+      </th>
+      <th>
+        Code
+      </th>
+      <th>
+        Result
+      </th>
+    </tr>
   </thead>
   <tr>
-    <td>Number</td>
-    <td><div class="code-pipes hljs"><code [highlight]="pipes.number" [languages]="['typescript']"></code></div></td>
-    <td><div class="code-json hljs">{{42397803.23987|fsFormatNumber:2}}</div></td>
-  </tr>
-  <tr>
-    <td>Ordinal Number</td>
+    <td>
+      Number
+    </td>
     <td>
       <div class="code-pipes hljs">
-        <code [highlight]="pipes.ordinalNumber[0]" [languages]="['typescript']"></code>
-        <br>
-        <code [highlight]="pipes.ordinalNumber[1]" [languages]="['typescript']"></code>
-        <br>
-        <code [highlight]="pipes.ordinalNumber[2]" [languages]="['typescript']"></code>
-        <br>
-        <code [highlight]="pipes.ordinalNumber[3]" [languages]="['typescript']"></code>
-        <br>
-        <code [highlight]="pipes.ordinalNumber[4]" [languages]="['typescript']"></code>
-        <br>
-        <code [highlight]="pipes.ordinalNumber[5]" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.number"
+          [languages]="['typescript']">
+        </code>
       </div>
     </td>
     <td>
       <div class="code-json hljs">
-        {{1|fsFormatOrdinalNumber}}
-        <br>
-        {{2|fsFormatOrdinalNumber}}
-        <br>
-        {{3|fsFormatOrdinalNumber}}
-        <br>
-        {{4|fsFormatOrdinalNumber}}
-        <br>
-        {{11|fsFormatOrdinalNumber}}
-        <br>
-        {{21|fsFormatOrdinalNumber}}
+        {{ 42397803.23987|fsFormatNumber:2 }}
       </div>
     </td>
   </tr>
   <tr>
-    <td>Currency</td>
+    <td>
+      Ordinal Number
+    </td>
     <td>
       <div class="code-pipes hljs">
-        <code [highlight]="pipes.currency.simple" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.ordinalNumber[0]"
+          [languages]="['typescript']">
+        </code>
         <br>
-        <code [highlight]="pipes.currency.decimals" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.ordinalNumber[1]"
+          [languages]="['typescript']">
+        </code>
         <br>
-        <code [highlight]="pipes.currency.decimals4" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.ordinalNumber[2]"
+          [languages]="['typescript']">
+        </code>
         <br>
-        <code [highlight]="pipes.currency.eur" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.ordinalNumber[3]"
+          [languages]="['typescript']">
+        </code>
         <br>
-        <code [highlight]="pipes.currency.precision" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.ordinalNumber[4]"
+          [languages]="['typescript']">
+        </code>
+        <br>
+        <code
+          [highlight]="pipes.ordinalNumber[5]"
+          [languages]="['typescript']">
+        </code>
+      </div>
+    </td>
+    <td>
+      <div class="code-json hljs">
+        {{ 1|fsFormatOrdinalNumber }}
+        <br>
+        {{ 2|fsFormatOrdinalNumber }}
+        <br>
+        {{ 3|fsFormatOrdinalNumber }}
+        <br>
+        {{ 4|fsFormatOrdinalNumber }}
+        <br>
+        {{ 11|fsFormatOrdinalNumber }}
+        <br>
+        {{ 21|fsFormatOrdinalNumber }}
+      </div>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      Currency
+    </td>
+    <td>
+      <div class="code-pipes hljs">
+        <code
+          [highlight]="pipes.currency.simple"
+          [languages]="['typescript']">
+        </code>
+        <br>
+        <code
+          [highlight]="pipes.currency.decimals"
+          [languages]="['typescript']">
+        </code>
+        <br>
+        <code
+          [highlight]="pipes.currency.decimals4"
+          [languages]="['typescript']">
+        </code>
+        <br>
+        <code
+          [highlight]="pipes.currency.eur"
+          [languages]="['typescript']">
+        </code>
+        <br>
+        <code
+          [highlight]="pipes.currency.precision"
+          [languages]="['typescript']">
+        </code>
+        <br>
+        <code
+          [highlight]="pipes.currency.cad"
+          [languages]="['typescript']">
+        </code>
       </div>
     </td>
     <td>
@@ -70,20 +131,36 @@
         {{ 42397803.23987 | fsFormatCurrency:2:'EUR' }}
         <br>
         {{ 42397803.23987 | fsFormatCurrency:0:'EUR' }}
+        <br>
+        {{ 42397803.23987 | fsFormatCurrency:0:'CAD' }}
       </div>
     </td>
   </tr>
   <tr>
-    <td>Truncate</td>
+    <td>
+      Truncate
+    </td>
     <td>
       <div class="code-pipes hljs">
-        <code [highlight]="pipes.truncate.simple" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.truncate.simple"
+          [languages]="['typescript']">
+        </code>
         <br>
-        <code [highlight]="pipes.truncate.limit" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.truncate.limit"
+          [languages]="['typescript']">
+        </code>
         <br>
-        <code [highlight]="pipes.truncate.completeWord" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.truncate.completeWord"
+          [languages]="['typescript']">
+        </code>
         <br>
-        <code [highlight]="pipes.truncate.elipsis" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.truncate.elipsis"
+          [languages]="['typescript']">
+        </code>
       </div>
     </td>
     <td>
@@ -99,35 +176,55 @@
     </td>
   </tr>
   <tr>
-    <td>Bytes</td>
+    <td>
+      Bytes
+    </td>
     <td>
       <div class="code-pipes hljs">
-        <code [highlight]="pipes.bytes[0]" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.bytes[0]"
+          [languages]="['typescript']">
+        </code>
         <br>
-        <code [highlight]="pipes.bytes[1]" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.bytes[1]"
+          [languages]="['typescript']">
+        </code>
         <br>
-        <code [highlight]="pipes.bytes[2]" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.bytes[2]"
+          [languages]="['typescript']">
+        </code>
         <br>
-        <code [highlight]="pipes.bytes[3]" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.bytes[3]"
+          [languages]="['typescript']">
+        </code>
         <br>
-        <code [highlight]="pipes.bytes[4]" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.bytes[4]"
+          [languages]="['typescript']">
+        </code>
         <br>
-        <code [highlight]="pipes.bytes[5]" [languages]="['typescript']"></code>
+        <code
+          [highlight]="pipes.bytes[5]"
+          [languages]="['typescript']">
+        </code>
       </div>
     </td>
     <td>
       <div class="code-json hljs">
-        {{233|fsFormatBytes}}
+        {{ 233|fsFormatBytes }}
         <br>
-        {{65.443 * 1024|fsFormatBytes}}
+        {{ 65.443 * 1024|fsFormatBytes }}
         <br>
-        {{85.23 * 1024 * 1024|fsFormatBytes}}
+        {{ 85.23 * 1024 * 1024|fsFormatBytes }}
         <br>
-        {{402.54 * 1024 * 1024 * 1024|fsFormatBytes}}
+        {{ 402.54 * 1024 * 1024 * 1024|fsFormatBytes }}
         <br>
-        {{825.23 * 1024 * 1024|fsFormatBytes:0:'MB'}}
+        {{ 825.23 * 1024 * 1024|fsFormatBytes:0:'MB' }}
         <br>
-        {{3443 * 1024 * 1024|fsFormatBytes:null:'GB'}}
+        {{ 3443 * 1024 * 1024|fsFormatBytes:null:'GB' }}
       </div>
     </td>
   </tr>
