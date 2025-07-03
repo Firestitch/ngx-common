@@ -9,6 +9,10 @@ export function currency(
   currencyCode: string = 'USD',
   locale: string = 'en-US',
 ) {
+  if(amount === null || amount === undefined) {
+    return '';
+  }
+
   const digitsInfo = Array.isArray(precision) ? precision : [precision, precision];
   amount = round(amount, digitsInfo[1]);
 
