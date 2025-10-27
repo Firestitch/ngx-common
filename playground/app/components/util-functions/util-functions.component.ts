@@ -13,10 +13,13 @@ import {
   toString,
   uuid,
 } from '@firestitch/common';
+import { HighlightDirective } from '../../directives/highlight.directive';
 
 @Component({
-  selector: 'fs-util-functions',
-  templateUrl: './util-functions.component.html',
+    selector: 'fs-util-functions',
+    templateUrl: './util-functions.component.html',
+    standalone: true,
+    imports: [HighlightDirective],
 })
 export class FsUtilFunctionsComponent {
 

@@ -2,7 +2,8 @@ import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
 
 
 @Directive({
-  selector: '[fsAutoSelect]',
+    selector: '[fsAutoSelect]',
+    standalone: true,
 })
 export class FsAutoSelectDirective implements AfterViewInit {
 

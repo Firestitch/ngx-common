@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { bytes } from '../../libs/format/bytes/bytes';
 
 @Pipe({
-  name: 'fsFormatBytes',
+    name: 'fsFormatBytes',
+    standalone: true,
 })
 export class FsFormatBytesPipe implements PipeTransform {
 

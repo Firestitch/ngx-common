@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
 import { acronym } from '@firestitch/common';
+import { HighlightDirective } from '../../directives/highlight.directive';
 
 @Component({
-  selector: 'fs-format-acronym',
-  templateUrl: 'format-acronym.component.html'
+    selector: 'fs-format-acronym',
+    templateUrl: 'format-acronym.component.html',
+    standalone: true,
+    imports: [HighlightDirective]
 })
 export class FsFormatAcronymComponent {
 

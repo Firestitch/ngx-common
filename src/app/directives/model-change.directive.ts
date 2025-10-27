@@ -6,7 +6,8 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
 
 
 @Directive({
-  selector: '[fsModelChange]',
+    selector: '[fsModelChange]',
+    standalone: true,
 })
 export class FsModelChangeDirective implements OnInit, OnDestroy {
 

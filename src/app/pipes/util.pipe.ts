@@ -6,7 +6,8 @@ import { stringify } from '../../libs/util/stringify/stringify';
 
 
 @Pipe({
-  name: 'fsUtilStringify',
+    name: 'fsUtilStringify',
+    standalone: true,
 })
 export class FsUtilStringifyPipe implements PipeTransform {
 
@@ -19,7 +20,8 @@ export class FsUtilStringifyPipe implements PipeTransform {
 
 
 @Pipe({
-  name: 'fsUtilGuid',
+    name: 'fsUtilGuid',
+    standalone: true,
 })
 export class FsUtilGuidPipe implements PipeTransform {
   constructor() {}
@@ -30,7 +32,8 @@ export class FsUtilGuidPipe implements PipeTransform {
 }
 
 @Pipe({
-  name: 'fsUtilIsEmpty',
+    name: 'fsUtilIsEmpty',
+    standalone: true,
 })
 export class FsUtilIsEmptyPipe implements PipeTransform {
 
@@ -41,7 +44,8 @@ export class FsUtilIsEmptyPipe implements PipeTransform {
 
 
 @Pipe({
-  name: 'fsUtilIsNotEmpty',
+    name: 'fsUtilIsNotEmpty',
+    standalone: true,
 })
 export class FsUtilIsNotEmptyPipe implements PipeTransform {
 

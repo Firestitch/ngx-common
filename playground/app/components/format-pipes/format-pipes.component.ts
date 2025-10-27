@@ -1,9 +1,24 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { HighlightDirective } from '../../directives/highlight.directive';
+import { FsFormatNumberPipe } from '../../../../src/app/pipes/number.pipe';
+import { FsFormatCurrencyPipe } from '../../../../src/app/pipes/currency.pipe';
+import { FsFormatTruncatePipe } from '../../../../src/app/pipes/truncate.pipe';
+import { FsFormatBytesPipe } from '../../../../src/app/pipes/bytes.pipe';
+import { FsFormatOrdinalNumberPipe } from '../../../../src/app/pipes/ordinal-number.pipe';
 
 @Component({
-  selector: 'fs-format-pipes',
-  templateUrl: './format-pipes.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'fs-format-pipes',
+    templateUrl: './format-pipes.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [
+        HighlightDirective,
+        FsFormatNumberPipe,
+        FsFormatCurrencyPipe,
+        FsFormatTruncatePipe,
+        FsFormatBytesPipe,
+        FsFormatOrdinalNumberPipe,
+    ],
 })
 export class FsFormatPipesComponent {
 

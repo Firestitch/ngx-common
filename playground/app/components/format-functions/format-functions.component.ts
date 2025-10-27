@@ -1,11 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { number } from '@firestitch/common';
+import { HighlightDirective } from '../../directives/highlight.directive';
 
 @Component({
-  selector: 'fs-format-functions',
-  templateUrl: './format-functions.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'fs-format-functions',
+    templateUrl: './format-functions.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [HighlightDirective],
 })
 export class FsFormatFunctionsComponent {
 

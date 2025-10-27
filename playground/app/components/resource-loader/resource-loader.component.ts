@@ -4,9 +4,10 @@ import { loadJs } from '@firestitch/common';
 
 
 @Component({
-  selector: 'app-resource-loader',
-  templateUrl: './resource-loader.component.html',
-  styleUrls: ['./resource-loader.component.scss'],
+    selector: 'app-resource-loader',
+    templateUrl: './resource-loader.component.html',
+    styleUrls: ['./resource-loader.component.scss'],
+    standalone: true,
 })
 export class ResourceLoaderComponent {
 

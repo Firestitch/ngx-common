@@ -3,11 +3,14 @@ import { of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { Queue } from '@firestitch/common';
 import { FsMessage } from '@firestitch/message';
+import { MatButton } from '@angular/material/button';
 
 @Component({
-  selector: 'fs-util-queue-save',
-  templateUrl: 'util-queue-save.component.html',
-  styleUrls: ['util-queue-save.component.scss']
+    selector: 'fs-util-queue-save',
+    templateUrl: 'util-queue-save.component.html',
+    styleUrls: ['util-queue-save.component.scss'],
+    standalone: true,
+    imports: [MatButton]
 })
 export class FsUtilQueueSaveComponent {
   

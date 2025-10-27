@@ -2,7 +2,8 @@ import { PipeTransform, Pipe } from '@angular/core';
 import { ordinalNumber } from '../../libs/util/ordinal-number/ordinal-number';
 
 @Pipe({
-  name: 'fsFormatOrdinalNumber',
+    name: 'fsFormatOrdinalNumber',
+    standalone: true,
 })
 export class FsFormatOrdinalNumberPipe implements PipeTransform {
 

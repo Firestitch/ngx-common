@@ -4,7 +4,8 @@ import { MatInput } from '@angular/material/input';
 
 
 @Directive({
-  selector: '[fsAutofocus],[fsAutoFocus],[autofocus]',
+    selector: '[fsAutofocus],[fsAutoFocus],[autofocus]',
+    standalone: true,
 })
 export class FsAutoFocusDirective implements AfterViewInit {
 

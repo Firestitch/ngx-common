@@ -4,7 +4,8 @@ import { currency } from '../../libs/format/currency/currency';
 
 
 @Pipe({
-  name: 'fsFormatCurrency',
+    name: 'fsFormatCurrency',
+    standalone: true,
 })
 export class FsFormatCurrencyPipe implements PipeTransform {
 

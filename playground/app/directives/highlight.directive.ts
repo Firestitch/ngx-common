@@ -1,7 +1,8 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[highlight]',
+    selector: '[highlight]',
+    standalone: true,
 })
 export class HighlightDirective implements OnInit {
 

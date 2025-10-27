@@ -5,12 +5,19 @@ import { of, throwError } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 
 import { Queue, QueueStats } from '@firestitch/common';
+import { FormsModule } from '@angular/forms';
+import { MatFormField } from '@angular/material/form-field';
+import { MatInput } from '@angular/material/input';
+import { MatButton } from '@angular/material/button';
+import { JsonPipe } from '@angular/common';
 
 
 @Component({
-  selector: 'fs-util-queue',
-  templateUrl: 'util-queue.component.html',
-  styleUrls: ['util-queue.component.scss']
+    selector: 'fs-util-queue',
+    templateUrl: 'util-queue.component.html',
+    styleUrls: ['util-queue.component.scss'],
+    standalone: true,
+    imports: [FormsModule, MatFormField, MatInput, MatButton, JsonPipe]
 })
 export class FsUtilQueueComponent {
 

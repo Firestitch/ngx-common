@@ -1,7 +1,8 @@
 import { Directive, HostListener } from '@angular/core';
 
 @Directive({
-  selector: '[fsPreventDefault]',
+    selector: '[fsPreventDefault]',
+    standalone: true,
 })
 export class FsPreventDefaultDirective {
   @HostListener('click', ['$event'])

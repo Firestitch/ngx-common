@@ -10,11 +10,15 @@ import {
   rsort,
   sort,
 } from '@firestitch/common';
+import { HighlightDirective } from '../../directives/highlight.directive';
+import { JsonPipe } from '@angular/common';
 
 @Component({
-  selector: 'fs-array-example',
-  templateUrl: './array-example.component.html',
-  changeDetection: ChangeDetectionStrategy.OnPush,
+    selector: 'fs-array-example',
+    templateUrl: './array-example.component.html',
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: true,
+    imports: [HighlightDirective, JsonPipe],
 })
 export class FsArrayExampleComponent implements OnInit {
 

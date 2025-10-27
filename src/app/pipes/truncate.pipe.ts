@@ -3,7 +3,8 @@ import { truncate } from '../../libs/format/truncate/truncate';
 
 
 @Pipe({
-  name: 'fsFormatTruncate'
+    name: 'fsFormatTruncate',
+    standalone: true
 })
 export class FsFormatTruncatePipe implements PipeTransform {
 
