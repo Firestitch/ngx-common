@@ -1,16 +1,18 @@
 <table class="table three-col-example">
   <thead>
-  <tr>
-    <th>Description</th>
-    <th>Code</th>
-    <th>Result</th>
-  </tr>
+    <tr>
+      <th>Description</th>
+      <th>Code</th>
+      <th>Result</th>
+    </tr>
   </thead>
-  <tr *ngFor="let example of examples">
-    <td>{{example.name}}</td>
-    <td><div class="code-ts hljs"><code [highlight]="example.code" [languages]="['typescript']"></code></div></td>
-    <td><div class="code-json hljs"><code [highlight]="example.result" [languages]="['json']"></code></div></td>
-  </tr>
+  @for (example of examples; track example) {
+    <tr>
+      <td>{{example.name}}</td>
+      <td><div class="code-ts hljs"><code [highlight]="example.code" [languages]="['typescript']"></code></div></td>
+      <td><div class="code-json hljs"><code [highlight]="example.result" [languages]="['json']"></code></div></td>
+    </tr>
+  }
 </table>
 
 <br><br>
