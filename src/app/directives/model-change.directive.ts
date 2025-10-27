@@ -1,4 +1,4 @@
-import { Directive, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { Directive, EventEmitter, Input, OnDestroy, OnInit, Output, inject } from '@angular/core';
 import { NgModel } from '@angular/forms';
 
 import { Subject } from 'rxjs';
@@ -10,16 +10,14 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
     standalone: true,
 })
 export class FsModelChangeDirective implements OnInit, OnDestroy {
+  private _ngModel = inject(NgModel);
+
 
   @Input() public fsModelChangeOptions: { debounce?: number };
 
   @Output() public fsModelChange = new EventEmitter();
 
   private _destroy$ = new Subject();
-
-  constructor(
-    private _ngModel: NgModel,
-  ) { }
 
   public ngOnInit(): void {
     this._ngModel.update

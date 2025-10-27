@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, Host, Input, Optional } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Input, inject } from '@angular/core';
 
 import { MatInput } from '@angular/material/input';
 
@@ -8,15 +8,13 @@ import { MatInput } from '@angular/material/input';
     standalone: true,
 })
 export class FsAutoFocusDirective implements AfterViewInit {
+  private _matInput = inject(MatInput, { optional: true, host: true });
+  private _el = inject(ElementRef);
+
 
   @Input() public fsAutofocus = true;
   @Input() public fsAutoFocus = true;
   @Input() public autofocus = true;
-
-  constructor(
-    @Optional() @Host() private _matInput: MatInput,
-    private _el: ElementRef,
-  ) { }
 
   public ngAfterViewInit(): void {
     if (

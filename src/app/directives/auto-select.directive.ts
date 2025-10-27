@@ -1,4 +1,4 @@
-import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
+import { AfterViewInit, Directive, ElementRef, Input, inject } from '@angular/core';
 
 
 @Directive({
@@ -6,12 +6,10 @@ import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
     standalone: true,
 })
 export class FsAutoSelectDirective implements AfterViewInit {
+  private _el = inject(ElementRef);
+
 
   @Input() public fsAutoSelect = true;
-
-  constructor(
-    private _el: ElementRef,
-  ) { }
 
   public ngAfterViewInit(): void {
     if ((this.fsAutoSelect ?? true) === true) {

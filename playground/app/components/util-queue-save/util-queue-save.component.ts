@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { of } from 'rxjs';
 import { delay, map } from 'rxjs/operators';
 import { Queue } from '@firestitch/common';
@@ -13,9 +13,10 @@ import { MatButton } from '@angular/material/button';
     imports: [MatButton]
 })
 export class FsUtilQueueSaveComponent {
+  private fsMessage = inject(FsMessage);
+
   
   queue = new Queue();
-  constructor(private fsMessage: FsMessage) {}
 
   public save() {
 

@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FsMessage } from '@firestitch/message';
 
 import { of, throwError } from 'rxjs';
@@ -20,6 +20,8 @@ import { JsonPipe } from '@angular/common';
     imports: [FormsModule, MatFormField, MatInput, MatButton, JsonPipe]
 })
 export class FsUtilQueueComponent {
+  private _message = inject(FsMessage);
+
 
   public queue: Queue;
   public queueForm = {
@@ -28,9 +30,7 @@ export class FsUtilQueueComponent {
   };
   public queueLimit = Infinity;
 
-  constructor(
-    private _message: FsMessage
-  ) {
+  constructor() {
     const targets = [
       // throwError('There was an error').pipe(delay(100)),
       // throwError('There was an error').pipe(delay(100)),

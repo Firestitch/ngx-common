@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { FsUtil } from './util.service';
 
 @Injectable()
 export class FsValidate {
+    private fsUtil = inject(FsUtil);
 
-    constructor(private fsUtil: FsUtil) { }
 
     /**
      * @deprecated use import { email } from @firestitch/common/validate; instead
