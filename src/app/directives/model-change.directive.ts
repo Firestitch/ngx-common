@@ -6,23 +6,23 @@ import { debounceTime, takeUntil } from 'rxjs/operators';
 
 
 @Directive({
-    selector: '[fsModelChange]',
-    standalone: true,
+  selector: '[fsModelChange]',
+  standalone: true,
 })
 export class FsModelChangeDirective implements OnInit, OnDestroy {
-  private _ngModel = inject(NgModel);
-
 
   @Input() public fsModelChangeOptions: { debounce?: number };
 
   @Output() public fsModelChange = new EventEmitter();
 
+  private _ngModel = inject(NgModel);
   private _destroy$ = new Subject();
 
   public ngOnInit(): void {
     this._ngModel.update
+      .asObservable()
       .pipe(
-        debounceTime(this.fsModelChangeOptions?.debounce || 500),
+        debounceTime(this.fsModelChangeOptions?.debounce || 300),
         takeUntil(this._destroy$),
       )
       .subscribe((value) => {

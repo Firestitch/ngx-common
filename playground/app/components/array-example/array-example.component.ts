@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 
 import {
@@ -10,15 +11,15 @@ import {
   rsort,
   sort,
 } from '@firestitch/common';
+
 import { HighlightDirective } from '../../directives/highlight.directive';
-import { JsonPipe } from '@angular/common';
 
 @Component({
-    selector: 'fs-array-example',
-    templateUrl: './array-example.component.html',
-    changeDetection: ChangeDetectionStrategy.OnPush,
-    standalone: true,
-    imports: [HighlightDirective, JsonPipe],
+  selector: 'fs-array-example',
+  templateUrl: './array-example.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  standalone: true,
+  imports: [HighlightDirective, JsonPipe],
 })
 export class FsArrayExampleComponent implements OnInit {
 
@@ -97,15 +98,11 @@ export class FsArrayExampleComponent implements OnInit {
   }
 
 
-  ngOnInit() {
-    loadJs('https://js.stripe.com/v3/').subscribe(() => {
-      debugger;
-    });
+  public ngOnInit(): void {
+    loadJs('https://js.stripe.com/v3/').subscribe();
 
     setTimeout(() => {
-      loadJs('https://js.stripe.com/v3/').subscribe(() => {
-        debugger;
-      });
+      loadJs('https://js.stripe.com/v3/').subscribe();
     }, 1);
   }
 
