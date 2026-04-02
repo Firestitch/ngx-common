@@ -120,9 +120,19 @@ export const fsSourceLoader = (function() {
     }
 
     const obs$ = new Observable((obs) => {
+      const pre = document.createElement('script');
+      pre.textContent = `
+            if(!window.__amdBlock){window.__amdBlock=0;window.__amdDefine=window.define;}
+            window.__amdBlock++;window.define=undefined;`;
+
       const script = document.createElement('script');
       script.src = scriptPath;
-      script.type = 'text/javascript'; 
+      script.type = 'text/javascript';
+
+      const post = document.createElement('script');
+      post.textContent = `
+            if(--window.__amdBlock===0){window.define=window.__amdDefine;delete window.__amdDefine;delete window.__amdBlock;}`;
+
       script.addEventListener('load', () => {
         obs.next(null);
         obs.complete();
@@ -131,11 +141,12 @@ export const fsSourceLoader = (function() {
         obs.error(err);
       });
 
+      _headElement.appendChild(pre);
       _headElement.appendChild(script);
-    })
-      .pipe(
-        shareReplay({ bufferSize: 1, refCount: true }),
-      );
+      _headElement.appendChild(post);
+    }).pipe(
+      shareReplay({ bufferSize: 1, refCount: true }),
+    );
 
     _loadedResources.set(scriptPath, obs$);
 
