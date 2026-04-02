@@ -120,30 +120,37 @@ export const fsSourceLoader = (function() {
     }
 
     const obs$ = new Observable((obs) => {
-      const pre = document.createElement('script');
-      pre.textContent = `
-            if(!window.__amdBlock){window.__amdBlock=0;window.__amdDefine=window.define;}
-            window.__amdBlock++;window.define=undefined;`;
+      const w = window as any;
+      if (!w.__amdBlock) {
+        w.__amdBlock = 0;
+        w.__amdDefine = w.define;
+      }
+      w.__amdBlock++;
+      w.define = undefined;
 
       const script = document.createElement('script');
       script.src = scriptPath;
       script.type = 'text/javascript';
 
-      const post = document.createElement('script');
-      post.textContent = `
-            if(--window.__amdBlock===0){window.define=window.__amdDefine;delete window.__amdDefine;delete window.__amdBlock;}`;
+      const _restoreDefine = () => {
+        if (--w.__amdBlock === 0) {
+          w.define = w.__amdDefine;
+          delete w.__amdDefine;
+          delete w.__amdBlock;
+        }
+      };
 
       script.addEventListener('load', () => {
+        _restoreDefine();
         obs.next(null);
         obs.complete();
       });
       script.addEventListener('error', (err) => {
+        _restoreDefine();
         obs.error(err);
       });
 
-      _headElement.appendChild(pre);
       _headElement.appendChild(script);
-      _headElement.appendChild(post);
     }).pipe(
       shareReplay({ bufferSize: 1, refCount: true }),
     );
