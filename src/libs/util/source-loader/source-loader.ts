@@ -114,30 +114,52 @@ export const fsSourceLoader = (function() {
     return null;
   }
 
-  function _loadJs(scriptPath: string): Observable<unknown> {
+  function _loadJs(scriptPath: string) {
     if (_loadedResources.has(scriptPath)) {
       return _loadedResources.get(scriptPath);
     }
 
     const obs$ = new Observable((obs) => {
       const w = window as any;
-      if (!w.__amdBlock) {
+
+      if (!w.__amdBlockInit) {
+        w.__amdBlockInit = true;
         w.__amdBlock = 0;
-        w.__amdDefine = w.define;
+
+        let realDefine = w.define;
+        let proxyDefine: any = null;
+
+        Object.defineProperty(w, 'define', {
+          get() {
+            if (w.__amdBlock > 0 && realDefine) {
+              if (!proxyDefine) {
+                proxyDefine = function () {
+                  return realDefine.apply(this, arguments);
+                };
+              }
+              return proxyDefine;
+            }
+            return realDefine;
+          },
+          set(val: any) {
+            if (val !== undefined) {
+              realDefine = val;
+              proxyDefine = null;
+            }
+          },
+          configurable: true,
+          enumerable: true,
+        });
       }
+
       w.__amdBlock++;
-      w.define = undefined;
 
       const script = document.createElement('script');
       script.src = scriptPath;
       script.type = 'text/javascript';
 
       const _restoreDefine = () => {
-        if (--w.__amdBlock === 0) {
-          w.define = w.__amdDefine;
-          delete w.__amdDefine;
-          delete w.__amdBlock;
-        }
+        w.__amdBlock--;
       };
 
       script.addEventListener('load', () => {
@@ -145,18 +167,16 @@ export const fsSourceLoader = (function() {
         obs.next(null);
         obs.complete();
       });
+
       script.addEventListener('error', (err) => {
         _restoreDefine();
         obs.error(err);
       });
 
       _headElement.appendChild(script);
-    }).pipe(
-      shareReplay({ bufferSize: 1, refCount: true }),
-    );
+    }).pipe(shareReplay({ bufferSize: 1, refCount: true }));
 
     _loadedResources.set(scriptPath, obs$);
-
     return obs$;
   }
 
