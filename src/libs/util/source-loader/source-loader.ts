@@ -127,24 +127,24 @@ export const fsSourceLoader = (function() {
         w.__amdBlock = 0;
 
         let realDefine = w.define;
-        let proxyDefine: any = null;
+        // No-op shim intentionally has no `.amd` property so UMD bundles
+        // (`typeof define === 'function' && define.amd`) fall through to the
+        // browser-global branch, and any nested anonymous define() calls
+        // inside concatenated UMD bundles (e.g. heic2any) are swallowed
+        // instead of reaching another AMD loader on the page (e.g. Monaco's
+        // loader.js, which throws on a second anonymous define).
+        const noopDefine = function () { /* swallow */ };
 
         Object.defineProperty(w, 'define', {
           get() {
-            if (w.__amdBlock > 0 && realDefine) {
-              if (!proxyDefine) {
-                proxyDefine = function () {
-                  return realDefine.apply(this, arguments);
-                };
-              }
-              return proxyDefine;
+            if (w.__amdBlock > 0) {
+              return noopDefine;
             }
             return realDefine;
           },
           set(val: any) {
             if (val !== undefined) {
               realDefine = val;
-              proxyDefine = null;
             }
           },
           configurable: true,
