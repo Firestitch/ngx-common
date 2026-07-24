@@ -7,6 +7,7 @@ export const fsSourceLoader = (function() {
 
   const _sources = new Map<string, Set<string>>();
   const _loadedResources = new Map<string, Observable<unknown>>();
+  const _noopDefine = function() { /* swallow */ };
 
   // bad way but don't want to bother developer
   setDocument(document);
@@ -120,56 +121,20 @@ export const fsSourceLoader = (function() {
     }
 
     const obs$ = new Observable((obs) => {
-      const w = window as any;
-
-      if (!w.__amdBlockInit) {
-        w.__amdBlockInit = true;
-        w.__amdBlock = 0;
-
-        let realDefine = w.define;
-        // No-op shim intentionally has no `.amd` property so UMD bundles
-        // (`typeof define === 'function' && define.amd`) fall through to the
-        // browser-global branch, and any nested anonymous define() calls
-        // inside concatenated UMD bundles (e.g. heic2any) are swallowed
-        // instead of reaching another AMD loader on the page (e.g. Monaco's
-        // loader.js, which throws on a second anonymous define).
-        const noopDefine = function () { /* swallow */ };
-
-        Object.defineProperty(w, 'define', {
-          get() {
-            if (w.__amdBlock > 0) {
-              return noopDefine;
-            }
-            return realDefine;
-          },
-          set(val: any) {
-            if (val !== undefined) {
-              realDefine = val;
-            }
-          },
-          configurable: true,
-          enumerable: true,
-        });
-      }
-
-      w.__amdBlock++;
+      _blockAmd();
 
       const script = document.createElement('script');
       script.src = scriptPath;
       script.type = 'text/javascript';
 
-      const _restoreDefine = () => {
-        w.__amdBlock--;
-      };
-
       script.addEventListener('load', () => {
-        _restoreDefine();
+        _unblockAmd();
         obs.next(null);
         obs.complete();
       });
 
       script.addEventListener('error', (err) => {
-        _restoreDefine();
+        _unblockAmd();
         obs.error(err);
       });
 
@@ -204,6 +169,72 @@ export const fsSourceLoader = (function() {
     }
 
     return _loadedResources.get(stylePath);
+  }
+
+  /**
+   * Hide any AMD loader already on the page for as long as a script is loading.
+   *
+   * The shim intentionally has no `.amd` property so UMD bundles
+   * (`typeof define === 'function' && define.amd`) fall through to the
+   * browser-global branch, and any nested anonymous define() calls inside
+   * concatenated UMD bundles (e.g. heic2any) are swallowed instead of reaching
+   * that loader (e.g. Monaco's loader.js, which throws on a second anonymous
+   * define).
+   */
+  function _blockAmd(): void {
+    const w = window as any;
+
+    if (!w.__amdBlockInit) {
+      w.__amdBlockInit = true;
+      w.__amdBlock = 0;
+
+      let realDefine = w.define;
+
+      try {
+        // An accessor is preferred: writes made by the loading script are kept
+        // instead of being discarded when the block is lifted.
+        Object.defineProperty(w, 'define', {
+          get() {
+            if (w.__amdBlock > 0) {
+              return _noopDefine;
+            }
+
+            return realDefine;
+          },
+          set(val: any) {
+            if (val !== undefined) {
+              realDefine = val;
+            }
+          },
+          configurable: true,
+          enumerable: true,
+        });
+      } catch {
+        // Monaco's loader.js is a classic script whose top-level `var define`
+        // binds a NON-configurable global, so the accessor above throws
+        // "Cannot redefine property: define". The property stays writable
+        // though, so swap the value in and out around each script instead.
+        w.__amdBlockSwap = true;
+      }
+    }
+
+    if (w.__amdBlockSwap && w.__amdBlock === 0) {
+      w.__amdSwappedDefine = w.define;
+      w.define = _noopDefine;
+    }
+
+    w.__amdBlock++;
+  }
+
+  function _unblockAmd(): void {
+    const w = window as any;
+
+    w.__amdBlock--;
+
+    if (w.__amdBlockSwap && w.__amdBlock === 0) {
+      w.define = w.__amdSwappedDefine;
+      w.__amdSwappedDefine = undefined;
+    }
   }
 
   function _isJavascriptUrl(url: string) {
